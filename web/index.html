@@ -1,140 +1,461 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0033A0">
+<meta name="description" content="Open Econometric Systems: run 44 econometric models on your own data, free, in your browser: every model of the four research guides plus Bayesian VARs and Markov-switching models.">
 <title>OES-1000 | Open Econometric Systems</title>
+<link rel="canonical" href="https://tuhingm.github.io/oes-1000/">
+<meta property="og:locale" content="en_US">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta name="author" content="Tuhin G. M. Al Mamun">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Tuhin Al Mamun, Ph.D.">
+<meta property="og:title" content="OES-1000 | Open Econometric Systems"><meta property="og:description" content="Open Econometric Systems: run 44 econometric models on your own data, free, in your browser: every model of the four research guides plus Bayesian VARs and Markov-switching models.">
+<meta property="og:url" content="https://tuhingm.github.io/oes-1000/"><meta property="og:image" content="https://tuhingm.github.io/almamun/assets/og/oes/index.jpg?v=4">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image:type" content="image/jpeg"><meta property="og:image:alt" content="Preview card: OES-1000 | Open Econometric Systems">
+<meta name="twitter:title" content="OES-1000 | Open Econometric Systems"><meta name="twitter:description" content="Open Econometric Systems: run 44 econometric models on your own data, free, in your browser: every model of the four research guides plus Bayesian VARs and Markov-switching models."><meta name="twitter:image" content="https://tuhingm.github.io/almamun/assets/og/oes/index.jpg?v=4"><meta name="twitter:image:alt" content="Preview card: OES-1000 | Open Econometric Systems">
+<link rel="icon" href="https://tuhingm.github.io/almamun/assets/favicon.svg" type="image/svg+xml"><link rel="icon" href="https://tuhingm.github.io/almamun/assets/favicon-32.png" sizes="32x32" type="image/png"><link rel="apple-touch-icon" href="https://tuhingm.github.io/almamun/assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{color-scheme:dark;--bg:#0b1020;--panel:#131c31;--line:#263650;--muted:#9aabc2;--text:#edf3fb;--accent:#7dd3fc;--good:#86efac;--warn:#fbbf24}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.55 Inter,system-ui,sans-serif}
-header{padding:32px max(22px,calc((100vw - 1180px)/2));border-bottom:1px solid var(--line);background:#0e1729}
-.kicker{color:var(--accent);font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:700}
-h1{font-size:clamp(30px,5vw,46px);line-height:1.05;margin:10px 0}
-header p{max-width:820px;color:var(--muted);margin:0}
-main{max-width:1180px;margin:26px auto;padding:0 20px;display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:18px}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px;min-width:0}
-h2{font-size:18px;margin:0 0 12px}.sub,.hint{color:var(--muted);font-size:13px}
-label{display:block;font-size:13px;color:var(--muted);margin:15px 0 6px}
-input,select,textarea,button{font:inherit;border-radius:8px;border:1px solid var(--line);padding:10px;background:#0b1426;color:var(--text);width:100%}
-select[multiple]{min-height:92px}textarea{min-height:88px;resize:vertical}
-button{background:#164e63;border-color:#0e7490;font-weight:700;cursor:pointer;margin-top:14px}
-button:disabled{opacity:.45;cursor:not-allowed}
-.field-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 14px}
-.field{min-width:0}.field small{display:block;color:var(--muted);font-size:11px;margin-top:4px}
-pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#0a1221;padding:14px;border-radius:8px;min-height:110px;max-height:620px;overflow:auto;font-size:12px}
-.stat{padding:12px 0;border-bottom:1px solid var(--line)}.stat strong{display:block;font-size:21px}
-.status{margin:12px 0;padding:10px 12px;border-radius:8px;background:#0a1221;color:var(--muted);font-size:13px}
-.status.good{color:var(--good)}.status.warn{color:var(--warn)}
-footer{max-width:1180px;margin:20px auto;padding:0 20px 36px;color:var(--muted);font-size:12px}
-@media(max-width:820px){main{grid-template-columns:1fr}.field-grid{grid-template-columns:1fr}}
-</style></head>
+:root{--navy:#0033a0;--navy2:#00205b;--ink:#1b2437;--muted:#55617a;--paper:#f3f5fa;--white:#fff;--line:#d5dcea;--sky:#9fd3f0;--sky2:#6ec1e4;--tint:#e3eaf7;--ok:#0f7a4f;--warn:#a05a00;--bad:#a12a2a}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.7 "DM Sans",sans-serif}a{color:inherit;text-decoration:none}button,input,select{font:inherit}button{cursor:pointer}.wrap{width:min(1160px,calc(100% - 44px));margin:auto}
+.hero{background:radial-gradient(circle at 85% 12%,#6ec1e445,transparent 29%),linear-gradient(120deg,#0033a0,#00205b);color:white;padding:56px 0 50px}.kicker{font-size:10px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--sky)}h1{font:800 clamp(34px,5vw,52px)/1.1 Manrope;letter-spacing:-1.7px;margin:12px 0 14px}.lead{max-width:820px;color:#d0dcf0;margin:0;font-size:16px}.meta{display:flex;gap:22px;flex-wrap:wrap;margin-top:22px;color:#c5d4ea;font-size:12px}.meta strong{color:white}
+main{padding:34px 0 80px}
+section.step{background:#fff;border:1px solid var(--line);border-radius:14px;padding:24px 26px;margin:0 0 20px;box-shadow:0 5px 18px rgba(0,32,91,.05)}
+.stepno{display:block;font:800 10px "DM Sans";letter-spacing:.16em;text-transform:uppercase;color:var(--navy);margin-bottom:4px}
+h2{font:800 22px/1.25 Manrope;letter-spacing:-.4px;margin:0 0 6px}h3{font:800 15px Manrope;margin:18px 0 8px}.sub{color:var(--muted);font-size:13px;margin:0 0 14px}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 14px}.tabs button{border:1px solid var(--line);background:#f5f7fc;border-radius:30px;padding:7px 14px;font-size:12px;font-weight:700;color:#41506a}.tabs button[aria-pressed=true]{background:var(--navy);border-color:var(--navy);color:#fff}
+.models{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px}.models button{text-align:left;border:1px solid var(--line);background:#fff;border-radius:10px;padding:11px 13px;font-size:13px;font-weight:700;color:var(--ink);line-height:1.35;transition:border-color .15s,background .15s}.models button:hover{border-color:var(--sky2);background:#f7fbff}.models button[aria-pressed=true]{border-color:var(--navy);background:var(--tint);color:var(--navy)}.models button small{display:block;font-weight:500;font-size:11px;color:var(--muted);margin-top:2px}
+.chosen{margin-top:14px;padding:12px 14px;border-radius:10px;background:#f5f7fc;border:1px solid #e1e7f1;font-size:13px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center}.chosen a{color:var(--navy);font-weight:700;text-decoration:underline}
+.btn,.btn2{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:0;border-radius:8px;padding:10px 16px;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}.btn{background:var(--navy);color:#fff}.btn2{background:#e9eef8;color:var(--navy)}.btn:disabled,.btn2:disabled{opacity:.45;cursor:not-allowed}.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.drop{border:1.5px dashed #aebbd0;border-radius:10px;background:#f8faff;padding:18px;text-align:center;font-size:13px;color:var(--muted);margin-top:12px}.drop.over{border-color:var(--navy);background:var(--tint)}
+.hint{font-size:11.5px;color:#6b7891}.pill{display:inline-block;font-size:11px;font-weight:700;color:var(--navy);background:var(--tint);border-radius:20px;padding:2px 10px;margin-left:6px}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 18px}.field{display:grid;gap:4px;margin:8px 0}.field>label,.field>span.l{font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#596780}.field select,.field input:not([type=checkbox]){width:100%;min-height:38px;padding:7px 10px;border:1px solid #ccd6e5;border-radius:7px;background:#fff;color:var(--ink);font-size:13px}.field .req{color:var(--bad)}
+.checks{border:1px solid #ccd6e5;border-radius:7px;max-height:180px;overflow:auto;padding:6px 8px;background:#fff;display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:0 10px}.checks input{width:auto;min-height:0;margin:0;accent-color:var(--navy)}.checks label{display:flex;gap:6px;align-items:center;font-size:12.5px;color:#34425c;padding:2px 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.mini{font-size:10.5px;color:var(--navy);font-weight:700;background:none;border:0;padding:0 6px 0 0}
+.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:8px;max-height:420px;margin:8px 0 4px}table{border-collapse:collapse;width:100%;font-size:12px;background:#fff}th{position:sticky;top:0;background:#f2f5fb;color:#5d6a82;text-align:left;font-size:9.5px;letter-spacing:.07em;text-transform:uppercase;font-weight:800}th,td{padding:7px 10px;border-bottom:1px solid #e9edf4;white-space:nowrap}td{color:#34425c;font-variant-numeric:tabular-nums}td.sig{color:var(--navy);font-weight:700}
+.ops{display:grid;gap:6px;margin:8px 0}.op{display:flex;justify-content:space-between;gap:10px;align-items:center;background:#f5f7fc;border:1px solid #e1e7f1;border-radius:8px;padding:7px 11px;font-size:12.5px}.op button{border:0;background:none;color:var(--bad);font-weight:800;font-size:12px}
+.opform{display:grid;grid-template-columns:150px minmax(0,1fr);gap:8px 14px;align-items:start;border-top:1px solid var(--line);padding-top:12px;margin-top:10px}
+.status{display:none;align-items:center;gap:10px;font-size:12.5px;color:#41506a;background:#f5f7fc;border:1px solid #e1e7f1;border-radius:8px;padding:9px 12px;margin-top:12px}.status.on{display:flex}.spin{width:15px;height:15px;border:2px solid #c9d4e8;border-top-color:var(--navy);border-radius:50%;animation:sp 0.8s linear infinite}@keyframes sp{to{transform:rotate(360deg)}}
+.error{color:var(--bad);background:#fff0f0;border:1px solid #f1cccc;padding:10px 12px;border-radius:8px;font-size:12.5px;margin-top:12px}
+.metrics{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px;margin:12px 0}.metric{background:#f5f7fc;border:1px solid #e1e7f1;border-radius:8px;padding:10px 12px}.metric small{display:block;font-size:9.5px;color:#77849a;font-weight:800;letter-spacing:.07em;text-transform:uppercase}.metric strong{display:block;font:800 17px Manrope;color:var(--navy);margin-top:2px;word-break:break-word}
+.tnote{font-size:11.5px;color:#6b7891;margin:2px 0 14px}.notes{margin:12px 0;padding:12px 15px;border-radius:9px;background:#fff7e8;border:1px solid #f1dfb8;border-left:4px solid var(--warn);font-size:12.5px;color:#674a1d}.notes p{margin:3px 0}
+.charts{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:12px;margin:10px 0}.chart{border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:#fff}.chart h4{margin:0 0 4px;font:700 12.5px "DM Sans";color:var(--ink)}.chart svg{width:100%;height:auto;display:block}.legend{display:flex;gap:12px;flex-wrap:wrap;font-size:11px;color:var(--muted)}.legend i{display:inline-block;width:10px;height:3px;margin-right:4px;vertical-align:middle}
+pre.code{background:#0f1b33;color:#dce6f7;border-radius:10px;padding:14px 16px;font:12px/1.55 ui-monospace,SFMono-Regular,Menlo,monospace;overflow:auto;margin:8px 0}
+.test-ok{color:var(--ok);font-weight:800}.test-bad{color:var(--bad);font-weight:800}.test-run{color:var(--navy);font-weight:700}
+.info{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}.info div{background:#f5f7fc;border:1px solid #e1e7f1;border-radius:10px;padding:14px;font-size:13px;color:#41506a}.info b{display:block;color:var(--ink);font-family:Manrope;margin-bottom:4px}
+footer{background:#00205b;color:#dce7f6;padding:25px 0;font-size:12px}footer .foot{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}footer a{color:#9fd3f0}
+@media(max-width:700px){section.step{padding:18px 16px}.grid2{grid-template-columns:1fr}.opform{grid-template-columns:1fr}.hero{padding:40px 0 36px}.charts{grid-template-columns:1fr}}
+</style>
+<link rel="stylesheet" href="https://tuhingm.github.io/almamun/assets/css/mobile-nav.css">
+<link rel="stylesheet" href="https://tuhingm.github.io/almamun/assets/css/site-header.css">
+<link rel="stylesheet" href="https://tuhingm.github.io/almamun/assets/css/share.css">
+<script type="application/ld+json" id="site-ld">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://tuhingm.github.io/oes-1000/#webpage","url":"https://tuhingm.github.io/oes-1000/","name":"OES-1000 | Open Econometric Systems","description":"Open Econometric Systems: run 44 econometric models on your own data, free, in your browser: every model of the four research guides plus Bayesian VARs and Markov-switching models.","isPartOf":{"@id":"https://tuhingm.github.io/almamun/#website"},"inLanguage":"en","author":{"@id":"https://tuhingm.github.io/almamun/#person"},"copyrightHolder":{"@id":"https://tuhingm.github.io/almamun/#person"},"primaryImageOfPage":{"@type":"ImageObject","url":"https://tuhingm.github.io/almamun/assets/og/oes/index.jpg"},"breadcrumb":{"@id":"https://tuhingm.github.io/oes-1000/#breadcrumb"}},{"@type":"Person","@id":"https://tuhingm.github.io/almamun/#person","name":"Tuhin G. M. Al Mamun","alternateName":["Tuhin Al Mamun","Tuhin","Tuhin G M Al Mamun","Tuhin G.M. Al Mamun","Tuhin GM Al Mamun","T. G. M. Al Mamun","TGM Al Mamun","Al Mamun Tuhin","Tuhin Al Mamun, Ph.D.","Dr. Tuhin Al Mamun"],"givenName":"Tuhin","familyName":"Al Mamun","honorificSuffix":"Ph.D.","url":"https://tuhingm.github.io/almamun/","image":"https://tuhingm.github.io/almamun/assets/og-image.jpg","jobTitle":"Economist and Quantitative Researcher","description":"Economist and quantitative researcher working on monetary and fiscal policy, DSGE and HANK models, environmental economics and econometrics.","alumniOf":{"@type":"CollegeOrUniversity","name":"Hannam University","address":"Daejeon, South Korea"},"hasCredential":{"@type":"EducationalOccupationalCredential","credentialCategory":"degree","name":"Ph.D. in Economics","recognizedBy":{"@type":"CollegeOrUniversity","name":"Hannam University"}},"nationality":{"@type":"Country","name":"Bangladesh"},"knowsAbout":["Monetary policy","Fiscal policy","Macroeconomics","DSGE models","Heterogeneous Agent New Keynesian (HANK) models","Bayesian estimation","Econometrics","Time-series econometrics","Panel data econometrics","Causal inference","Environmental economics","Climate economics","Statistics"],"sameAs":["https://orcid.org/0009-0005-0275-6922","https://scholar.google.com/citations?user=CMV8R_0AAAAJ&hl=en","https://www.scopus.com/authid/detail.uri?authorId=59544050900","https://www.linkedin.com/in/tuhinecon/","https://sites.google.com/view/tuhin2022/profile","https://www.researchgate.net/profile/Tuhin-G-M-Al-Mamun","https://github.com/tuhingm"]},{"@type":"WebSite","@id":"https://tuhingm.github.io/almamun/#website","url":"https://tuhingm.github.io/almamun/","name":"Tuhin G. M. Al Mamun, Ph.D.","alternateName":["Tuhin Al Mamun","TGM Al Mamun"],"publisher":{"@id":"https://tuhingm.github.io/almamun/#person"},"inLanguage":"en"},{"@type":"BreadcrumbList","@id":"https://tuhingm.github.io/oes-1000/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://tuhingm.github.io/almamun/"},{"@type":"ListItem","position":2,"name":"Open Econometric Systems","item":"https://tuhingm.github.io/oes-1000/"}]}]}</script>
+</head>
 <body>
-<header><div class="kicker">Open Econometric Systems · OES-1000</div>
-<h1>Econometric estimation,<br>executed in your browser.</h1>
-<p>Select an estimator from the legacy OES engine, upload a CSV, configure the estimator-specific inputs, and run the calculation locally through Pyodide in a Web Worker. Dataset contents are not sent to an estimation server.</p></header>
-<main>
-<section class="card">
-<h2>Estimation workspace</h2>
-<div class="sub">Legacy OES estimator interface · Python / NumPy / SciPy / pandas / statsmodels / scikit-learn.</div>
-<div id="runtime" class="status">Loading browser runtime and estimator catalogue…</div>
-<label for="file">Dataset (CSV)</label><input id="file" type="file" accept=".csv,text/csv">
-<div class="hint" id="datasetHint">Upload a CSV with a header row. Date and entity identifiers may be text; estimator inputs determine which columns are numeric.</div>
-<label for="model">Estimator</label><select id="model" disabled><option>Loading catalogue…</option></select>
-<div id="modelDescription" class="hint"></div>
-<div id="fields" class="field-grid"></div>
-<label for="advanced">Advanced specification (optional JSON)</label>
-<textarea id="advanced" spellcheck="false" placeholder='{"ops":[{"op":"lag","vars":["x"],"lags":[1,2],"time":"date"}]}'></textarea>
-<div class="hint">Use this for data operations such as lag, difference, log, growth, demean, or sample restrictions supported by the selected legacy model.</div>
-<button id="run" disabled>Upload a CSV to begin</button>
-<h2 style="margin-top:26px">Estimation output</h2><pre id="output">The estimator catalogue will appear after the local Python runtime initializes.</pre>
+<header class="site-header"><div class="wrap nav"><a class="brand" href="https://tuhingm.github.io/almamun/" aria-label="Tuhin G. M. Al Mamun — home">TGM <span>AL MAMUN</span></a><button id="menu" type="button" aria-expanded="false" aria-controls="nav">Menu</button><nav id="nav" aria-label="Main navigation"><a href="https://tuhingm.github.io/almamun/">Home</a><a href="https://tuhingm.github.io/almamun/teaching/">Teaching Courses</a><a href="https://tuhingm.github.io/almamun/working-papers/">Working Papers</a><a href="https://tuhingm.github.io/almamun/research-guide/">Time-Series Guide</a><a href="https://tuhingm.github.io/almamun/panel-data-guide/">Panel-Data Guide</a><a href="https://tuhingm.github.io/almamun/causal-inference-guide/">Causal Inference</a><a href="https://tuhingm.github.io/almamun/dsge-guide/">DSGE Guide</a><a href="https://tuhingm.github.io/almamun/ml-guide/">ML Guide</a><a href="https://tuhingm.github.io/oes-1000/" class="current" aria-current="page">Open Econometric Systems</a><a href="https://tuhingm.github.io/almamun/Tuhin%20Al%20Mamun_CV.pdf">CV</a></nav></div></header>
+<section class="hero"><div class="wrap"><div class="kicker">Open-source econometric workspace</div><h1>Open Econometric Systems 1000</h1>
+<p class="lead">Every model in the Time-Series, Panel Data, Causal Inference, and Machine Learning guides is ready to run. Bayesian VAR and Markov-Switching models are also included. Choose a model and load its example dataset or upload your own CSV file. Get estimation results, diagnostic tests, statistical outputs, and charts. No installation or external software is required. Python runs directly in your browser.</p>
+<div class="meta"><span><strong id="n-models">44</strong> legacy models</span><span><strong>6</strong> model groups</span><span>Runs in your browser: <strong>your data stays on your device</strong></span><span><strong>Free</strong> and open source</span></div></div></section>
+<main class="wrap">
+
+<section class="step" id="s-model"><span class="stepno">01 · Model</span><h2>Choose a model</h2><p class="sub">The first four groups follow the research guides, and each model links to its guide, which explains when to use it and how to write up the results. The Bayesian and Markov-switching groups have no guide pages yet.</p>
+<div class="tabs" id="groups" role="group" aria-label="Model groups"></div>
+<div class="models" id="models"></div>
+<div class="chosen" id="chosen" hidden></div>
 </section>
-<aside class="card">
-<h2>Runtime</h2>
-<div class="stat"><strong id="count">—</strong><span class="sub">Legacy estimator specifications discovered</span></div>
-<div class="stat"><strong>Pyodide 0.27.2</strong><span class="sub">Python compiled to WebAssembly</span></div>
-<div class="stat"><strong>Web Worker</strong><span class="sub">Estimation runs off the main UI thread</span></div>
-<div class="stat"><strong>Local execution</strong><span class="sub">No estimation API or dataset upload endpoint</span></div>
-<div class="status warn">XGBoost (xgb) requires a native compiled dependency not included in the standard Pyodide package set. Other catalogue models load through the browser runtime; unavailable dependencies will be reported by the selected estimator.</div>
-<p class="sub">This interface exposes the 44 existing OES model definitions and their original input specifications. New OES-1000 catalogue entries are not represented as executable until implemented.</p>
-</aside>
+
+<section class="step" id="s-data"><span class="stepno">02 · Data</span><h2>Load data</h2><p class="sub">Use the dataset from the model's guide, or your own CSV file with one column per variable (and unit and time columns for panel data).</p>
+<div class="row"><button class="btn" id="load-ex" type="button" disabled>Load the guide example</button><label class="btn2" for="file">Upload a CSV file</label><input type="file" id="file" accept=".csv,.txt,text/csv,text/plain" hidden><span class="hint" id="data-info">No data loaded.</span></div>
+<div class="drop" id="drop">or drop a CSV file here</div>
+<div class="table-wrap" id="preview" hidden></div>
+</section>
+
+<section class="step" id="s-ops"><span class="stepno">03 · Variables (optional)</span><h2>Create variables</h2><p class="sub">Lags, first differences, logs, growth rates, cross-sectional demeaning and the estimation sample. Lags and differences are taken within each unit when a unit column is given. The new columns appear in the model fields below.</p>
+<div class="ops" id="ops"></div>
+<div class="opform">
+ <div class="field"><span class="l">Operation</span><select id="op-kind"><option value="lag">Lags</option><option value="diff">First difference (d_)</option><option value="log">Natural log (ln_)</option><option value="growth">Growth rate, % (g_)</option><option value="demean">Subtract the period mean (dm_)</option><option value="sample">Restrict the sample</option></select></div>
+ <div>
+  <div class="field" id="op-vars-f"><span class="l">Variables</span><div class="checks" id="op-vars"></div></div>
+  <div class="grid2">
+   <div class="field" id="op-lags-f"><label for="op-lags">Lags (e.g. 1,2,3,4)</label><input id="op-lags" value="1"></div>
+   <div class="field" id="op-unit-f"><label for="op-unit">Unit column (panel)</label><select id="op-unit"></select></div>
+   <div class="field" id="op-time-f"><label for="op-time">Time column</label><select id="op-time"></select></div>
+   <div class="field" id="op-start-f" hidden><label for="op-start">From (inclusive)</label><input id="op-start" placeholder="e.g. 1979Q3 or 1990"></div>
+   <div class="field" id="op-end-f" hidden><label for="op-end">To (inclusive)</label><input id="op-end" placeholder="e.g. 2007Q4 or 2019"></div>
+  </div>
+  <button class="btn2" id="op-add" type="button" disabled>Add</button>
+ </div>
+</div>
+</section>
+
+<section class="step" id="s-spec"><span class="stepno">04 · Specification</span><h2 id="spec-title">Specify the model</h2><p class="sub" id="spec-sub">Choose a model and load data first.</p>
+<div class="grid2" id="fields"></div>
+<div class="row" style="margin-top:14px"><button class="btn" id="run" type="button" disabled>Estimate</button><span class="hint" id="run-hint"></span></div>
+<div class="status" id="status" role="status" aria-live="polite"><span class="spin"></span><span id="status-text"></span></div>
+<div class="error" id="err" role="alert" hidden></div>
+</section>
+
+<section class="step" id="s-results" hidden><span class="stepno">05 · Results</span><h2 id="res-title">Results</h2><p class="sub" id="res-sub"></p>
+<div class="metrics" id="metrics"></div>
+<div class="charts" id="charts"></div>
+<div id="tables"></div>
+<div class="notes" id="notes" hidden></div>
+<div class="row" style="margin:10px 0 4px"><button class="btn2" id="dl-csv" type="button">Download tables (CSV)</button><button class="btn2" id="dl-json" type="button">Download results (JSON)</button><a class="btn2" id="res-guide" href="#">Read the guide</a></div>
+<h3>Reproduce in Python</h3><p class="sub">The page runs the open-source <a href="https://github.com/tuhingm/oes-1000" style="color:var(--navy);text-decoration:underline" target="_blank" rel="noopener">OES engine</a>. The same call on your own computer gives the same numbers:</p>
+<pre class="code" id="code"></pre>
+</section>
+
+<section class="step" id="s-tests"><span class="stepno">06 · Test suite</span><h2>Test every model in your browser</h2>
+<p class="sub">Runs each model on its guide example here, in your browser, and compares the first reported estimate with the reference value computed with the same package versions. The engine is also tested against statsmodels, linearmodels, scikit-learn and XGBoost and against published results (for example, Arellano and Bond's employment equation) in the <a href="https://github.com/tuhingm/oes-1000/tree/main/oes-engine/tests" style="color:var(--navy);text-decoration:underline" target="_blank" rel="noopener">repository's test suite</a>.</p>
+<div class="row"><button class="btn" id="test-run" type="button">Run the test suite</button><label class="hint"><input type="checkbox" id="test-slow"> include the slow models (double ML, causal forest, staggered DiD, TVP-, SV- and mixed-frequency VARs; several minutes)</label></div>
+<div class="table-wrap" id="test-table" hidden></div><p class="hint" id="test-sum"></p>
+</section>
+
+<section class="step" id="s-about"><span class="stepno">07 · About</span><h2>How it works</h2>
+<div class="info">
+<div><b>Python in the browser</b>The estimators are Python (NumPy, pandas, SciPy, statsmodels, scikit-learn, XGBoost) running in <a href="https://pyodide.org" style="text-decoration:underline" target="_blank" rel="noopener">Pyodide</a>. The first run downloads Python once (about 30 MB); later runs start at once. Your file is read on your device and never uploaded.</div>
+<div><b>Bayesian and regime-switching models</b>The Bayesian VARs follow the ECB's BEAR toolbox (Minnesota, Normal-Wishart, Independent Normal-Wishart and Normal-diffuse priors, FAVAR, steady-state, panel, TVP, stochastic-volatility, mixed-frequency and threshold VARs). Markov-switching models are estimated by maximum likelihood; the regression and AR versions reproduce Stata's and Hamilton's published estimates.</div>
+<div><b>The same code as the guides</b>Difference GMM, the panel ARDL estimators, the causal designs and double machine learning use the helper files published with the guides. Static panel models reproduce linearmodels, including its small-sample scaling.</div>
+<div><b>What is not here</b>DSGE models are solved and estimated in Dynare; see the <a href="https://tuhingm.github.io/almamun/dsge-guide/" style="text-decoration:underline">DSGE Guide</a>. The causal forest is a doubly robust forest, not EconML's implementation, which does not run in a browser.</div>
+<div><b>Large files</b>Everything runs on your computer, so very large datasets and the forest-based methods take longer. Fewer trees or folds speed them up.</div>
+</div>
+</section>
 </main>
-<footer>OES-1000 · Static assets are downloaded by the browser. Uploaded CSV data and estimation calculations remain in the browser session.</footer>
+<footer><div class="wrap foot"><span><b>Tuhin G. M. Al Mamun, Ph.D.</b> · Open Econometric Systems</span><span><a href="https://github.com/tuhingm/oes-1000" target="_blank" rel="noopener">Source code</a> · © <span id="year"></span></span></div></footer>
 <script>
-const $=s=>document.querySelector(s);
-const fileInput=$("#file"),modelSelect=$("#model"),fieldsBox=$("#fields"),runButton=$("#run"),output=$("#output"),runtime=$("#runtime");
-let csvText="",headers=[],catalog=[],selectedModel=null,worker=null,seq=0,pending=new Map(),ready=false;
-function request(action,payload={}){return new Promise((resolve,reject)=>{const id=++seq;pending.set(id,{resolve,reject});worker.postMessage({id,action,payload});});}
-function startWorker(){
- if(worker)return;
- worker=new Worker("../runtime/worker.js");
- worker.onmessage=e=>{const m=e.data||{},p=pending.get(m.id);if(!p)return;pending.delete(m.id);m.ok?p.resolve(m.result):p.reject(new Error(m.error||"Worker error"));};
- worker.onerror=e=>{runtime.textContent="Worker error: "+e.message;runtime.className="status warn";};
+(() => {
+const $ = id => document.getElementById(id);
+const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;"}[c]));
+const NUM = v => typeof v === "number" ? (Math.abs(v) >= 1e5 || (Math.abs(v) < 1e-4 && v !== 0) ? v.toExponential(3) : +v.toFixed(4)).toString() : v == null ? "" : String(v);
+$("year").textContent = new Date().getFullYear();
+let CAT = null, MODEL = null, GROUP = null, DATA = null, OPS = [], RESULT = null, worker = null, ready = false, jobs = 0;
+const pending = {};
+
+// ----------------------------------------------------------------------------- worker
+function getWorker() {
+  if (worker) return worker;
+  worker = new Worker("worker.js?v=" + (CAT ? CAT.version : "1"));
+  worker.onmessage = e => {
+    const m = e.data;
+    if (m.type === "status") { if (status.active) status.text(m.text); return; }
+    if (m.type === "ready") { ready = true; return; }
+    const p = pending[m.job]; if (!p) return; delete pending[m.job];
+    m.type === "result" ? p.resolve(m) : p.reject(new Error(m.error));
+  };
+  worker.postMessage({cmd: "init", version: CAT ? CAT.version : "1"});
+  return worker;
 }
-function parseHeader(text){
- const first=(text.split(/\r?\n/,1)[0]||"");const out=[];let v="",q=false;
- for(let i=0;i<first.length;i++){const c=first[i];if(c==='"'&&first[i+1]==='"'&&q){v+='"';i++;}else if(c==='"')q=!q;else if(c===","&&!q){out.push(v.trim());v="";}else v+=c;}out.push(v.trim());
- return out;
+function estimate(model, csv, spec) {
+  const job = ++jobs;
+  return new Promise((resolve, reject) => {
+    pending[job] = {resolve, reject};
+    getWorker().postMessage({cmd: "run", job, model: model.id, csv, spec, packages: model.packages, version: CAT.version});
+  });
 }
-function esc(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
-function currentSpec(){
- const spec={};
- for(const f of selectedModel.fields||[]){
-  const el=document.getElementById("f_"+f.key);if(!el)continue;
-  let value;
-  if(f.type==="cols")value=[...el.selectedOptions].map(o=>o.value);
-  else value=el.value;
-  if(f.type==="num"){if(value!=="")spec[f.key]=Number(value);else if(f.default!==undefined&&f.default!=="")spec[f.key]=Number(f.default);}
-  else if(f.type==="cols"){if(value.length)spec[f.key]=value;}
-  else if(value!=="")spec[f.key]=value;
- }
- const extra=$("#advanced").value.trim();
- if(extra){const parsed=JSON.parse(extra);Object.assign(spec,parsed);}
- return spec;
-}
-function renderFields(){
- selectedModel=catalog.find(m=>m.id===modelSelect.value);fieldsBox.innerHTML="";
- if(!selectedModel)return;
- $("#modelDescription").textContent=selectedModel.name+" · "+selectedModel.group+(selectedModel.guide?" · Guide: "+selectedModel.guide:"");
- for(const f of selectedModel.fields||[]){
-  const wrap=document.createElement("div");wrap.className="field";
-  const label=document.createElement("label");label.htmlFor="f_"+f.key;label.textContent=f.label+(f.required===false?" (optional)":"");wrap.append(label);
-  let el;
-  if(f.type==="col"||f.type==="cols"){
-   el=document.createElement("select");if(f.type==="cols"){el.multiple=true;el.size=Math.min(5,Math.max(3,headers.length));}
-   if(f.type==="col"&&f.required===false){const op=document.createElement("option");op.value="";op.textContent="— none —";el.append(op);}
-   headers.forEach(h=>{const op=document.createElement("option");op.value=h;op.textContent=h;el.append(op);});
-  }else if(f.type==="select"){
-   el=document.createElement("select");(f.options||[]).forEach(o=>{const op=document.createElement("option");op.value=o[0];op.textContent=o[1];el.append(op);});
-   if(f.default!==undefined)el.value=String(f.default);
-  }else{
-   el=document.createElement("input");el.type="number";el.step="any";if(f.default!==undefined&&f.default!=="")el.value=f.default;
+const status = {active: false, t0: 0, timer: null, msg: "",
+  on(msg) { this.active = true; this.t0 = Date.now(); this.text(msg); $("status").classList.add("on");
+            clearInterval(this.timer); this.timer = setInterval(() => this.text(this.msg), 1000); },
+  text(msg) { this.msg = msg; const s = Math.round((Date.now() - this.t0) / 1000); $("status-text").textContent = msg + (s >= 2 ? `  (${s} s)` : ""); },
+  off() { this.active = false; clearInterval(this.timer); $("status").classList.remove("on"); }};
+
+// ----------------------------------------------------------------------------- CSV
+function parseCSV(text) {
+  const first = text.split(/\r?\n/, 1)[0];
+  const delim = [",", ";", "\t"].map(d => [d, first.split(d).length]).sort((a, b) => b[1] - a[1])[0][0];
+  const rows = []; let row = [], cell = "", q = false;
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+    if (q) { if (c === '"') { if (text[i + 1] === '"') { cell += '"'; i++; } else q = false; } else cell += c; }
+    else if (c === '"') q = true;
+    else if (c === delim) { row.push(cell); cell = ""; }
+    else if (c === "\n" || c === "\r") { if (c === "\r" && text[i + 1] === "\n") i++; row.push(cell); rows.push(row); row = []; cell = ""; }
+    else cell += c;
   }
-  el.id="f_"+f.key;wrap.append(el);if(f.help){const sm=document.createElement("small");sm.textContent=f.help;wrap.append(sm);}fieldsBox.append(wrap);
- }
+  if (cell !== "" || row.length) { row.push(cell); rows.push(row); }
+  const clean = rows.filter(r => r.some(v => v.trim() !== ""));
+  if (clean.length < 2) throw new Error("The file needs a header row and at least one data row.");
+  const cols = clean[0].map(c => c.trim());
+  const body = clean.slice(1);
+  const numeric = cols.map((_, j) => body.slice(0, 200).every(r => r[j] === undefined || r[j].trim() === "" || isFinite(+r[j])));
+  return {cols, n: body.length, head: body.slice(0, 8), numeric};
 }
-function renderCatalog(){
- modelSelect.innerHTML="";
- const groups=[...new Set(catalog.map(m=>m.group))];
- groups.forEach(group=>{const og=document.createElement("optgroup");og.label=group;catalog.filter(m=>m.group===group).forEach(m=>{const op=document.createElement("option");op.value=m.id;op.textContent=m.name+" ("+m.id+")";og.append(op);});modelSelect.append(og);});
- modelSelect.disabled=false;$("#count").textContent=catalog.length+" / 44";
- modelSelect.addEventListener("change",renderFields);renderFields();
+function setData(name, text) {
+  const p = parseCSV(text);
+  DATA = {name, text, ...p};
+  $("data-info").innerHTML = `<b>${esc(name)}</b>: ${p.n.toLocaleString()} rows, ${p.cols.length} columns`;
+  $("preview").hidden = false;
+  $("preview").innerHTML = "<table><thead><tr>" + p.cols.map(c => `<th>${esc(c)}</th>`).join("") + "</tr></thead><tbody>" +
+    p.head.map(r => "<tr>" + p.cols.map((_, j) => `<td>${esc(r[j])}</td>`).join("") + "</tr>").join("") + "</tbody></table>";
+  OPS = []; renderOps(); renderOpForm(); renderFields(); getWorker();
 }
-fileInput.addEventListener("change",async e=>{
- try{const f=e.target.files[0];if(!f)return;csvText=await f.text();headers=parseHeader(csvText);if(headers.length<2)throw Error("CSV must contain at least two columns.");
- $("#datasetHint").textContent="Loaded "+f.name+" · "+headers.length+" columns · "+Math.max(0,csvText.trim().split(/\r?\n/).length-1)+" data rows.";
- renderFields();runButton.disabled=!ready;runButton.textContent="Run selected estimator";output.textContent="Dataset loaded. Configure the estimator inputs and run.";
- }catch(err){output.textContent=err.message;}
-});
-$("#run").addEventListener("click",async()=>{
- if(!csvText||!selectedModel)return;
- if(selectedModel.id==="xgb"){output.textContent="XGBoost cannot run in this Pyodide build because its native compiled runtime is unavailable. The xgb estimator remains listed but is not browser-executable here.";return;}
- let spec;try{spec=currentSpec();}catch(err){output.textContent="Invalid advanced JSON: "+err.message;return;}
- runButton.disabled=true;output.textContent="Estimating "+selectedModel.name+" locally…";
- try{const result=await request("estimate",{model_id:selectedModel.id,csv_text:csvText,spec});output.textContent=JSON.stringify(result,null,2);}
- catch(err){output.textContent="Estimation error: "+err.message;}
- finally{runButton.disabled=false;}
-});
-(async()=>{
- try{startWorker();await request("ping");const data=await request("catalog");catalog=data;renderCatalog();ready=true;runtime.textContent="Browser Python runtime initialized. "+catalog.length+" legacy model specifications loaded.";runtime.className="status good";runButton.disabled=!csvText;runButton.textContent=csvText?"Run selected estimator":"Upload a CSV to begin";output.textContent="Runtime ready. Upload a CSV and choose one of the legacy estimators.";
- }catch(err){runtime.textContent="Runtime initialization failed: "+err.message;runtime.className="status warn";output.textContent="Could not initialize the local estimator runtime. "+err.message;}
+function columns() {   // data columns plus those created by the operations
+  if (!DATA) return [];
+  const out = DATA.cols.map((c, j) => ({name: c, numeric: DATA.numeric[j]}));
+  const pre = {diff: "d_", log: "ln_", growth: "g_", demean: "dm_"};
+  for (const op of OPS) {
+    if (op.op === "lag") op.vars.forEach(v => op.lags.forEach(k => out.push({name: `${v}_l${k}`, numeric: true})));
+    else if (pre[op.op]) op.vars.forEach(v => out.push({name: pre[op.op] + v, numeric: true}));
+  }
+  const seen = new Set();
+  return out.filter(c => !seen.has(c.name) && seen.add(c.name));
+}
+
+// ----------------------------------------------------------------------------- models
+function renderGroups() {
+  const groups = [...new Set(CAT.models.map(m => m.group))];
+  GROUP = GROUP || groups[0];
+  $("groups").innerHTML = groups.map(g => `<button type="button" data-g="${esc(g)}" aria-pressed="${g === GROUP}">${esc(g)} <span class="hint">${CAT.models.filter(m => m.group === g).length}</span></button>`).join("");
+  $("groups").querySelectorAll("button").forEach(b => b.onclick = () => { GROUP = b.dataset.g; renderGroups(); });
+  $("models").innerHTML = CAT.models.filter(m => m.group === GROUP).map(m =>
+    `<button type="button" data-id="${m.id}" aria-pressed="${MODEL && MODEL.id === m.id}">${esc(m.name)}<small>${esc(m.example.file.split("/").pop())}${m.slow ? " · slower" : ""}</small></button>`).join("");
+  $("models").querySelectorAll("button").forEach(b => b.onclick = () => chooseModel(b.dataset.id, true));
+}
+function chooseModel(id, scroll) {
+  MODEL = CAT.models.find(m => m.id === id);
+  if (!MODEL) return;
+  GROUP = MODEL.group; renderGroups();
+  $("chosen").hidden = false;
+  $("chosen").innerHTML = `<span><b>${esc(MODEL.name)}</b> <span class="pill">${esc(MODEL.group)}</span></span>` + (MODEL.guide ? `<a href="https://tuhingm.github.io/almamun/${MODEL.guide}">Read the guide →</a>` : `<span class="hint">No guide page for this model yet</span>`);
+  $("load-ex").disabled = false;
+  $("load-ex").textContent = "Load the guide example (" + MODEL.example.file.split("/").pop() + ")";
+  history.replaceState(null, "", "#" + MODEL.id);
+  $("s-results").hidden = true; hideErr();
+  renderFields();
+  if (scroll) $("s-data").scrollIntoView({behavior: "smooth"});
+}
+
+// ----------------------------------------------------------------------------- data operations
+function renderOps() {
+  $("ops").innerHTML = OPS.length ? OPS.map((o, i) => `<div class="op"><span>${esc(describeOp(o))}</span><button type="button" data-i="${i}" aria-label="Remove">Remove</button></div>`).join("")
+    : `<span class="hint">No operations. The data are used as loaded.</span>`;
+  $("ops").querySelectorAll("button").forEach(b => b.onclick = () => { OPS.splice(+b.dataset.i, 1); renderOps(); renderOpForm(); renderFields(); });
+}
+function describeOp(o) {
+  const by = (o.unit ? ` within ${o.unit}` : "") + (o.time ? `, ordered by ${o.time}` : "");
+  if (o.op === "sample") return `Sample: ${o.time} from ${o.start || "the start"} to ${o.end || "the end"}`;
+  if (o.op === "lag") return `Lags ${o.lags.join(", ")} of ${o.vars.join(", ")}${by}`;
+  return {diff: "First difference", log: "Log", growth: "Growth rate (%)", demean: "Minus period mean"}[o.op] + ` of ${o.vars.join(", ")}` + (o.op === "demean" ? ` by ${o.time}` : (o.op === "log" ? "" : by));
+}
+function renderOpForm() {
+  const kind = $("op-kind").value, cols = columns();
+  $("op-vars").innerHTML = cols.filter(c => c.numeric).map(c => `<label><input type="checkbox" value="${esc(c.name)}">${esc(c.name)}</label>`).join("") || `<span class="hint">Load data first.</span>`;
+  const opts = `<option value="">(none)</option>` + cols.map(c => `<option>${esc(c.name)}</option>`).join("");
+  const u = $("op-unit").value, t = $("op-time").value;
+  $("op-unit").innerHTML = opts; $("op-time").innerHTML = opts;
+  $("op-unit").value = cols.some(c => c.name === u) ? u : guess(cols, /^(unit|id|firm|country|state|county|nr|entity)$/i);
+  $("op-time").value = cols.some(c => c.name === t) ? t : guess(cols, /^(year|date|time|quarter|month|period|t)$/i);
+  $("op-vars-f").hidden = kind === "sample"; $("op-lags-f").hidden = kind !== "lag";
+  $("op-unit-f").hidden = ["log", "sample", "demean"].includes(kind);
+  $("op-start-f").hidden = $("op-end-f").hidden = kind !== "sample";
+  $("op-add").disabled = !DATA;
+}
+const guess = (cols, re) => (cols.find(c => re.test(c.name)) || {name: ""}).name;
+$("op-kind").onchange = renderOpForm;
+$("op-add").onclick = () => {
+  const op = {op: $("op-kind").value};
+  if (op.op !== "sample") { op.vars = [...$("op-vars").querySelectorAll("input:checked")].map(i => i.value); if (!op.vars.length) return alert("Choose at least one variable."); }
+  if (op.op === "lag") { op.lags = $("op-lags").value.split(/[ ,;]+/).map(Number).filter(k => Number.isInteger(k) && k > 0); if (!op.lags.length) return alert("Enter the lags, for example 1,2."); }
+  if (!["log"].includes(op.op) && $("op-time").value) op.time = $("op-time").value;
+  if (["lag", "diff", "growth"].includes(op.op) && $("op-unit").value) op.unit = $("op-unit").value;
+  if (op.op === "sample") { if (!op.time) return alert("Choose the time column."); op.start = $("op-start").value.trim(); op.end = $("op-end").value.trim(); }
+  if (op.op === "demean" && !op.time) return alert("Choose the time column.");
+  OPS.push(op); renderOps(); renderOpForm(); renderFields();
+};
+
+// ----------------------------------------------------------------------------- specification fields
+function renderFields(preset) {
+  const box = $("fields");
+  if (!MODEL || !DATA) { box.innerHTML = ""; $("run").disabled = true; $("spec-sub").textContent = !MODEL ? "Choose a model first." : "Load data first."; return; }
+  const keep = preset || readSpec(true);
+  $("spec-title").textContent = MODEL.name;
+  $("spec-sub").innerHTML = `Fields marked <span style="color:var(--bad)">*</span> are required.` + (MODEL.guide ? ` <a href="https://tuhingm.github.io/almamun/${MODEL.guide}" style="color:var(--navy);text-decoration:underline">When to use this model</a>.` : "");
+  const cols = columns();
+  box.innerHTML = MODEL.fields.map(f => {
+    const id = "f-" + f.key, req = f.required ? ' <span class="req">*</span>' : "";
+    if (f.type === "col") return `<div class="field"><label for="${id}">${esc(f.label)}${req}</label><select id="${id}" data-k="${f.key}" data-t="col"><option value="">${f.required ? "Choose…" : "(none)"}</option>${cols.map(c => `<option>${esc(c.name)}</option>`).join("")}</select></div>`;
+    if (f.type === "cols") return `<div class="field" style="grid-column:1/-1"><span class="l">${esc(f.label)}${req} <button type="button" class="mini" data-all="${f.key}">all</button><button type="button" class="mini" data-none="${f.key}">none</button></span><div class="checks" id="${id}" data-k="${f.key}" data-t="cols">${cols.filter(c => c.numeric).map(c => `<label><input type="checkbox" value="${esc(c.name)}">${esc(c.name)}</label>`).join("")}</div></div>`;
+    if (f.type === "select") return `<div class="field"><label for="${id}">${esc(f.label)}</label><select id="${id}" data-k="${f.key}" data-t="select">${f.options.map(o => `<option value="${esc(o[0])}">${esc(o[1])}</option>`).join("")}</select></div>`;
+    return `<div class="field"><label for="${id}">${esc(f.label)}</label><input id="${id}" data-k="${f.key}" data-t="num" value="${esc(f.default)}" inputmode="decimal"></div>`;
+  }).join("");
+  box.querySelectorAll("[data-all]").forEach(b => b.onclick = () => $("f-" + b.dataset.all).querySelectorAll("input").forEach(i => i.checked = !roleTaken(i.value)));
+  box.querySelectorAll("[data-none]").forEach(b => b.onclick = () => $("f-" + b.dataset.none).querySelectorAll("input").forEach(i => i.checked = false));
+  applySpec(keep);
+  $("run").disabled = false;
+  $("run-hint").textContent = MODEL.slow ? "This model takes longer: up to a few minutes on large files." : "";
+}
+function roleTaken(name) {
+  return [...$("fields").querySelectorAll("select[data-t=col]")].some(s => s.value === name);
+}
+function readSpec(loose) {
+  const spec = {};
+  $("fields").querySelectorAll("[data-k]").forEach(el => {
+    const k = el.dataset.k, t = el.dataset.t;
+    if (t === "cols") { const v = [...el.querySelectorAll("input:checked")].map(i => i.value); if (v.length) spec[k] = v; }
+    else if (el.value !== "") spec[k] = t === "num" && isFinite(+el.value) ? +el.value : el.value;
+  });
+  return spec;
+}
+function applySpec(spec) {
+  if (!spec) return;
+  const cols = columns().map(c => c.name);
+  let all = null;
+  $("fields").querySelectorAll("[data-k]").forEach(el => {
+    const k = el.dataset.k, t = el.dataset.t, v = spec[k];
+    if (v === undefined) return;
+    if (t === "cols") { if (v === "__all__") { all = el; return; } el.querySelectorAll("input").forEach(i => i.checked = [].concat(v).includes(i.value)); }
+    else if (t === "col") { if (cols.includes(v)) el.value = v; }
+    else el.value = v;
+  });
+  if (all) all.querySelectorAll("input").forEach(i => i.checked = !roleTaken(i.value) && i.value !== spec.instrument);
+}
+
+// ----------------------------------------------------------------------------- run
+$("load-ex").onclick = async () => {
+  if (!MODEL) return;
+  const ex = MODEL.example;
+  try {
+    const r = await fetch("https://tuhingm.github.io/almamun/" + ex.file); if (!r.ok) throw new Error("Could not download the example (" + r.status + ").");
+    setData(ex.file.split("/").pop(), await r.text());
+    OPS = JSON.parse(JSON.stringify(ex.ops || [])); renderOps(); renderOpForm(); renderFields(ex.spec);
+    $("s-spec").scrollIntoView({behavior: "smooth"});
+  } catch (e) { showErr(e.message); }
+};
+function readFile(f) {
+  if (!f) return;
+  if (f.size > 60e6) return showErr("The file is larger than 60 MB; please use a smaller extract.");
+  const rd = new FileReader();
+  rd.onload = () => { try { setData(f.name, String(rd.result)); hideErr(); } catch (e) { showErr(e.message); } };
+  rd.readAsText(f);
+}
+$("file").onchange = e => readFile(e.target.files[0]);
+const drop = $("drop");
+drop.ondragover = e => { e.preventDefault(); drop.classList.add("over"); };
+drop.ondragleave = () => drop.classList.remove("over");
+drop.ondrop = e => { e.preventDefault(); drop.classList.remove("over"); readFile(e.dataTransfer.files[0]); };
+const showErr = m => { $("err").hidden = false; $("err").textContent = m; };
+const hideErr = () => { $("err").hidden = true; };
+
+$("run").onclick = async () => {
+  if (!MODEL || !DATA) return;
+  hideErr();
+  const spec = readSpec(); spec.ops = OPS;
+  const miss = MODEL.fields.filter(f => f.required && (spec[f.key] === undefined || spec[f.key] === ""));
+  if (miss.length) return showErr("Please fill in: " + miss.map(f => f.label).join("; ") + ".");
+  $("run").disabled = true; $("s-results").hidden = true;
+  status.on(ready ? "Estimating…" : "Starting Python in your browser (first run only)…");
+  try {
+    const m = await estimate(MODEL, DATA.text, spec);
+    if (m.result.error) throw new Error(m.result.error);
+    RESULT = {model: MODEL, spec, data: DATA.name, out: m.result, seconds: m.seconds};
+    renderResult();
+  } catch (e) { showErr(e.message); }
+  finally { status.off(); $("run").disabled = false; }
+};
+
+// ----------------------------------------------------------------------------- results
+function renderResult() {
+  const {out, model, spec, seconds} = RESULT;
+  $("s-results").hidden = false;
+  $("res-title").textContent = out.title;
+  $("res-sub").textContent = `${model.name} · ${RESULT.data} · ${out.nobs.toLocaleString()} observations · estimated in ${seconds.toFixed(1)} s with OES engine ${out.engine}`;
+  $("metrics").innerHTML = out.summary.map(s => `<div class="metric"><small>${esc(s.label)}</small><strong>${esc(NUM(s.value))}</strong></div>`).join("");
+  $("tables").innerHTML = out.tables.map(t => {
+    const pcol = t.columns.indexOf("p-value");
+    return `<h3>${esc(t.title)}</h3><div class="table-wrap"><table><thead><tr>${t.columns.map(c => `<th>${esc(c)}</th>`).join("")}</tr></thead><tbody>` +
+      t.rows.map(r => "<tr>" + r.map((v, j) => `<td${pcol >= 0 && j === 1 && typeof r[pcol] === "number" && r[pcol] < 0.05 ? ' class="sig"' : ""}>${esc(NUM(v))}</td>`).join("") + "</tr>").join("") +
+      `</tbody></table></div>${t.note ? `<p class="tnote">${esc(t.note)}</p>` : ""}`;
+  }).join("");
+  $("charts").innerHTML = out.charts.map(svgChart).join("");
+  $("notes").hidden = !out.notes.length;
+  $("notes").innerHTML = out.notes.map(n => `<p>${esc(n)}</p>`).join("");
+  $("res-guide").style.display = out.guide ? "" : "none"; if (out.guide) $("res-guide").href = "../" + out.guide;
+  const s = JSON.stringify(spec, null, 1).replace(/\n\s*/g, " ");
+  $("code").textContent = `# git clone https://github.com/tuhingm/oes-1000\n# pip install -e open-econometric-systems/oes-engine\nimport oes_engine\n\nresult = oes_engine.run("${model.id}", open("${RESULT.data}").read(), ${s})\nfor table in result["tables"]:\n    print(table["title"])\n    for row in table["rows"]:\n        print(row)`;
+  $("s-results").scrollIntoView({behavior: "smooth"});
+}
+const COLORS = ["#0033a0", "#d9822b", "#0f7a4f", "#a12a2a", "#6e4bb5", "#2a8fbd"];
+function svgChart(c) {
+  const W = 520, H = 250, L = 52, R = 12, T = 12, B = 34, w = W - L - R, h = H - T - B;
+  const ys = c.series.flatMap(s => s.y).concat(c.band ? c.band.lo.concat(c.band.hi) : []).filter(v => typeof v === "number");
+  if (!ys.length) return "";
+  let lo = Math.min(...ys), hi = Math.max(...ys);
+  if (c.kind === "bar") lo = Math.min(0, lo), hi = Math.max(0, hi);
+  if (hi === lo) { hi += 1; lo -= 1; }
+  const pad = (hi - lo) * 0.06; lo -= pad; hi += pad;
+  const n = c.x.length, X = i => L + (n <= 1 ? w / 2 : (c.kind === "bar" ? (i + 0.5) * w / n : i * w / (n - 1))), Y = v => T + h - (v - lo) / (hi - lo) * h;
+  let g = "";
+  for (let k = 0; k <= 4; k++) { const v = lo + (hi - lo) * k / 4, y = Y(v); g += `<line x1="${L}" x2="${W - R}" y1="${y}" y2="${y}" stroke="#e6ebf3"/><text x="${L - 6}" y="${y + 3}" text-anchor="end" font-size="10" fill="#77849a">${NUM(+v.toPrecision(3))}</text>`; }
+  if (lo < 0 && hi > 0) g += `<line x1="${L}" x2="${W - R}" y1="${Y(0)}" y2="${Y(0)}" stroke="#9aa6bd"/>`;
+  const step = Math.max(1, Math.ceil(n / 7));
+  if (c.kind === "bar" && n > 7) { /* long category labels: show none on the axis, in tooltips instead */ }
+  else for (let i = 0; i < n; i += step) g += `<text x="${X(i)}" y="${H - B + 14}" text-anchor="middle" font-size="10" fill="#77849a">${esc(String(c.x[i]).slice(0, 12))}</text>`;
+  if (c.band) {
+    const up = c.band.hi.map((v, i) => v == null ? null : `${X(i)},${Y(v)}`).filter(Boolean), dn = c.band.lo.map((v, i) => v == null ? null : `${X(i)},${Y(v)}`).filter(Boolean).reverse();
+    g += `<polygon points="${up.concat(dn).join(" ")}" fill="#9fd3f0" opacity=".45"/>`;
+  }
+  c.series.forEach((s, k) => {
+    const col = COLORS[k % COLORS.length];
+    if (c.kind === "bar") { const bw = Math.max(1, w / n * 0.7); s.y.forEach((v, i) => { if (v == null) return; const y0 = Y(0), y1 = Y(v); g += `<rect x="${X(i) - bw / 2}" y="${Math.min(y0, y1)}" width="${bw}" height="${Math.abs(y1 - y0)}" fill="${col}"><title>${esc(c.x[i])}: ${NUM(v)}</title></rect>`; }); }
+    else if (c.kind === "scatter") s.y.forEach((v, i) => { if (v != null && typeof c.x[i] === "number") g += `<circle cx="${L + (c.x[i] - Math.min(...c.x)) / ((Math.max(...c.x) - Math.min(...c.x)) || 1) * w}" cy="${Y(v)}" r="2.6" fill="${col}" opacity=".8"/>`; });
+    else { let d = "", pen = false; s.y.forEach((v, i) => { if (v == null) { pen = false; return; } d += (pen ? "L" : "M") + X(i).toFixed(1) + "," + Y(v).toFixed(1); pen = true; }); g += `<path d="${d}" fill="none" stroke="${col}" stroke-width="1.7"/>`; }
+  });
+  const legend = c.series.length > 1 ? `<div class="legend">${c.series.map((s, k) => `<span><i style="background:${COLORS[k % COLORS.length]}"></i>${esc(s.name)}</span>`).join("")}</div>` : "";
+  return `<div class="chart"><h4>${esc(c.title)}</h4>${legend}<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(c.title)}">${g}<text x="${L + w / 2}" y="${H - 4}" text-anchor="middle" font-size="10" fill="#77849a">${esc(c.xlabel || "")}</text></svg></div>`;
+}
+function download(name, text, type) {
+  const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([text], {type})); a.download = name; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+}
+const csvCell = v => { const s = v == null ? "" : String(v); return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s; };
+$("dl-csv").onclick = () => RESULT && download(`oes_${RESULT.model.id}.csv`, RESULT.out.tables.map(t => [t.title, t.columns.map(csvCell).join(","), ...t.rows.map(r => r.map(csvCell).join(","))].join("\n")).join("\n\n"), "text/csv");
+$("dl-json").onclick = () => RESULT && download(`oes_${RESULT.model.id}.json`, JSON.stringify({model: RESULT.model.id, data: RESULT.data, spec: RESULT.spec, result: RESULT.out}, null, 1), "application/json");
+
+// ----------------------------------------------------------------------------- in-browser test suite
+$("test-run").onclick = async () => {
+  const btn = $("test-run"); btn.disabled = true;
+  const exp = await (await fetch("engine/expected.json?v=" + CAT.version)).json();
+  const list = CAT.models.filter(m => $("test-slow").checked || !m.slow);
+  const tbl = $("test-table"); tbl.hidden = false;
+  tbl.innerHTML = `<table><thead><tr><th>Model</th><th>Group</th><th>Status</th><th>Seconds</th><th>Checked value</th><th>Browser</th><th>Reference</th></tr></thead><tbody>${list.map(m => `<tr id="t-${m.id}"><td>${esc(m.name)}</td><td>${esc(m.group)}</td><td class="test-run">waiting</td><td></td><td></td><td></td><td></td></tr>`).join("")}</tbody></table>`;
+  let ok = 0, bad = 0;
+  status.active = false;
+  for (const m of list) {
+    const tr = $("t-" + m.id), cells = tr.children, e = exp[m.id];
+    cells[2].textContent = "running…";
+    try {
+      const text = await (await fetch("../" + m.example.file)).text();
+      const r = await estimate(m, text, {...m.example.spec, ops: m.example.ops || []});
+      if (r.result.error) throw new Error(r.result.error);
+      const close = (a, b) => typeof a === "number" && Math.abs(a - b) <= e.rtol * Math.max(Math.abs(b), 1e-8) + 1e-6;
+      const v = r.result.tables[e.table_index].rows[0][1];
+      const sv = e.summary ? (r.result.summary.find(x => x.label === e.summary.label) || {}).value : null;
+      const pass = r.result.nobs === e.nobs && close(v, e.value) && (!e.summary || close(sv, e.summary.value));
+      cells[2].innerHTML = pass ? '<span class="test-ok">✓ pass</span>' : '<span class="test-bad">✗ differs</span>';
+      cells[3].textContent = r.seconds.toFixed(1);
+      cells[4].innerHTML = `${esc(e.row)} (${esc(e.col)})` + (e.summary ? `<br>${esc(e.summary.label)}` : "");
+      cells[5].innerHTML = esc(NUM(v)) + (e.summary ? `<br>${esc(NUM(sv))}` : "");
+      cells[6].innerHTML = esc(NUM(e.value)) + (e.summary ? `<br>${esc(NUM(e.summary.value))}` : "");
+      pass ? ok++ : bad++;
+    } catch (err) { cells[2].innerHTML = `<span class="test-bad">✗ error</span>`; cells[4].textContent = err.message.slice(0, 120); bad++; }
+    $("test-sum").textContent = `${ok} passed, ${bad} failed of ${list.length}` + (list.length < CAT.models.length ? ` (${CAT.models.length - list.length} slow models not run)` : "");
+  }
+  btn.disabled = false;
+};
+
+// ----------------------------------------------------------------------------- start
+fetch("engine/catalog.json", {cache: "no-cache"}).then(r => r.json()).then(c => {
+  CAT = c; $("n-models").textContent = c.models.length;
+  renderGroups(); renderOps(); renderOpForm(); renderFields();
+  const h = location.hash.slice(1);
+  if (h && c.models.some(m => m.id === h)) chooseModel(h, false);
+  addEventListener("hashchange", () => { const k = location.hash.slice(1); if (CAT.models.some(m => m.id === k) && (!MODEL || MODEL.id !== k)) chooseModel(k, false); });
+}).catch(() => showErr("Could not load the model catalogue. Please reload the page."));
 })();
-</script></body></html>
+</script>
+<script src="https://tuhingm.github.io/almamun/assets/js/mobile-nav.js" defer></script>
+<script src="https://tuhingm.github.io/almamun/assets/js/share.js" defer></script>
+</body>
+</html>
