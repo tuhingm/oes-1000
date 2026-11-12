@@ -1,0 +1,3832 @@
+{
+  "version": "1.1.0",
+  "models": [
+    {
+      "id": "ols",
+      "group": "Time series",
+      "name": "OLS with diagnostics",
+      "guide": "research-guide/ols.html",
+      "fields": [
+        {
+          "key": "y",
+          "label": "Dependent variable",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "x",
+          "label": "Explanatory variables",
+          "type": "cols",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "time",
+          "label": "Time / date column (sorts the data)",
+          "type": "col",
+          "required": false,
+          "help": ""
+        },
+        {
+          "key": "cov",
+          "label": "Standard errors",
+          "type": "select",
+          "options": [
+            [
+              "HC1",
+              "Robust HC1"
+            ],
+            [
+              "HC0",
+              "Robust HC0"
+            ],
+            [
+              "HC2",
+              "Robust HC2"
+            ],
+            [
+              "HC3",
+              "Robust HC3"
+            ],
+            [
+              "HAC",
+              "Newey-West HAC"
+            ],
+            [
+              "nonrobust",
+              "Conventional"
+            ]
+          ],
+          "default": "HC1",
+          "help": ""
+        },
+        {
+          "key": "hac_lags",
+          "label": "HAC lags",
+          "type": "num",
+          "default": 4,
+          "help": ""
+        }
+      ],
+      "example": {
+        "file": "research-guide/examples/returns.csv",
+        "spec": {
+          "y": "sp500_return",
+          "x": [
+            "ip_growth",
+            "d_fedfunds",
+            "d_credit_spread"
+          ],
+          "time": "date",
+          "cov": "HC1"
+        }
+      },
+      "packages": [],
+      "slow": false
+    },
+    {
+      "id": "ardl",
+      "group": "Time series",
+      "name": "ARDL bounds test",
+      "guide": "research-guide/ardl.html",
+      "fields": [
+        {
+          "key": "y",
+          "label": "Dependent variable",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "x",
+          "label": "Regressors",
+          "type": "cols",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "time",
+          "label": "Time / date column (sorts the data)",
+          "type": "col",
+          "required": false,
+          "help": ""
+        },
+        {
+          "key": "max_lag",
+          "label": "Maximum lag of y",
+          "type": "num",
+          "default": 4,
+          "help": ""
+        },
+        {
+          "key": "max_order",
+          "label": "Maximum lag of regressors",
+          "type": "num",
+          "default": 4,
+          "help": ""
+        },
+        {
+          "key": "ic",
+          "label": "Lag selection",
+          "type": "select",
+          "options": [
+            [
+              "aic",
+              "AIC"
+            ],
+            [
+              "bic",
+              "BIC"
+            ],
+            [
+              "hqic",
+              "HQIC"
+            ]
+          ],
+          "default": "aic",
+          "help": ""
+        },
+        {
+          "key": "case",
+          "label": "Bounds-test case",
+          "type": "select",
+          "options": [
+            [
+              "3",
+              "3: unrestricted constant"
+            ],
+            [
+              "2",
+              "2: restricted constant"
+            ],
+            [
+              "5",
+              "5: unrestricted trend"
+            ],
+            [
+              "4",
+              "4: restricted trend"
+            ],
+            [
+              "1",
+              "1: no deterministic terms"
+            ]
+          ],
+          "default": "3",
+          "help": ""
+        }
+      ],
+      "example": {
+        "file": "research-guide/examples/yield.csv",
+        "spec": {
+          "y": "yield_10y",
+          "x": [
+            "inflation",
+            "gdp_growth",
+            "unemployment"
+          ],
+          "time": "date"
+        }
+      },
+      "packages": [],
+      "slow": false
+    },
+    {
+      "id": "nardl",
+      "group": "Time series",
+      "name": "Nonlinear ARDL (NARDL)",
+      "guide": "research-guide/nardl.html",
+      "fields": [
+        {
+          "key": "y",
+          "label": "Dependent variable",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "x",
+          "label": "Asymmetric regressor(s)",
+          "type": "cols",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "controls",
+          "label": "Symmetric controls",
+          "type": "cols",
+          "required": false,
+          "help": ""
+        },
+        {
+          "key": "time",
+          "label": "Time / date column (sorts the data)",
+          "type": "col",
+          "required": false,
+          "help": ""
+        },
+        {
+          "key": "max_lag",
+          "label": "Maximum lag of y",
+          "type": "num",
+          "default": 4,
+          "help": ""
+        },
+        {
+          "key": "max_order",
+          "label": "Maximum lag of regressors",
+          "type": "num",
+          "default": 4,
+          "help": ""
+        },
+        {
+          "key": "ic",
+          "label": "Lag selection",
+          "type": "select",
+          "options": [
+            [
+              "aic",
+              "AIC"
+            ],
+            [
+              "bic",
+              "BIC"
+            ]
+          ],
+          "default": "aic",
+          "help": ""
+        },
+        {
+          "key": "case",
+          "label": "Bounds-test case",
+          "type": "select",
+          "options": [
+            [
+              "3",
+              "3"
+            ],
+            [
+              "2",
+              "2"
+            ],
+            [
+              "5",
+              "5"
+            ]
+          ],
+          "default": "3",
+          "help": ""
+        }
+      ],
+      "example": {
+        "file": "research-guide/examples/passthrough.csv",
+        "spec": {
+          "y": "baa_yield",
+          "x": [
+            "fedfunds"
+          ],
+          "time": "date",
+          "max_lag": 6,
+          "max_order": 6
+        }
+      },
+      "packages": [],
+      "slow": false
+    },
+    {
+      "id": "var",
+      "group": "Time series",
+      "name": "Vector autoregression (VAR)",
+      "guide": "research-guide/var.html",
+      "fields": [
+        {
+          "key": "vars",
+          "label": "Variables (Cholesky order)",
+          "type": "cols",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "time",
+          "label": "Time / date column (sorts the data)",
+          "type": "col",
+          "required": false,
+          "help": ""
+        },
+        {
+          "key": "transform",
+          "label": "Transformation",
+          "type": "select",
+          "options": [
+            [
+              "levels",
+              "Levels (as given)"
+            ],
+            [
+              "diff",
+              "First differences"
+            ]
+          ],
+          "default": "levels",
+          "help": ""
+        },
+        {
+          "key": "max_lags",
+          "label": "Maximum lag for selection",
+          "type": "num",
+          "default": 8,
+          "help": ""
+        },
+        {
+          "key": "lags",
+          "label": "Lag order (blank = selected)",
+          "type": "num",
+          "default": "",
+          "help": ""
+        },
+        {
+          "key": "ic",
+          "label": "Lag selection",
+          "type": "select",
+          "options": [
+            [
+              "aic",
+              "AIC"
+            ],
+            [
+              "bic",
+              "BIC"
+            ],
+            [
+              "hqic",
+              "HQIC"
+            ],
+            [
+              "fpe",
+              "FPE"
+            ]
+          ],
+          "default": "aic",
+          "help": ""
+        },
+        {
+          "key": "horizon",
+          "label": "IRF horizon",
+          "type": "num",
+          "default": 12,
+          "help": ""
+        }
+      ],
+      "example": {
+        "file": "research-guide/examples/prices.csv",
+        "spec": {
+          "vars": [
+            "log_sp500",
+            "log_indpro"
+          ],
+          "time": "date",
+          "transform": "diff",
+          "max_lags": 12
+        }
+      },
+      "packages": [],
+      "slow": false
+    },
+    {
+      "id": "vecm",
+      "group": "Time series",
+      "name": "Vector error correction (VECM)",
+      "guide": "research-guide/vecm.html",
+      "fields": [
+        {
+          "key": "vars",
+          "label": "Variables",
+          "type": "cols",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "time",
+          "label": "Time / date column (sorts the data)",
+          "type": "col",
+          "required": false,
+          "help": ""
+        },
+        {
+          "key": "deterministic",
+          "label": "Deterministic terms",
+          "type": "select",
+          "options": [
+            [
+              "ci",
+              "Constant in the cointegrating relation"
+            ],
+            [
+              "co",
+              "Constant outside"
+            ],
+            [
+              "li",
+              "Trend in the cointegrating relation"
+            ],
+            [
+              "lo",
+              "Linear trend outside"
+            ],
+            [
+              "n",
+              "None"
+            ]
+          ],
+          "default": "ci",
+          "help": ""
+        },
+        {
+          "key": "max_lags",
+          "label": "Maximum lag for selection",
+          "type": "num",
+          "default": 8,
+          "help": ""
+        },
+        {
+          "key": "lags",
+          "label": "Lags in differences (blank = selected)",
+          "type": "num",
+          "default": "",
+          "help": ""
+        },
+        {
+          "key": "rank",
+          "label": "Cointegration rank (blank = trace test)",
+          "type": "num",
+          "default": "",
+          "help": ""
+        },
+        {
+          "key": "horizon",
+          "label": "IRF horizon",
+          "type": "num",
+          "default": 12,
+          "help": ""
+        }
+      ],
+      "example": {
+        "file": "research-guide/examples/rates.csv",
+        "spec": {
+          "vars": [
+            "yield_10y",
+            "yield_1y"
+          ],
+          "time": "date",
+          "deterministic": "ci"
+        }
+      },
+      "packages": [],
+      "slow": false
+    },
+    {
+      "id": "iv_gmm",
+      "group": "Time series",
+      "name": "2SLS and GMM",
+      "guide": "research-guide/gmm.html",
+      "fields": [
+        {
+          "key": "y",
+          "label": "Dependent variable",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "endog",
+          "label": "Endogenous regressors",
+          "type": "cols",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "instruments",
+          "label": "Excluded instruments",
+          "type": "cols",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "exog",
+          "label": "Exogenous regressors (included)",
+          "type": "cols",
+          "required": false,
+          "help": ""
+        },
+        {
+          "key": "time",
+          "label": "Time / date column (sorts the data)",
+          "type": "col",
+          "required": false,
+          "help": ""
+        },
+        {
+          "key": "method",
+          "label": "Estimator",
+          "type": "select",
+          "options": [
+            [
+              "2sls",
+              "2SLS"
+            ],
+            [
+              "gmm",
+              "Two-step efficient GMM"
+            ]
+          ],
+          "default": "2sls",
+          "help": ""
+        },
+        {
+          "key": "cov",
+          "label": "Standard errors",
+          "type": "select",
+          "options": [
+            [
+              "kernel",
+              "HAC (Bartlett)"
+            ],
+            [
+              "robust",
+              "Robust"
+            ],
+            [
+              "unadjusted",
+              "Conventional"
+            ]
+          ],
+          "default": "kernel",
+          "help": ""
+        },
+        {
+          "key": "bandwidth",
+          "label": "HAC bandwidth",
+          "type": "num",
+          "default": 4,
+          "help": ""
+        }
+      ],
+      "example": {
+        "file": "research-guide/examples/taylor.csv",
+        "ops": [
+          {
+            "op": "lag",
+            "vars": [
+              "fedfunds",
+              "inflation",
+              "output_gap"
+            ],
+            "lags": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "time": "date"
+          },
+          {
+            "op": "sample",
+            "time": "date",
+            "start": "1979Q3",
+            "end": "2007Q4"
+          }
+        ],
+        "spec": {
+          "y": "fedfunds",
+          "endog": [
+            "inflation",
+            "output_gap"
+          ],
+          "exog": [
+            "fedfunds_l1"
+          ],
+          "time": "date",
+          "instruments": [
+            "inflation_l1",
+            "inflation_l2",
+            "inflation_l3",
+            "inflation_l4",
+            "output_gap_l1",
+            "output_gap_l2",
+            "output_gap_l3",
+            "output_gap_l4",
+            "fedfunds_l2"
+          ],
+          "method": "gmm",
+          "cov": "kernel",
+          "bandwidth": 4
+        }
+      },
+      "packages": [],
+      "slow": false
+    },
+    {
+      "id": "pols",
+      "group": "Panel data",
+      "name": "Pooled OLS",
+      "guide": "panel-data-guide/pols.html",
+      "fields": [
+        {
+          "key": "y",
+          "label": "Dependent variable",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "x",
+          "label": "Regressors",
+          "type": "cols",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "unit",
+          "label": "Unit (entity) identifier",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "time",
+          "label": "Time identifier",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "cov",
+          "label": "Standard errors",
+          "type": "select",
+          "options": [
+            [
+              "clustered",
+              "Clustered by unit"
+            ],
+            [
+              "robust",
+              "Robust (White)"
+            ],
+            [
+              "unadjusted",
+              "Conventional"
+            ],
+            [
+              "dk",
+              "Driscoll-Kraay"
+            ]
+          ],
+          "default": "clustered",
+          "help": ""
+        },
+        {
+          "key": "bandwidth",
+          "label": "Driscoll-Kraay bandwidth (blank = automatic)",
+          "type": "num",
+          "default": "",
+          "help": ""
+        }
+      ],
+      "example": {
+        "file": "panel-data-guide/examples/crime4.csv",
+        "spec": {
+          "y": "lcrmrte",
+          "x": [
+            "lprbarr",
+            "lprbconv",
+            "lprbpris",
+            "lavgsen",
+            "lpolpc"
+          ],
+          "unit": "county",
+          "time": "year"
+        }
+      },
+      "packages": [],
+      "slow": false
+    },
+    {
+      "id": "fe",
+      "group": "Panel data",
+      "name": "Fixed effects",
+      "guide": "panel-data-guide/fe.html",
+      "fields": [
+        {
+          "key": "y",
+          "label": "Dependent variable",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "x",
+          "label": "Regressors (time-varying)",
+          "type": "cols",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "unit",
+          "label": "Unit (entity) identifier",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "time",
+          "label": "Time identifier",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "time_effects",
+          "label": "Time effects",
+          "type": "select",
+          "options": [
+            [
+              "no",
+              "No"
+            ],
+            [
+              "yes",
+              "Yes (two-way FE)"
+            ]
+          ],
+          "default": "no",
+          "help": ""
+        },
+        {
+          "key": "cov",
+          "label": "Standard errors",
+          "type": "select",
+          "options": [
+            [
+              "clustered",
+              "Clustered by unit"
+            ],
+            [
+              "robust",
+              "Robust (White)"
+            ],
+            [
+              "unadjusted",
+              "Conventional"
+            ],
+            [
+              "dk",
+              "Driscoll-Kraay"
+            ]
+          ],
+          "default": "clustered",
+          "help": ""
+        },
+        {
+          "key": "bandwidth",
+          "label": "Driscoll-Kraay bandwidth (blank = automatic)",
+          "type": "num",
+          "default": "",
+          "help": ""
+        }
+      ],
+      "example": {
+        "file": "panel-data-guide/examples/wagepan.csv",
+        "spec": {
+          "y": "lwage",
+          "x": [
+            "union",
+            "married",
+            "expersq"
+          ],
+          "unit": "nr",
+          "time": "year",
+          "time_effects": "yes"
+        }
+      },
+      "packages": [],
+      "slow": false
+    },
+    {
+      "id": "re",
+      "group": "Panel data",
+      "name": "Random effects",
+      "guide": "panel-data-guide/re.html",
+      "fields": [
+        {
+          "key": "y",
+          "label": "Dependent variable",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "x",
+          "label": "Regressors",
+          "type": "cols",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "unit",
+          "label": "Unit (entity) identifier",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "time",
+          "label": "Time identifier",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "cov",
+          "label": "Standard errors",
+          "type": "select",
+          "options": [
+            [
+              "clustered",
+              "Clustered by unit"
+            ],
+            [
+              "robust",
+              "Robust (White)"
+            ],
+            [
+              "unadjusted",
+              "Conventional"
+            ],
+            [
+              "dk",
+              "Driscoll-Kraay"
+            ]
+          ],
+          "default": "clustered",
+          "help": ""
+        },
+        {
+          "key": "bandwidth",
+          "label": "Driscoll-Kraay bandwidth (blank = automatic)",
+          "type": "num",
+          "default": "",
+          "help": ""
+        }
+      ],
+      "example": {
+        "file": "panel-data-guide/examples/laborsupply.csv",
+        "spec": {
+          "y": "lnhr",
+          "x": [
+            "lnwg",
+            "kids",
+            "age",
+            "disab"
+          ],
+          "unit": "id",
+          "time": "year"
+        }
+      },
+      "packages": [],
+      "slow": false
+    },
+    {
+      "id": "fd",
+      "group": "Panel data",
+      "name": "Panel in first differences",
+      "guide": "panel-data-guide/diff.html",
+      "fields": [
+        {
+          "key": "y",
+          "label": "Dependent variable (levels)",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "x",
+          "label": "Regressors (levels)",
+          "type": "cols",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "unit",
+          "label": "Unit (entity) identifier",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "time",
+          "label": "Time identifier",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "cov",
+          "label": "Standard errors",
+          "type": "select",
+          "options": [
+            [
+              "dk",
+              "Driscoll-Kraay"
+            ],
+            [
+              "clustered",
+              "Clustered by unit"
+            ],
+            [
+              "robust",
+              "Robust"
+            ],
+            [
+              "unadjusted",
+              "Conventional"
+            ]
+          ],
+          "default": "dk",
+          "help": ""
+        },
+        {
+          "key": "bandwidth",
+          "label": "Driscoll-Kraay bandwidth (blank = automatic)",
+          "type": "num",
+          "default": 2,
+          "help": ""
+        }
+      ],
+      "example": {
+        "file": "panel-data-guide/examples/gasoline.csv",
+        "spec": {
+          "y": "lgaspcar",
+          "x": [
+            "lincomep",
+            "lrpmg",
+            "lcarpcap"
+          ],
+          "unit": "country",
+          "time": "year",
+          "bandwidth": 2
+        }
+      },
+      "packages": [],
+      "slow": false
+    },
+    {
+      "id": "fedk",
+      "group": "Panel data",
+      "name": "Fixed effects with Driscoll-Kraay errors",
+      "guide": "panel-data-guide/fedk.html",
+      "fields": [
+        {
+          "key": "y",
+          "label": "Dependent variable",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "x",
+          "label": "Regressors",
+          "type": "cols",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "unit",
+          "label": "Unit (entity) identifier",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "time",
+          "label": "Time identifier",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "time_effects",
+          "label": "Time effects",
+          "type": "select",
+          "options": [
+            [
+              "no",
+              "No"
+            ],
+            [
+              "yes",
+              "Yes (two-way FE)"
+            ]
+          ],
+          "default": "no",
+          "help": ""
+        },
+        {
+          "key": "bandwidth",
+          "label": "Bandwidth (blank = automatic)",
+          "type": "num",
+          "default": 3,
+          "help": ""
+        }
+      ],
+      "example": {
+        "file": "panel-data-guide/examples/garrett.csv",
+        "ops": [
+          {
+            "op": "diff",
+            "vars": [
+              "trade"
+            ],
+            "unit": "country",
+            "time": "year"
+          }
+        ],
+        "spec": {
+          "y": "gdp_growth",
+          "x": [
+            "unem",
+            "d_trade"
+          ],
+          "unit": "country",
+          "time": "year",
+          "bandwidth": 3
+        }
+      },
+      "packages": [],
+      "slow": false
+    },
+    {
+      "id": "diff_gmm",
+      "group": "Panel data",
+      "name": "Difference GMM (Arellano-Bond)",
+      "guide": "panel-data-guide/gmm.html",
+      "fields": [
+        {
+          "key": "y",
+          "label": "Dependent variable",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "x",
+          "label": "Strictly exogenous regressors",
+          "type": "cols",
+          "required": false,
+          "help": ""
+        },
+        {
+          "key": "unit",
+          "label": "Unit (entity) identifier",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "time",
+          "label": "Time identifier",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "lags_y",
+          "label": "Lags of the dependent variable",
+          "type": "num",
+          "default": 1,
+          "help": ""
+        },
+        {
+          "key": "gmm_first",
+          "label": "First instrument lag",
+          "type": "num",
+          "default": 2,
+          "help": ""
+        },
+        {
+          "key": "gmm_last",
+          "label": "Last instrument lag (blank = all)",
+          "type": "num",
+          "default": "",
+          "help": ""
+        },
+        {
+          "key": "collapse",
+          "label": "Collapse instruments",
+          "type": "select",
+          "options": [
+            [
+              "no",
+              "No"
+            ],
+            [
+              "yes",
+              "Yes"
+            ]
+          ],
+          "default": "no",
+          "help": ""
+        }
+      ],
+      "example": {
+        "file": "panel-data-guide/examples/employment.csv",
+        "ops": [
+          {
+            "op": "lag",
+            "vars": [
+              "log_wage",
+              "log_output"
+            ],
+            "lags": [
+              1,
+              2
+            ],
+            "unit": "firm",
+            "time": "year"
+          },
+          {
+            "op": "lag",
+            "vars": [
+              "log_capital"
+            ],
+            "lags": [
+              1,
+              2
+            ],
+            "unit": "firm",
+            "time": "year"
+          }
+        ],
+        "spec": {
+          "y": "log_emp",
+          "x": [
+            "log_wage",
+            "log_wage_l1",
+            "log_capital",
+            "log_capital_l1",
+            "log_capital_l2",
+            "log_output",
+            "log_output_l1",
+            "log_output_l2"
+          ],
+          "unit": "firm",
+          "time": "year",
+          "lags_y": 2
+        }
+      },
+      "packages": [],
+      "slow": false
+    },
+    {
+      "id": "mg",
+      "group": "Panel data",
+      "name": "Mean group and CCE mean group",
+      "guide": "panel-data-guide/mg.html",
+      "fields": [
+        {
+          "key": "y",
+          "label": "Dependent variable",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "x",
+          "label": "Regressors",
+          "type": "cols",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "unit",
+          "label": "Unit (entity) identifier",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "time",
+          "label": "Time identifier",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "method",
+          "label": "Estimator",
+          "type": "select",
+          "options": [
+            [
+              "mg",
+              "Mean group (Pesaran-Smith)"
+            ],
+            [
+              "cce",
+              "CCE mean group (Pesaran 2006)"
+            ]
+          ],
+          "default": "mg",
+          "help": ""
+        },
+        {
+          "key": "trend",
+          "label": "Unit trends (MG)",
+          "type": "select",
+          "options": [
+            [
+              "no",
+              "No"
+            ],
+            [
+              "yes",
+              "Yes"
+            ]
+          ],
+          "default": "no",
+          "help": ""
+        }
+      ],
+      "example": {
+        "file": "panel-data-guide/examples/growth_saving.csv",
+        "ops": [
+          {
+            "op": "growth",
+            "vars": [
+              "gdp"
+            ],
+            "unit": "country",
+            "time": "year"
+          }
+        ],
+        "spec": {
+          "y": "g_gdp",
+          "x": [
+            "sr"
+          ],
+          "unit": "country",
+          "time": "year",
+          "method": "mg"
+        }
+      },
+      "packages": [],
+      "slow": false
+    },
+    {
+      "id": "pmg",
+      "group": "Panel data",
+      "name": "Panel ARDL: PMG, MG and DFE",
+      "guide": "panel-data-guide/pmg.html",
+      "fields": [
+        {
+          "key": "y",
+          "label": "Dependent variable",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "x",
+          "label": "Regressors",
+          "type": "cols",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "unit",
+          "label": "Unit (entity) identifier",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "time",
+          "label": "Time identifier",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "method",
+          "label": "Main estimator",
+          "type": "select",
+          "options": [
+            [
+              "pmg",
+              "Pooled mean group"
+            ],
+            [
+              "mg",
+              "Mean group"
+            ],
+            [
+              "dfe",
+              "Dynamic fixed effects"
+            ]
+          ],
+          "default": "pmg",
+          "help": ""
+        }
+      ],
+      "example": {
+        "file": "panel-data-guide/examples/cigar.csv",
+        "ops": [
+          {
+            "op": "demean",
+            "vars": [
+              "log_sales",
+              "log_price",
+              "log_income",
+              "log_pimin"
+            ],
+            "time": "year"
+          }
+        ],
+        "spec": {
+          "y": "dm_log_sales",
+          "x": [
+            "dm_log_price",
+            "dm_log_income",
+            "dm_log_pimin"
+          ],
+          "unit": "state",
+          "time": "year"
+        }
+      },
+      "packages": [],
+      "slow": false
+    },
+    {
+      "id": "csardl",
+      "group": "Panel data",
+      "name": "Cross-sectionally augmented ARDL (CS-ARDL)",
+      "guide": "panel-data-guide/csardl.html",
+      "fields": [
+        {
+          "key": "y",
+          "label": "Dependent variable",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "x",
+          "label": "Regressors",
+          "type": "cols",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "unit",
+          "label": "Unit (entity) identifier",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "time",
+          "label": "Time identifier",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "pt",
+          "label": "Lags of the averages (blank = T^(1/3))",
+          "type": "num",
+          "default": "",
+          "help": ""
+        }
+      ],
+      "example": {
+        "file": "panel-data-guide/examples/cigar.csv",
+        "spec": {
+          "y": "log_sales",
+          "x": [
+            "log_price",
+            "log_income",
+            "log_pimin"
+          ],
+          "unit": "state",
+          "time": "year",
+          "pt": 1
+        }
+      },
+      "packages": [],
+      "slow": false
+    },
+    {
+      "id": "did",
+      "group": "Causal inference",
+      "name": "Difference-in-differences",
+      "guide": "causal-inference-guide/did.html",
+      "fields": [
+        {
+          "key": "outcome",
+          "label": "Outcome",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "treat",
+          "label": "Treatment indicator (0/1, on when treated)",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "unit",
+          "label": "Unit identifier",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "time",
+          "label": "Time variable",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "boot",
+          "label": "Bootstrap replications",
+          "type": "num",
+          "default": 199,
+          "help": ""
+        }
+      ],
+      "example": {
+        "file": "causal-inference-guide/examples/castle_2007.csv",
+        "spec": {
+          "outcome": "l_homicide",
+          "treat": "castle_law",
+          "unit": "state",
+          "time": "year"
+        }
+      },
+      "packages": [],
+      "slow": false
+    },
+    {
+      "id": "staggered",
+      "group": "Causal inference",
+      "name": "Staggered DiD (Callaway-Sant'Anna)",
+      "guide": "causal-inference-guide/staggered.html",
+      "fields": [
+        {
+          "key": "outcome",
+          "label": "Outcome",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "treat",
+          "label": "Treatment indicator (0/1)",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "unit",
+          "label": "Unit identifier",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "time",
+          "label": "Time variable",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "boot",
+          "label": "Bootstrap replications",
+          "type": "num",
+          "default": 199,
+          "help": ""
+        }
+      ],
+      "example": {
+        "file": "causal-inference-guide/examples/castle.csv",
+        "spec": {
+          "outcome": "l_homicide",
+          "treat": "castle_law",
+          "unit": "state",
+          "time": "year"
+        }
+      },
+      "packages": [],
+      "slow": true
+    },
+    {
+      "id": "its",
+      "group": "Causal inference",
+      "name": "Interrupted time series",
+      "guide": "causal-inference-guide/its.html",
+      "fields": [
+        {
+          "key": "outcome",
+          "label": "Outcome",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "treat",
+          "label": "Intervention indicator (0 before, 1 after)",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "time",
+          "label": "Time variable",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "unit",
+          "label": "Unit identifier (optional)",
+          "type": "col",
+          "required": false,
+          "help": ""
+        }
+      ],
+      "example": {
+        "file": "causal-inference-guide/examples/seatbelt.csv",
+        "spec": {
+          "outcome": "deaths",
+          "treat": "law",
+          "time": "time"
+        }
+      },
+      "packages": [],
+      "slow": false
+    },
+    {
+      "id": "iv",
+      "group": "Causal inference",
+      "name": "Instrumental variables (2SLS)",
+      "guide": "causal-inference-guide/iv.html",
+      "fields": [
+        {
+          "key": "outcome",
+          "label": "Outcome",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "treat",
+          "label": "Treatment (endogenous)",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "instruments",
+          "label": "Instrument(s)",
+          "type": "cols",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "controls",
+          "label": "Controls",
+          "type": "cols",
+          "required": false,
+          "help": ""
+        }
+      ],
+      "example": {
+        "file": "causal-inference-guide/examples/card.csv",
+        "spec": {
+          "outcome": "lwage",
+          "treat": "educ",
+          "instruments": [
+            "nearc4"
+          ],
+          "controls": [
+            "exper",
+            "black",
+            "smsa",
+            "south",
+            "married"
+          ]
+        }
+      },
+      "packages": [],
+      "slow": false
+    },
+    {
+      "id": "rdd",
+      "group": "Causal inference",
+      "name": "Regression discontinuity",
+      "guide": "causal-inference-guide/rdd.html",
+      "fields": [
+        {
+          "key": "outcome",
+          "label": "Outcome",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "running",
+          "label": "Running variable",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "cutoff",
+          "label": "Cutoff",
+          "type": "num",
+          "default": 0,
+          "help": ""
+        },
+        {
+          "key": "treat",
+          "label": "Treatment (only for a fuzzy design)",
+          "type": "col",
+          "required": false,
+          "help": ""
+        },
+        {
+          "key": "controls",
+          "label": "Covariates to check for continuity",
+          "type": "cols",
+          "required": false,
+          "help": ""
+        }
+      ],
+      "example": {
+        "file": "causal-inference-guide/examples/close_elections.csv",
+        "spec": {
+          "outcome": "score",
+          "running": "demvoteshare",
+          "cutoff": 0.5,
+          "controls": [
+            "lagdemvoteshare"
+          ]
+        }
+      },
+      "packages": [],
+      "slow": false
+    },
+    {
+      "id": "scm",
+      "group": "Causal inference",
+      "name": "Synthetic control",
+      "guide": "causal-inference-guide/scm.html",
+      "fields": [
+        {
+          "key": "outcome",
+          "label": "Outcome",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "treat",
+          "label": "Treatment indicator (0/1)",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "unit",
+          "label": "Unit identifier",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "time",
+          "label": "Time variable",
+          "type": "col",
+          "required": true,
+          "help": ""
+        }
+      ],
+      "example": {
+        "file": "causal-inference-guide/examples/texas.csv",
+        "spec": {
+          "outcome": "bmprison",
+          "treat": "expansion",
+          "unit": "state",
+          "time": "year"
+        }
+      },
+      "packages": [],
+      "slow": false
+    },
+    {
+      "id": "gsc",
+      "group": "Causal inference",
+      "name": "Generalized synthetic control",
+      "guide": "causal-inference-guide/gsc.html",
+      "fields": [
+        {
+          "key": "outcome",
+          "label": "Outcome",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "treat",
+          "label": "Treatment indicator (0/1)",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "unit",
+          "label": "Unit identifier",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "time",
+          "label": "Time variable",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "boot",
+          "label": "Bootstrap replications",
+          "type": "num",
+          "default": 199,
+          "help": ""
+        }
+      ],
+      "example": {
+        "file": "causal-inference-guide/examples/castle_murder.csv",
+        "spec": {
+          "outcome": "l_murder",
+          "treat": "castle_law",
+          "unit": "state",
+          "time": "year"
+        }
+      },
+      "packages": [],
+      "slow": false
+    },
+    {
+      "id": "lasso",
+      "group": "Machine learning",
+      "name": "LASSO",
+      "guide": "ml-guide/lasso.html",
+      "fields": [
+        {
+          "key": "y",
+          "label": "Outcome to predict",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "x",
+          "label": "Predictors",
+          "type": "cols",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "time",
+          "label": "Time column (time-ordered validation)",
+          "type": "col",
+          "required": false,
+          "help": ""
+        },
+        {
+          "key": "test_share",
+          "label": "Test share",
+          "type": "num",
+          "default": 0.2,
+          "help": ""
+        }
+      ],
+      "example": {
+        "file": "ml-guide/examples/econmath.csv",
+        "spec": {
+          "y": "score",
+          "x": [
+            "age",
+            "work",
+            "study",
+            "econhs",
+            "colgpa",
+            "hsgpa",
+            "acteng",
+            "actmth",
+            "male",
+            "calculus",
+            "attexc",
+            "attgood",
+            "fathcoll",
+            "mothcoll"
+          ]
+        }
+      },
+      "packages": [
+        "scikit-learn"
+      ],
+      "slow": false
+    },
+    {
+      "id": "ridge",
+      "group": "Machine learning",
+      "name": "Ridge",
+      "guide": "ml-guide/ridge.html",
+      "fields": [
+        {
+          "key": "y",
+          "label": "Outcome to predict",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "x",
+          "label": "Predictors",
+          "type": "cols",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "time",
+          "label": "Time column (time-ordered validation)",
+          "type": "col",
+          "required": false,
+          "help": ""
+        },
+        {
+          "key": "test_share",
+          "label": "Test share",
+          "type": "num",
+          "default": 0.2,
+          "help": ""
+        }
+      ],
+      "example": {
+        "file": "ml-guide/examples/wage2.csv",
+        "spec": {
+          "y": "lwage",
+          "x": [
+            "hours",
+            "IQ",
+            "KWW",
+            "educ",
+            "exper",
+            "tenure",
+            "age",
+            "married",
+            "black",
+            "south",
+            "urban",
+            "sibs",
+            "brthord",
+            "meduc",
+            "feduc"
+          ]
+        }
+      },
+      "packages": [
+        "scikit-learn"
+      ],
+      "slow": false
+    },
+    {
+      "id": "enet",
+      "group": "Machine learning",
+      "name": "Elastic net",
+      "guide": "ml-guide/enet.html",
+      "fields": [
+        {
+          "key": "y",
+          "label": "Outcome to predict",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "x",
+          "label": "Predictors",
+          "type": "cols",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "time",
+          "label": "Time column (time-ordered validation)",
+          "type": "col",
+          "required": false,
+          "help": ""
+        },
+        {
+          "key": "test_share",
+          "label": "Test share",
+          "type": "num",
+          "default": 0.2,
+          "help": ""
+        }
+      ],
+      "example": {
+        "file": "ml-guide/examples/macro.csv",
+        "ops": [
+          {
+            "op": "diff",
+            "vars": [
+              "tbilrate_l1",
+              "tbilrate_l2",
+              "tbilrate_l3",
+              "tbilrate_l4"
+            ],
+            "time": "quarter"
+          }
+        ],
+        "spec": {
+          "y": "infl",
+          "time": "quarter",
+          "x": [
+            "infl_l1",
+            "infl_l2",
+            "infl_l3",
+            "infl_l4",
+            "unemp_l1",
+            "unemp_l2",
+            "unemp_l3",
+            "unemp_l4",
+            "gdp_growth_l1",
+            "gdp_growth_l2",
+            "gdp_growth_l3",
+            "gdp_growth_l4",
+            "m1_growth_l1",
+            "m1_growth_l2",
+            "m1_growth_l3",
+            "m1_growth_l4",
+            "d_tbilrate_l1",
+            "d_tbilrate_l2",
+            "d_tbilrate_l3",
+            "d_tbilrate_l4"
+          ]
+        }
+      },
+      "packages": [
+        "scikit-learn"
+      ],
+      "slow": false
+    },
+    {
+      "id": "rf",
+      "group": "Machine learning",
+      "name": "Random forest",
+      "guide": "ml-guide/rf.html",
+      "fields": [
+        {
+          "key": "y",
+          "label": "Outcome to predict",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "x",
+          "label": "Predictors",
+          "type": "cols",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "time",
+          "label": "Time column (time-ordered validation)",
+          "type": "col",
+          "required": false,
+          "help": ""
+        },
+        {
+          "key": "test_share",
+          "label": "Test share",
+          "type": "num",
+          "default": 0.2,
+          "help": ""
+        },
+        {
+          "key": "n_estimators",
+          "label": "Number of trees",
+          "type": "num",
+          "default": 300,
+          "help": ""
+        },
+        {
+          "key": "min_leaf",
+          "label": "Minimum leaf size",
+          "type": "num",
+          "default": 5,
+          "help": ""
+        }
+      ],
+      "example": {
+        "file": "ml-guide/examples/mlb1.csv",
+        "spec": {
+          "y": "lsalary",
+          "x": "__all__"
+        }
+      },
+      "packages": [
+        "scikit-learn"
+      ],
+      "slow": false
+    },
+    {
+      "id": "xgb",
+      "group": "Machine learning",
+      "name": "XGBoost",
+      "guide": "ml-guide/xgb.html",
+      "fields": [
+        {
+          "key": "y",
+          "label": "Outcome to predict",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "x",
+          "label": "Predictors",
+          "type": "cols",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "time",
+          "label": "Time column (time-ordered validation)",
+          "type": "col",
+          "required": false,
+          "help": ""
+        },
+        {
+          "key": "test_share",
+          "label": "Test share",
+          "type": "num",
+          "default": 0.2,
+          "help": ""
+        },
+        {
+          "key": "n_estimators",
+          "label": "Number of trees",
+          "type": "num",
+          "default": 400,
+          "help": ""
+        },
+        {
+          "key": "learning_rate",
+          "label": "Learning rate",
+          "type": "num",
+          "default": 0.05,
+          "help": ""
+        },
+        {
+          "key": "max_depth",
+          "label": "Maximum depth",
+          "type": "num",
+          "default": 4,
+          "help": ""
+        }
+      ],
+      "example": {
+        "file": "ml-guide/examples/injury.csv",
+        "spec": {
+          "y": "ldurat",
+          "x": "__all__"
+        }
+      },
+      "packages": [
+        "scikit-learn",
+        "xgboost"
+      ],
+      "slow": false
+    },
+    {
+      "id": "dml_plr",
+      "group": "Machine learning",
+      "name": "Double ML: partially linear model",
+      "guide": "ml-guide/dml-plr.html",
+      "fields": [
+        {
+          "key": "y",
+          "label": "Outcome",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "treat",
+          "label": "Treatment (continuous or binary)",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "x",
+          "label": "Controls",
+          "type": "cols",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "learner",
+          "label": "Learners",
+          "type": "select",
+          "options": [
+            [
+              "both",
+              "LASSO and random forest"
+            ],
+            [
+              "lasso",
+              "LASSO"
+            ],
+            [
+              "rf",
+              "Random forest"
+            ]
+          ],
+          "default": "both",
+          "help": ""
+        },
+        {
+          "key": "folds",
+          "label": "Folds",
+          "type": "num",
+          "default": 5,
+          "help": ""
+        },
+        {
+          "key": "reps",
+          "label": "Repetitions",
+          "type": "num",
+          "default": 2,
+          "help": ""
+        },
+        {
+          "key": "trees",
+          "label": "Trees in the random forests",
+          "type": "num",
+          "default": 100,
+          "help": ""
+        }
+      ],
+      "example": {
+        "file": "ml-guide/examples/growth.csv",
+        "spec": {
+          "y": "growth",
+          "treat": "gdpsh465",
+          "x": "__all__",
+          "reps": 1
+        }
+      },
+      "packages": [
+        "scikit-learn"
+      ],
+      "slow": false
+    },
+    {
+      "id": "dml_irm",
+      "group": "Machine learning",
+      "name": "Double ML: interactive model (binary treatment)",
+      "guide": "ml-guide/dml-irm.html",
+      "fields": [
+        {
+          "key": "y",
+          "label": "Outcome",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "treat",
+          "label": "Binary treatment (0/1)",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "x",
+          "label": "Controls",
+          "type": "cols",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "learner",
+          "label": "Learners",
+          "type": "select",
+          "options": [
+            [
+              "both",
+              "LASSO and random forest"
+            ],
+            [
+              "lasso",
+              "LASSO"
+            ],
+            [
+              "rf",
+              "Random forest"
+            ]
+          ],
+          "default": "both",
+          "help": ""
+        },
+        {
+          "key": "folds",
+          "label": "Folds",
+          "type": "num",
+          "default": 5,
+          "help": ""
+        },
+        {
+          "key": "reps",
+          "label": "Repetitions",
+          "type": "num",
+          "default": 1,
+          "help": ""
+        },
+        {
+          "key": "trees",
+          "label": "Trees in the random forests",
+          "type": "num",
+          "default": 100,
+          "help": ""
+        }
+      ],
+      "example": {
+        "file": "ml-guide/examples/k401_irm.csv",
+        "spec": {
+          "y": "net_tfa",
+          "treat": "e401",
+          "x": "__all__",
+          "learner": "rf",
+          "reps": 1
+        }
+      },
+      "packages": [
+        "scikit-learn"
+      ],
+      "slow": true
+    },
+    {
+      "id": "dml_iv",
+      "group": "Machine learning",
+      "name": "Double ML: partially linear IV",
+      "guide": "ml-guide/dml-iv.html",
+      "fields": [
+        {
+          "key": "y",
+          "label": "Outcome",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "treat",
+          "label": "Treatment (endogenous)",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "instrument",
+          "label": "Instrument",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "x",
+          "label": "Controls",
+          "type": "cols",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "learner",
+          "label": "Learners",
+          "type": "select",
+          "options": [
+            [
+              "both",
+              "LASSO and random forest"
+            ],
+            [
+              "lasso",
+              "LASSO"
+            ],
+            [
+              "rf",
+              "Random forest"
+            ]
+          ],
+          "default": "both",
+          "help": ""
+        },
+        {
+          "key": "folds",
+          "label": "Folds",
+          "type": "num",
+          "default": 5,
+          "help": ""
+        },
+        {
+          "key": "reps",
+          "label": "Repetitions",
+          "type": "num",
+          "default": 1,
+          "help": ""
+        },
+        {
+          "key": "trees",
+          "label": "Trees in the random forests",
+          "type": "num",
+          "default": 100,
+          "help": ""
+        }
+      ],
+      "example": {
+        "file": "ml-guide/examples/k401_iv.csv",
+        "spec": {
+          "y": "net_tfa",
+          "treat": "p401",
+          "instrument": "e401",
+          "x": "__all__",
+          "learner": "rf",
+          "reps": 1
+        }
+      },
+      "packages": [
+        "scikit-learn"
+      ],
+      "slow": true
+    },
+    {
+      "id": "causal_forest",
+      "group": "Machine learning",
+      "name": "Causal forest (heterogeneous effects)",
+      "guide": "ml-guide/causal-forest.html",
+      "fields": [
+        {
+          "key": "y",
+          "label": "Outcome",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "treat",
+          "label": "Binary treatment (0/1)",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "x",
+          "label": "Controls",
+          "type": "cols",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "folds",
+          "label": "Folds",
+          "type": "num",
+          "default": 5,
+          "help": ""
+        },
+        {
+          "key": "n_estimators",
+          "label": "Number of trees",
+          "type": "num",
+          "default": 300,
+          "help": ""
+        },
+        {
+          "key": "min_leaf",
+          "label": "Minimum leaf size",
+          "type": "num",
+          "default": 20,
+          "help": ""
+        },
+        {
+          "key": "trees",
+          "label": "Trees in the nuisance forests",
+          "type": "num",
+          "default": 100,
+          "help": ""
+        }
+      ],
+      "example": {
+        "file": "ml-guide/examples/k401_irm.csv",
+        "spec": {
+          "y": "net_tfa",
+          "treat": "e401",
+          "x": "__all__"
+        }
+      },
+      "packages": [
+        "scikit-learn"
+      ],
+      "slow": true
+    },
+    {
+      "id": "bayes_reg",
+      "group": "Bayesian",
+      "name": "Bayesian linear regression",
+      "guide": null,
+      "fields": [
+        {
+          "key": "y",
+          "label": "Dependent variable",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "x",
+          "label": "Explanatory variables",
+          "type": "cols",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "time",
+          "label": "Time / date column (sorts the data)",
+          "type": "col",
+          "required": false,
+          "help": ""
+        },
+        {
+          "key": "method",
+          "label": "Method",
+          "type": "select",
+          "options": [
+            [
+              "conjugate",
+              "Exact (Normal-inverse-gamma)"
+            ],
+            [
+              "gibbs",
+              "Gibbs sampler (independent prior)"
+            ]
+          ],
+          "default": "conjugate",
+          "help": ""
+        },
+        {
+          "key": "prior",
+          "label": "Prior on the slopes",
+          "type": "select",
+          "options": [
+            [
+              "gprior",
+              "Zellner g-prior"
+            ],
+            [
+              "normal",
+              "Normal, common s.d."
+            ]
+          ],
+          "default": "gprior",
+          "help": ""
+        },
+        {
+          "key": "g",
+          "label": "g (blank = number of observations)",
+          "type": "num",
+          "default": "",
+          "help": ""
+        },
+        {
+          "key": "prior_sd",
+          "label": "Prior s.d. (normal prior)",
+          "type": "num",
+          "default": 10,
+          "help": ""
+        },
+        {
+          "key": "prior_mean",
+          "label": "Prior means of the slopes (blank = 0; one or a comma list)",
+          "type": "num",
+          "default": "",
+          "help": ""
+        },
+        {
+          "key": "draws",
+          "label": "Draws (Gibbs)",
+          "type": "num",
+          "default": 5000,
+          "help": ""
+        },
+        {
+          "key": "burn",
+          "label": "Burn-in (Gibbs)",
+          "type": "num",
+          "default": 1000,
+          "help": ""
+        },
+        {
+          "key": "seed",
+          "label": "Random seed",
+          "type": "num",
+          "default": 0,
+          "help": ""
+        }
+      ],
+      "example": {
+        "file": "ml-guide/examples/wage2.csv",
+        "spec": {
+          "y": "lwage",
+          "x": [
+            "educ",
+            "exper",
+            "tenure",
+            "IQ",
+            "married",
+            "black",
+            "south",
+            "urban"
+          ]
+        }
+      },
+      "packages": [],
+      "slow": false
+    },
+    {
+      "id": "bvar",
+      "group": "Bayesian",
+      "name": "Bayesian VAR (Minnesota, Normal-Wishart, ...)",
+      "guide": null,
+      "fields": [
+        {
+          "key": "vars",
+          "label": "Variables (Cholesky order)",
+          "type": "cols",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "time",
+          "label": "Time / date column (sorts the data)",
+          "type": "col",
+          "required": false,
+          "help": ""
+        },
+        {
+          "key": "lags",
+          "label": "Lags",
+          "type": "num",
+          "default": 4,
+          "help": ""
+        },
+        {
+          "key": "prior",
+          "label": "Prior",
+          "type": "select",
+          "options": [
+            [
+              "minnesota",
+              "Minnesota (Litterman)"
+            ],
+            [
+              "nw",
+              "Normal-Wishart"
+            ],
+            [
+              "inw",
+              "Independent Normal-Wishart"
+            ],
+            [
+              "nd",
+              "Normal-diffuse"
+            ]
+          ],
+          "default": "minnesota",
+          "help": ""
+        },
+        {
+          "key": "lambda1",
+          "label": "Overall tightness lambda1",
+          "type": "num",
+          "default": 0.1,
+          "help": ""
+        },
+        {
+          "key": "lambda2",
+          "label": "Cross-variable tightness lambda2",
+          "type": "num",
+          "default": 0.5,
+          "help": ""
+        },
+        {
+          "key": "lambda3",
+          "label": "Lag decay lambda3",
+          "type": "num",
+          "default": 1,
+          "help": ""
+        },
+        {
+          "key": "lambda4",
+          "label": "Constant tightness lambda4",
+          "type": "num",
+          "default": 100,
+          "help": ""
+        },
+        {
+          "key": "delta",
+          "label": "Prior mean of own first lag (1 = random walk; one or a comma list)",
+          "type": "num",
+          "default": 1,
+          "help": ""
+        },
+        {
+          "key": "block",
+          "label": "Block-exogenous variables (not affected by the others)",
+          "type": "cols",
+          "required": false,
+          "help": ""
+        },
+        {
+          "key": "horizon",
+          "label": "IRF horizon",
+          "type": "num",
+          "default": 20,
+          "help": ""
+        },
+        {
+          "key": "fhorizon",
+          "label": "Forecast horizon",
+          "type": "num",
+          "default": 8,
+          "help": ""
+        },
+        {
+          "key": "draws",
+          "label": "Posterior draws",
+          "type": "num",
+          "default": 1000,
+          "help": ""
+        },
+        {
+          "key": "burn",
+          "label": "Burn-in (Gibbs samplers)",
+          "type": "num",
+          "default": 500,
+          "help": ""
+        },
+        {
+          "key": "seed",
+          "label": "Random seed",
+          "type": "num",
+          "default": 0,
+          "help": ""
+        }
+      ],
+      "example": {
+        "file": "research-guide/examples/money.csv",
+        "spec": {
+          "vars": [
+            "log_price",
+            "log_m2",
+            "log_gdp"
+          ],
+          "time": "date",
+          "lags": 4,
+          "prior": "minnesota"
+        }
+      },
+      "packages": [],
+      "slow": false
+    },
+    {
+      "id": "favar",
+      "group": "Bayesian",
+      "name": "Factor-augmented VAR (FAVAR)",
+      "guide": null,
+      "fields": [
+        {
+          "key": "y",
+          "label": "Observed VAR variables (policy variable last)",
+          "type": "cols",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "x",
+          "label": "Informational series (for the factors)",
+          "type": "cols",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "time",
+          "label": "Time / date column (sorts the data)",
+          "type": "col",
+          "required": false,
+          "help": ""
+        },
+        {
+          "key": "factors",
+          "label": "Number of factors",
+          "type": "num",
+          "default": 2,
+          "help": ""
+        },
+        {
+          "key": "lags",
+          "label": "Lags",
+          "type": "num",
+          "default": 2,
+          "help": ""
+        },
+        {
+          "key": "prior",
+          "label": "Prior",
+          "type": "select",
+          "options": [
+            [
+              "nw",
+              "Normal-Wishart"
+            ],
+            [
+              "minnesota",
+              "Minnesota"
+            ],
+            [
+              "inw",
+              "Independent Normal-Wishart"
+            ],
+            [
+              "nd",
+              "Normal-diffuse"
+            ]
+          ],
+          "default": "nw",
+          "help": ""
+        },
+        {
+          "key": "lambda1",
+          "label": "Overall tightness lambda1",
+          "type": "num",
+          "default": 0.1,
+          "help": ""
+        },
+        {
+          "key": "horizon",
+          "label": "IRF horizon",
+          "type": "num",
+          "default": 20,
+          "help": ""
+        },
+        {
+          "key": "draws",
+          "label": "Posterior draws",
+          "type": "num",
+          "default": 1000,
+          "help": ""
+        },
+        {
+          "key": "burn",
+          "label": "Burn-in (Gibbs samplers)",
+          "type": "num",
+          "default": 500,
+          "help": ""
+        },
+        {
+          "key": "seed",
+          "label": "Random seed",
+          "type": "num",
+          "default": 0,
+          "help": ""
+        }
+      ],
+      "example": {
+        "file": "oes/examples/us_macro.csv",
+        "spec": {
+          "y": [
+            "inflation",
+            "unemp",
+            "tbilrate"
+          ],
+          "time": "date",
+          "factors": 2,
+          "x": [
+            "gdp_growth",
+            "cons_growth",
+            "inv_growth",
+            "gov_growth",
+            "income_growth",
+            "m1_growth"
+          ]
+        }
+      },
+      "packages": [],
+      "slow": false
+    },
+    {
+      "id": "mabvar",
+      "group": "Bayesian",
+      "name": "Mean-adjusted (steady-state) BVAR",
+      "guide": null,
+      "fields": [
+        {
+          "key": "vars",
+          "label": "Variables (Cholesky order)",
+          "type": "cols",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "time",
+          "label": "Time / date column (sorts the data)",
+          "type": "col",
+          "required": false,
+          "help": ""
+        },
+        {
+          "key": "lags",
+          "label": "Lags",
+          "type": "num",
+          "default": 2,
+          "help": ""
+        },
+        {
+          "key": "ss_mean",
+          "label": "Prior means of the steady states (comma list; blank = sample means)",
+          "type": "num",
+          "default": "",
+          "help": ""
+        },
+        {
+          "key": "ss_sd",
+          "label": "Prior s.d. of the steady states (comma list; blank = sample s.d.)",
+          "type": "num",
+          "default": "",
+          "help": ""
+        },
+        {
+          "key": "lambda1",
+          "label": "Overall tightness lambda1",
+          "type": "num",
+          "default": 0.1,
+          "help": ""
+        },
+        {
+          "key": "lambda2",
+          "label": "Cross-variable tightness lambda2",
+          "type": "num",
+          "default": 0.5,
+          "help": ""
+        },
+        {
+          "key": "horizon",
+          "label": "IRF horizon",
+          "type": "num",
+          "default": 20,
+          "help": ""
+        },
+        {
+          "key": "fhorizon",
+          "label": "Forecast horizon",
+          "type": "num",
+          "default": 20,
+          "help": ""
+        },
+        {
+          "key": "draws",
+          "label": "Posterior draws",
+          "type": "num",
+          "default": 1000,
+          "help": ""
+        },
+        {
+          "key": "burn",
+          "label": "Burn-in (Gibbs samplers)",
+          "type": "num",
+          "default": 500,
+          "help": ""
+        },
+        {
+          "key": "seed",
+          "label": "Random seed",
+          "type": "num",
+          "default": 0,
+          "help": ""
+        }
+      ],
+      "example": {
+        "file": "oes/examples/us_macro.csv",
+        "spec": {
+          "vars": [
+            "gdp_growth",
+            "inflation",
+            "tbilrate"
+          ],
+          "time": "date",
+          "lags": 2,
+          "ss_mean": "3, 3.5, 5",
+          "ss_sd": "0.5, 1, 1"
+        }
+      },
+      "packages": [],
+      "slow": false
+    },
+    {
+      "id": "pvar",
+      "group": "Bayesian",
+      "name": "Panel VAR (6 estimators)",
+      "guide": null,
+      "fields": [
+        {
+          "key": "vars",
+          "label": "Variables (Cholesky order)",
+          "type": "cols",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "unit",
+          "label": "Unit (entity) identifier",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "time",
+          "label": "Time identifier",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "lags",
+          "label": "Lags",
+          "type": "num",
+          "default": 1,
+          "help": ""
+        },
+        {
+          "key": "estimator",
+          "label": "Estimator",
+          "type": "select",
+          "options": [
+            [
+              "mg",
+              "OLS mean group"
+            ],
+            [
+              "pooled",
+              "Bayesian pooled"
+            ],
+            [
+              "zh",
+              "Zellner-Hong random effects"
+            ],
+            [
+              "hierarchical",
+              "Hierarchical (Jarocinski)"
+            ],
+            [
+              "static",
+              "Static factor (Canova-Ciccarelli)"
+            ],
+            [
+              "dynamic",
+              "Dynamic factor (Canova-Ciccarelli)"
+            ]
+          ],
+          "default": "mg",
+          "help": ""
+        },
+        {
+          "key": "lambda1",
+          "label": "lambda1 (pooled, Zellner-Hong)",
+          "type": "num",
+          "default": 0.1,
+          "help": ""
+        },
+        {
+          "key": "prior_var",
+          "label": "Prior variance of the factors",
+          "type": "num",
+          "default": 1,
+          "help": ""
+        },
+        {
+          "key": "horizon",
+          "label": "IRF horizon",
+          "type": "num",
+          "default": 12,
+          "help": ""
+        },
+        {
+          "key": "draws",
+          "label": "Posterior draws",
+          "type": "num",
+          "default": 1000,
+          "help": ""
+        },
+        {
+          "key": "burn",
+          "label": "Burn-in (Gibbs samplers)",
+          "type": "num",
+          "default": 500,
+          "help": ""
+        },
+        {
+          "key": "seed",
+          "label": "Random seed",
+          "type": "num",
+          "default": 0,
+          "help": ""
+        }
+      ],
+      "example": {
+        "file": "panel-data-guide/examples/garrett.csv",
+        "spec": {
+          "vars": [
+            "gdp_growth",
+            "unem"
+          ],
+          "unit": "country",
+          "time": "year",
+          "lags": 1,
+          "estimator": "mg"
+        }
+      },
+      "packages": [],
+      "slow": false
+    },
+    {
+      "id": "tvpvar",
+      "group": "Bayesian",
+      "name": "Time-varying parameter VAR (TVP-VAR)",
+      "guide": null,
+      "fields": [
+        {
+          "key": "vars",
+          "label": "Variables (Cholesky order)",
+          "type": "cols",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "time",
+          "label": "Time / date column (sorts the data)",
+          "type": "col",
+          "required": false,
+          "help": ""
+        },
+        {
+          "key": "lags",
+          "label": "Lags",
+          "type": "num",
+          "default": 2,
+          "help": ""
+        },
+        {
+          "key": "training",
+          "label": "Training-sample length",
+          "type": "num",
+          "default": 40,
+          "help": ""
+        },
+        {
+          "key": "kQ",
+          "label": "kQ (amount of time variation)",
+          "type": "num",
+          "default": 0.01,
+          "help": ""
+        },
+        {
+          "key": "horizon",
+          "label": "IRF horizon",
+          "type": "num",
+          "default": 20,
+          "help": ""
+        },
+        {
+          "key": "draws",
+          "label": "Posterior draws",
+          "type": "num",
+          "default": 500,
+          "help": ""
+        },
+        {
+          "key": "burn",
+          "label": "Burn-in",
+          "type": "num",
+          "default": 300,
+          "help": ""
+        },
+        {
+          "key": "seed",
+          "label": "Random seed",
+          "type": "num",
+          "default": 0,
+          "help": ""
+        }
+      ],
+      "example": {
+        "file": "oes/examples/us_macro.csv",
+        "spec": {
+          "vars": [
+            "inflation",
+            "unemp",
+            "tbilrate"
+          ],
+          "time": "date",
+          "lags": 2
+        }
+      },
+      "packages": [],
+      "slow": true
+    },
+    {
+      "id": "svvar",
+      "group": "Bayesian",
+      "name": "Stochastic-volatility VAR (SV-VAR)",
+      "guide": null,
+      "fields": [
+        {
+          "key": "vars",
+          "label": "Variables (Cholesky order)",
+          "type": "cols",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "time",
+          "label": "Time / date column (sorts the data)",
+          "type": "col",
+          "required": false,
+          "help": ""
+        },
+        {
+          "key": "lags",
+          "label": "Lags",
+          "type": "num",
+          "default": 2,
+          "help": ""
+        },
+        {
+          "key": "lambda1",
+          "label": "Overall tightness lambda1",
+          "type": "num",
+          "default": 0.1,
+          "help": ""
+        },
+        {
+          "key": "lambda2",
+          "label": "Cross-variable tightness lambda2",
+          "type": "num",
+          "default": 0.5,
+          "help": ""
+        },
+        {
+          "key": "delta",
+          "label": "Prior mean of own first lag",
+          "type": "num",
+          "default": 0,
+          "help": ""
+        },
+        {
+          "key": "horizon",
+          "label": "IRF horizon",
+          "type": "num",
+          "default": 20,
+          "help": ""
+        },
+        {
+          "key": "draws",
+          "label": "Posterior draws",
+          "type": "num",
+          "default": 1000,
+          "help": ""
+        },
+        {
+          "key": "burn",
+          "label": "Burn-in (Gibbs samplers)",
+          "type": "num",
+          "default": 500,
+          "help": ""
+        },
+        {
+          "key": "seed",
+          "label": "Random seed",
+          "type": "num",
+          "default": 0,
+          "help": ""
+        }
+      ],
+      "example": {
+        "file": "oes/examples/us_macro.csv",
+        "spec": {
+          "vars": [
+            "inflation",
+            "unemp",
+            "tbilrate"
+          ],
+          "time": "date",
+          "lags": 2
+        }
+      },
+      "packages": [],
+      "slow": true
+    },
+    {
+      "id": "mfbvar",
+      "group": "Bayesian",
+      "name": "Mixed-frequency BVAR (monthly + quarterly)",
+      "guide": null,
+      "fields": [
+        {
+          "key": "monthly",
+          "label": "Monthly variables",
+          "type": "cols",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "quarterly",
+          "label": "Quarterly variables (value in the quarter's last month, other months blank)",
+          "type": "cols",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "time",
+          "label": "Month column",
+          "type": "col",
+          "required": false,
+          "help": ""
+        },
+        {
+          "key": "lags",
+          "label": "Lags (months)",
+          "type": "num",
+          "default": 5,
+          "help": ""
+        },
+        {
+          "key": "aggregation",
+          "label": "Quarterly aggregation",
+          "type": "select",
+          "options": [
+            [
+              "triangle",
+              "Growth rates: triangle weights (1,2,3,2,1)/9"
+            ],
+            [
+              "average",
+              "Levels: 3-month average"
+            ]
+          ],
+          "default": "triangle",
+          "help": ""
+        },
+        {
+          "key": "lambda1",
+          "label": "Overall tightness lambda1",
+          "type": "num",
+          "default": 0.2,
+          "help": ""
+        },
+        {
+          "key": "delta",
+          "label": "Prior mean of own first lag",
+          "type": "num",
+          "default": 0,
+          "help": ""
+        },
+        {
+          "key": "horizon",
+          "label": "IRF horizon",
+          "type": "num",
+          "default": 24,
+          "help": ""
+        },
+        {
+          "key": "draws",
+          "label": "Posterior draws",
+          "type": "num",
+          "default": 300,
+          "help": ""
+        },
+        {
+          "key": "burn",
+          "label": "Burn-in",
+          "type": "num",
+          "default": 200,
+          "help": ""
+        },
+        {
+          "key": "seed",
+          "label": "Random seed",
+          "type": "num",
+          "default": 0,
+          "help": ""
+        }
+      ],
+      "example": {
+        "file": "oes/examples/mixed_frequency.csv",
+        "spec": {
+          "monthly": [
+            "ip_growth",
+            "fedfunds"
+          ],
+          "quarterly": [
+            "gdp_growth"
+          ],
+          "time": "date",
+          "lags": 5
+        }
+      },
+      "packages": [],
+      "slow": true
+    },
+    {
+      "id": "tvar",
+      "group": "Bayesian",
+      "name": "Threshold VAR (Bayesian)",
+      "guide": null,
+      "fields": [
+        {
+          "key": "vars",
+          "label": "Variables (Cholesky order)",
+          "type": "cols",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "threshold_var",
+          "label": "Threshold variable",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "time",
+          "label": "Time / date column (sorts the data)",
+          "type": "col",
+          "required": false,
+          "help": ""
+        },
+        {
+          "key": "lags",
+          "label": "Lags",
+          "type": "num",
+          "default": 2,
+          "help": ""
+        },
+        {
+          "key": "max_delay",
+          "label": "Maximum delay d",
+          "type": "num",
+          "default": 2,
+          "help": ""
+        },
+        {
+          "key": "trim",
+          "label": "Minimum share in each regime",
+          "type": "num",
+          "default": 0.15,
+          "help": ""
+        },
+        {
+          "key": "grid",
+          "label": "Threshold grid points",
+          "type": "num",
+          "default": 40,
+          "help": ""
+        },
+        {
+          "key": "lambda1",
+          "label": "Overall tightness lambda1",
+          "type": "num",
+          "default": 0.2,
+          "help": ""
+        },
+        {
+          "key": "horizon",
+          "label": "IRF horizon",
+          "type": "num",
+          "default": 20,
+          "help": ""
+        },
+        {
+          "key": "draws",
+          "label": "Posterior draws",
+          "type": "num",
+          "default": 1000,
+          "help": ""
+        },
+        {
+          "key": "seed",
+          "label": "Random seed",
+          "type": "num",
+          "default": 0,
+          "help": ""
+        }
+      ],
+      "example": {
+        "file": "oes/examples/us_macro.csv",
+        "spec": {
+          "vars": [
+            "gdp_growth",
+            "inflation",
+            "tbilrate"
+          ],
+          "threshold_var": "gdp_growth",
+          "time": "date",
+          "lags": 2
+        }
+      },
+      "packages": [],
+      "slow": false
+    },
+    {
+      "id": "ms_reg",
+      "group": "Markov switching",
+      "name": "Markov-switching regression",
+      "guide": null,
+      "fields": [
+        {
+          "key": "y",
+          "label": "Dependent variable",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "x",
+          "label": "Regressors (optional)",
+          "type": "cols",
+          "required": false,
+          "help": ""
+        },
+        {
+          "key": "time",
+          "label": "Time / date column (sorts the data)",
+          "type": "col",
+          "required": false,
+          "help": ""
+        },
+        {
+          "key": "regimes",
+          "label": "Number of regimes",
+          "type": "num",
+          "default": 2,
+          "help": ""
+        },
+        {
+          "key": "switching_variance",
+          "label": "Switching variance",
+          "type": "select",
+          "options": [
+            [
+              "yes",
+              "Yes"
+            ],
+            [
+              "no",
+              "No"
+            ]
+          ],
+          "default": "yes",
+          "help": ""
+        },
+        {
+          "key": "switching_exog",
+          "label": "Switching slopes",
+          "type": "select",
+          "options": [
+            [
+              "yes",
+              "Yes"
+            ],
+            [
+              "no",
+              "No"
+            ]
+          ],
+          "default": "yes",
+          "help": ""
+        }
+      ],
+      "example": {
+        "file": "oes/examples/fedfunds.csv",
+        "spec": {
+          "y": "fedfunds",
+          "time": "date",
+          "switching_variance": "no"
+        }
+      },
+      "packages": [],
+      "slow": false
+    },
+    {
+      "id": "ms_ar",
+      "group": "Markov switching",
+      "name": "Markov-switching autoregression (Hamilton)",
+      "guide": null,
+      "fields": [
+        {
+          "key": "y",
+          "label": "Variable",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "time",
+          "label": "Time / date column (sorts the data)",
+          "type": "col",
+          "required": false,
+          "help": ""
+        },
+        {
+          "key": "regimes",
+          "label": "Number of regimes",
+          "type": "num",
+          "default": 2,
+          "help": ""
+        },
+        {
+          "key": "order",
+          "label": "AR order",
+          "type": "num",
+          "default": 4,
+          "help": ""
+        },
+        {
+          "key": "switching_ar",
+          "label": "Switching AR coefficients",
+          "type": "select",
+          "options": [
+            [
+              "no",
+              "No"
+            ],
+            [
+              "yes",
+              "Yes"
+            ]
+          ],
+          "default": "no",
+          "help": ""
+        },
+        {
+          "key": "switching_variance",
+          "label": "Switching variance",
+          "type": "select",
+          "options": [
+            [
+              "no",
+              "No"
+            ],
+            [
+              "yes",
+              "Yes"
+            ]
+          ],
+          "default": "no",
+          "help": ""
+        }
+      ],
+      "example": {
+        "file": "oes/examples/hamilton_gnp.csv",
+        "spec": {
+          "y": "gnp_growth",
+          "time": "date",
+          "order": 4
+        }
+      },
+      "packages": [],
+      "slow": false
+    },
+    {
+      "id": "msvar",
+      "group": "Markov switching",
+      "name": "Markov-switching VAR",
+      "guide": null,
+      "fields": [
+        {
+          "key": "vars",
+          "label": "Variables (Cholesky order)",
+          "type": "cols",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "time",
+          "label": "Time / date column (sorts the data)",
+          "type": "col",
+          "required": false,
+          "help": ""
+        },
+        {
+          "key": "regimes",
+          "label": "Number of regimes",
+          "type": "num",
+          "default": 2,
+          "help": ""
+        },
+        {
+          "key": "lags",
+          "label": "Lags",
+          "type": "num",
+          "default": 1,
+          "help": ""
+        },
+        {
+          "key": "switching",
+          "label": "What switches",
+          "type": "select",
+          "options": [
+            [
+              "MSIH",
+              "MSIH: intercepts and covariances"
+            ],
+            [
+              "MSI",
+              "MSI: intercepts only"
+            ],
+            [
+              "MSIAH",
+              "MSIAH: intercepts, lags and covariances"
+            ]
+          ],
+          "default": "MSIH",
+          "help": ""
+        },
+        {
+          "key": "starts",
+          "label": "Starting values",
+          "type": "num",
+          "default": 6,
+          "help": ""
+        },
+        {
+          "key": "horizon",
+          "label": "IRF horizon",
+          "type": "num",
+          "default": 20,
+          "help": ""
+        }
+      ],
+      "example": {
+        "file": "oes/examples/us_macro.csv",
+        "spec": {
+          "vars": [
+            "gdp_growth",
+            "inflation"
+          ],
+          "time": "date",
+          "lags": 1,
+          "switching": "MSIH"
+        }
+      },
+      "packages": [],
+      "slow": false
+    },
+    {
+      "id": "mspvar",
+      "group": "Markov switching",
+      "name": "Markov-switching panel VAR",
+      "guide": null,
+      "fields": [
+        {
+          "key": "vars",
+          "label": "Variables (Cholesky order)",
+          "type": "cols",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "unit",
+          "label": "Unit (entity) identifier",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "time",
+          "label": "Time identifier",
+          "type": "col",
+          "required": true,
+          "help": ""
+        },
+        {
+          "key": "regimes",
+          "label": "Number of regimes",
+          "type": "num",
+          "default": 2,
+          "help": ""
+        },
+        {
+          "key": "lags",
+          "label": "Lags",
+          "type": "num",
+          "default": 1,
+          "help": ""
+        },
+        {
+          "key": "switching",
+          "label": "What switches",
+          "type": "select",
+          "options": [
+            [
+              "MSIH",
+              "MSIH: intercepts and covariances"
+            ],
+            [
+              "MSI",
+              "MSI: intercepts only"
+            ],
+            [
+              "MSIAH",
+              "MSIAH: intercepts, lags and covariances"
+            ]
+          ],
+          "default": "MSIH",
+          "help": ""
+        },
+        {
+          "key": "demean",
+          "label": "Remove unit means",
+          "type": "select",
+          "options": [
+            [
+              "yes",
+              "Yes"
+            ],
+            [
+              "no",
+              "No"
+            ]
+          ],
+          "default": "yes",
+          "help": ""
+        },
+        {
+          "key": "starts",
+          "label": "Starting values",
+          "type": "num",
+          "default": 6,
+          "help": ""
+        },
+        {
+          "key": "horizon",
+          "label": "IRF horizon",
+          "type": "num",
+          "default": 20,
+          "help": ""
+        }
+      ],
+      "example": {
+        "file": "panel-data-guide/examples/garrett.csv",
+        "spec": {
+          "vars": [
+            "gdp_growth",
+            "unem"
+          ],
+          "unit": "country",
+          "time": "year",
+          "lags": 1,
+          "switching": "MSIH"
+        }
+      },
+      "packages": [],
+      "slow": false
+    }
+  ]
+}
