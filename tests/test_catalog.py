@@ -18,7 +18,7 @@ def test_canonical_catalogue_has_unique_ids_and_expected_progress():
     data = json.loads(Path("catalog/models.json").read_text())
     ids = [model["id"] for model in data["models"]]
     assert len(ids) == len(set(ids))
-    assert len(ids) == 224
+    assert len(ids) == 1000
     assert sum(model.get("legacy_catalogue_id") is not None for model in data["models"]) == 44
-    assert sum(model["status"] == "planned" for model in data["models"]) == 180
+    assert sum(model["status"] == "planned" for model in data["models"]) == 949\n    assert sum(model["status"] == "implemented" for model in data["models"]) == 7
     assert all(model["status"] in {"planned", "implemented", "tested", "validated"} for model in data["models"])
