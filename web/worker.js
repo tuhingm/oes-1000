@@ -13,7 +13,8 @@ const NATIVE_FILES = [
   ["classical/linear.py","src/oes1000/classical/linear.py"],
   ["classical/discrete.py","src/oes1000/classical/discrete.py"],
   ["classical/glm_extra.py","src/oes1000/classical/glm_extra.py"],
-  ["classical/advanced_discrete.py","src/oes1000/classical/advanced_discrete.py"]
+  ["classical/advanced_discrete.py","src/oes1000/classical/advanced_discrete.py"],
+  ["classical/ordinal_censored.py","src/oes1000/classical/ordinal_censored.py"]
 ];
 let py=null, booting=null; const loaded=new Set();
 const say=text=>postMessage({type:"status",text});
