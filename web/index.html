@@ -414,7 +414,7 @@ $("native-model").addEventListener("change", () => {
   $("native-cov").parentElement.hidden = id !== "wls";
   $("native-quantile").parentElement.hidden = id !== "quantile_regression";
   $("native-tuning").parentElement.hidden = !["huber_regression","tukey_bisquare"].includes(id);
-  $("native-sigma-wrap").hidden = id !== "gls";\n  $("native-lower-wrap").hidden = id !== "tobit";\n  $("native-upper-wrap").hidden = id !== "tobit";
+  $("native-sigma-wrap").hidden = id !== "gls";\n  $("native-lower-wrap").hidden = id !== "tobit";\n  $("native-upper-wrap").hidden = id !== "tobit";\n  $("native-constant").disabled = ["ordered_logit","ordered_probit"].includes(id);\n  if (["ordered_logit","ordered_probit"].includes(id)) $("native-constant").checked=false;
   $("native-tuning").value = id === "tukey_bisquare" ? "4.685" : "1.345";
 });
 $("native-model").dispatchEvent(new Event("change"));
@@ -426,7 +426,7 @@ $("native-run").addEventListener("click", async () => {
   if (!dependent) { $("native-error").hidden=false; $("native-error").textContent="Choose a dependent variable."; return; }
   if (!regressors.length) { $("native-error").hidden=false; $("native-error").textContent="Choose at least one explanatory variable."; return; }
   if (regressors.includes(dependent)) { $("native-error").hidden=false; $("native-error").textContent="The dependent variable cannot also be an explanatory variable."; return; }
-  const spec = {dependent,regressors,add_constant:$("native-constant").checked};
+  const spec = {dependent,regressors,add_constant:$("native-constant").checked};\n  if (["ordered_logit","ordered_probit"].includes(model)) spec.add_constant=false;
   if (model === "wls") { spec.weights=$("native-weights").value; spec.cov_type=$("native-cov").value; if(!spec.weights){$("native-error").hidden=false;$("native-error").textContent="Choose a positive weights column.";return;} }
   if (model === "quantile_regression") spec.quantile=+$("native-quantile").value;
   if (["huber_regression","tukey_bisquare"].includes(model)) spec.tuning=+$("native-tuning").value;
