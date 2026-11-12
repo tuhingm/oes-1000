@@ -887,8 +887,8 @@
       "name": "Weighted least squares",
       "family": "classical_glm",
       "subfamily": "weighted_regression",
-      "status": "planned",
-      "implementation": null,
+      "status": "implemented",
+      "implementation": "oes1000.classical.linear:estimate_wls",
       "options": {},
       "outputs": [
         "params",
@@ -900,15 +900,15 @@
         "residuals",
         "model_diagnostics"
       ],
-      "notes": "Distinct estimator specification. Full mathematical specification, inference, diagnostics, robustness workflow, browser implementation, and numerical tests are scheduled under the OES-1000 implementation contract."
+      "notes": "Estimator implementation added using NumPy/SciPy. Numerical tests and browser-worker integration are pending; do not treat as tested or validated."
     },
     {
       "id": "gls",
       "name": "Generalized least squares",
       "family": "classical_glm",
       "subfamily": "generalized_regression",
-      "status": "planned",
-      "implementation": null,
+      "status": "implemented",
+      "implementation": "oes1000.classical.linear:estimate_gls",
       "options": {},
       "outputs": [
         "params",
@@ -920,15 +920,15 @@
         "residuals",
         "model_diagnostics"
       ],
-      "notes": "Distinct estimator specification. Full mathematical specification, inference, diagnostics, robustness workflow, browser implementation, and numerical tests are scheduled under the OES-1000 implementation contract."
+      "notes": "Estimator implementation added using NumPy/SciPy. Numerical tests and browser-worker integration are pending; do not treat as tested or validated."
     },
     {
       "id": "fgls",
       "name": "Feasible generalized least squares",
       "family": "classical_glm",
       "subfamily": "generalized_regression",
-      "status": "planned",
-      "implementation": null,
+      "status": "implemented",
+      "implementation": "oes1000.classical.linear:estimate_fgls",
       "options": {},
       "outputs": [
         "params",
@@ -940,15 +940,15 @@
         "residuals",
         "model_diagnostics"
       ],
-      "notes": "Distinct estimator specification. Full mathematical specification, inference, diagnostics, robustness workflow, browser implementation, and numerical tests are scheduled under the OES-1000 implementation contract."
+      "notes": "Estimator implementation added using NumPy/SciPy. Numerical tests and browser-worker integration are pending; do not treat as tested or validated."
     },
     {
       "id": "quantile_regression",
       "name": "Quantile regression",
       "family": "classical_glm",
       "subfamily": "quantile_models",
-      "status": "planned",
-      "implementation": null,
+      "status": "implemented",
+      "implementation": "oes1000.classical.linear:estimate_quantile_regression",
       "options": {},
       "outputs": [
         "params",
@@ -960,15 +960,15 @@
         "residuals",
         "model_diagnostics"
       ],
-      "notes": "Distinct estimator specification. Full mathematical specification, inference, diagnostics, robustness workflow, browser implementation, and numerical tests are scheduled under the OES-1000 implementation contract."
+      "notes": "Estimator implementation added using NumPy/SciPy. Numerical tests and browser-worker integration are pending; do not treat as tested or validated."
     },
     {
       "id": "lad",
       "name": "Least absolute deviations regression",
       "family": "classical_glm",
       "subfamily": "robust_regression",
-      "status": "planned",
-      "implementation": null,
+      "status": "implemented",
+      "implementation": "oes1000.classical.linear:estimate_lad",
       "options": {},
       "outputs": [
         "params",
@@ -980,15 +980,15 @@
         "residuals",
         "model_diagnostics"
       ],
-      "notes": "Distinct estimator specification. Full mathematical specification, inference, diagnostics, robustness workflow, browser implementation, and numerical tests are scheduled under the OES-1000 implementation contract."
+      "notes": "Estimator implementation added using NumPy/SciPy. Numerical tests and browser-worker integration are pending; do not treat as tested or validated."
     },
     {
       "id": "huber_regression",
       "name": "Huber M-estimator regression",
       "family": "classical_glm",
       "subfamily": "robust_regression",
-      "status": "planned",
-      "implementation": null,
+      "status": "implemented",
+      "implementation": "oes1000.classical.linear:estimate_huber_regression",
       "options": {},
       "outputs": [
         "params",
@@ -1000,15 +1000,15 @@
         "residuals",
         "model_diagnostics"
       ],
-      "notes": "Distinct estimator specification. Full mathematical specification, inference, diagnostics, robustness workflow, browser implementation, and numerical tests are scheduled under the OES-1000 implementation contract."
+      "notes": "Estimator implementation added using NumPy/SciPy. Numerical tests and browser-worker integration are pending; do not treat as tested or validated."
     },
     {
       "id": "tukey_bisquare",
       "name": "Tukey bisquare robust regression",
       "family": "classical_glm",
       "subfamily": "robust_regression",
-      "status": "planned",
-      "implementation": null,
+      "status": "implemented",
+      "implementation": "oes1000.classical.linear:estimate_tukey_bisquare",
       "options": {},
       "outputs": [
         "params",
@@ -1020,7 +1020,7 @@
         "residuals",
         "model_diagnostics"
       ],
-      "notes": "Distinct estimator specification. Full mathematical specification, inference, diagnostics, robustness workflow, browser implementation, and numerical tests are scheduled under the OES-1000 implementation contract."
+      "notes": "Estimator implementation added using NumPy/SciPy. Numerical tests and browser-worker integration are pending; do not treat as tested or validated."
     },
     {
       "id": "logit",
