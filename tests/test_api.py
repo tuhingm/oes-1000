@@ -26,3 +26,11 @@ def test_gls_does_not_infer_covariance_matrix():
     frame = pd.DataFrame({"y":[1,2,3,4],"x":[1,2,3,4]})
     with pytest.raises(ValueError,match="explicit"):
         estimate_frame(frame,"gls",{"dependent":"y","regressors":["x"]})
+
+
+def test_csv_adapter_converts_nonfinite_nested_arrays_to_json_null():
+    raw = estimate_csv("y,x\n1,0\n3,1\n5,2\n7,3\n9,4\n", "ols",
+                       json.dumps({"dependent":"y","regressors":["x"]}))
+    out = json.loads(raw)
+    assert out["params"] == pytest.approx([1,2])
+    assert all(v is None or isinstance(v, (int,float)) for v in out["p_values"])
