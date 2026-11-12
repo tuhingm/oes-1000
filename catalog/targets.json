@@ -85,7 +85,10 @@
     "quasi_poisson",
     "geometric_regression",
     "negative_binomial_nb1",
-    "zero_inflated_poisson"
+    "zero_inflated_poisson",
+    "beta_regression",
+    "multinomial_logit",
+    "hurdle_poisson"
   ],
   "validated_models": [
     "ols",
