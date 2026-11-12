@@ -55,23 +55,25 @@ def _binary(y,X,link):
             ll=np.sum(y*np.log(p)+(1-y)*np.log1p(-p))
             score=X.T@(y-p); hess=-(X.T@((p*(1-p))[:,None]*X))
         elif link=="probit":
+            # Exact probit score and expected Fisher information.
             lp=log_ndtr(eta); lq=log_ndtr(-eta)
-            p=np.clip(ndtr(eta),1e-12,1-1e-12)
+            p=np.clip(ndtr(eta),1e-12,1-1e-12); q=1-p
             dens=np.exp(-0.5*eta**2-0.5*np.log(2*np.pi))
             ll=np.sum(y*lp+(1-y)*lq)
-            ratio=dens/np.maximum(p*(1-p),1e-12)
-            score=X.T@(dens*(y-p)/np.maximum(p*(1-p),1e-12))
-            w=ratio*(ratio*eta + (2*p-1)*dens/np.maximum(p*(1-p),1e-12))
-            hess=-(X.T@(np.maximum(w,1e-10)[:,None]*X))
+            score_eta=dens*(y/p-(1-y)/q)
+            information_eta=(dens**2)/(p*q)
+            score=X.T@score_eta
+            hess=-(X.T@(np.maximum(information_eta,1e-12)[:,None]*X))
         else:
-            # Complementary log-log: p = 1 - exp(-exp(eta)).
-            z=np.exp(np.clip(eta,-30,30)); q=np.exp(-z); p=np.clip(1-q,1e-12,1-1e-12)
+            # Complementary log-log: p=1-exp(-z), z=exp(eta).
+            # Bernoulli expected information: (dp/deta)^2/[p(1-p)] = z^2 exp(-z)/p.
+            z=np.exp(np.clip(eta,-30,30)); q=np.exp(-z)
+            p=np.clip(-np.expm1(-z),1e-12,1-1e-12)
             ll=np.sum(y*np.log(p)+(1-y)*(-z))
-            dlogp=z*q/np.maximum(p,1e-12)
+            dlogp=z*q/p
             score=X.T@(y*dlogp-(1-y)*z)
-            # Expected information for Bernoulli observations.
-            w=np.maximum((z*q/np.maximum(p,1e-12))**2*p*(1-p),1e-10)
-            hess=-(X.T@(w[:,None]*X))
+            information_eta=(z*z*q)/p
+            hess=-(X.T@(np.maximum(information_eta,1e-12)[:,None]*X))
         return float(ll),score,hess
     def loglike(b): return terms(b)[0]
     def sh(b):
