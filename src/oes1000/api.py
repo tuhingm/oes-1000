@@ -10,7 +10,7 @@ from oes1000.registry import get_estimator
 def _jsonable(value: Any):
     if isinstance(value, dict): return {str(k): _jsonable(v) for k, v in value.items()}
     if isinstance(value, (list, tuple)): return [_jsonable(v) for v in value]
-    if isinstance(value, np.ndarray): return value.tolist()
+    if isinstance(value, np.ndarray): return _jsonable(value.tolist())
     if isinstance(value, np.integer): return int(value)
     if isinstance(value, np.floating): return float(value) if np.isfinite(value) else None
     if isinstance(value, np.bool_): return bool(value)
