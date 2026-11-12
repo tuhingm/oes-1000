@@ -31,11 +31,11 @@ EXPECTED_NATIVE = {
     "ordered_logit",
     "ordered_probit",
     "tobit",
-    "truncated_regression",
+    "truncated_regression",\n    "glm_binomial_logit_penalized",\n    "glm_binomial_probit_penalized",
 }
 
 
-def test_all_twenty_six_native_estimators_are_registered():
+def test_all_twenty_eight_native_estimators_are_registered():
     registered = set(list_estimators())
     assert EXPECTED_NATIVE <= registered
 
@@ -53,7 +53,7 @@ def test_browser_worker_loads_all_native_python_modules():
         "src/oes1000/classical/glm_extra.py",
         "src/oes1000/classical/advanced_discrete.py",
         "src/oes1000/classical/ordinal_censored.py",
-        "src/oes1000/classical/truncated.py",
+        "src/oes1000/classical/truncated.py",\n        "src/oes1000/classical/penalized.py",
     ]
     for path in required_paths:
         assert path in worker
