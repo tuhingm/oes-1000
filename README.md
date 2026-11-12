@@ -2,7 +2,7 @@
 
 **A browser-native econometrics and statistical estimation library.**
 
-OES-1000 is an independent, free estimation library targeting 1,000 genuinely distinct econometric and statistical models. Its primary methodological blueprint is the existing research website's Time-Series, Panel-Data, Causal-Inference, DSGE, and Machine-Learning guides. The full mapping and required workflow standard are documented in [the methodology blueprint](docs/methodology-blueprint.md).
+OES-1000 is an independent, free estimation library targeting 1,000 genuinely distinct econometric and statistical models. Its primary methodological blueprint is the existing research website's Time-Series, Panel-Data, Causal-Inference, and Machine-Learning guides. The full mapping and required workflow standard are documented in [the methodology blueprint](docs/methodology-blueprint.md).
 
 ## Execution contract
 
@@ -19,7 +19,6 @@ OES-1000 is an independent, free estimation library targeting 1,000 genuinely di
 - [Time-Series guide](https://tuhingm.github.io/almamun/research-guide/)
 - [Panel-Data guide](https://tuhingm.github.io/almamun/panel-data-guide/)
 - [Causal-Inference guide](https://tuhingm.github.io/almamun/causal-inference-guide/)
-- [DSGE guide](https://tuhingm.github.io/almamun/dsge-guide/)
 - [Machine-Learning guide](https://tuhingm.github.io/almamun/ml-guide/)
 - [Existing browser OES](https://tuhingm.github.io/almamun/oes/)
 
