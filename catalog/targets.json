@@ -91,7 +91,8 @@
     "hurdle_poisson",
     "ordered_logit",
     "ordered_probit",
-    "tobit"
+    "tobit",
+    "truncated_regression"
   ],
   "validated_models": [
     "ols",
