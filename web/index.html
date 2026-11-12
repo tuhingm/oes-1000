@@ -1,63 +1,140 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>OES-1000 | Open Econometric Systems</title>
 <style>
-:root{color-scheme:dark;--bg:#0b1020;--panel:#131c31;--line:#263650;--muted:#9aabc2;--text:#edf3fb;--accent:#7dd3fc}
+:root{color-scheme:dark;--bg:#0b1020;--panel:#131c31;--line:#263650;--muted:#9aabc2;--text:#edf3fb;--accent:#7dd3fc;--good:#86efac;--warn:#fbbf24}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.55 Inter,system-ui,sans-serif}
-header{padding:34px max(22px,calc((100vw - 1120px)/2));border-bottom:1px solid var(--line);background:#0e1729}
+header{padding:32px max(22px,calc((100vw - 1180px)/2));border-bottom:1px solid var(--line);background:#0e1729}
 .kicker{color:var(--accent);font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:700}
-h1{font-size:clamp(30px,5vw,48px);line-height:1.05;margin:10px 0}
-header p{max-width:720px;color:var(--muted);margin:0}
-main{max-width:1120px;margin:28px auto;padding:0 20px;display:grid;grid-template-columns:1fr 320px;gap:18px}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px}
-h2{font-size:18px;margin:0 0 14px}.sub{color:var(--muted);font-size:13px}
-label{display:block;font-size:13px;color:var(--muted);margin:16px 0 6px}
-input,select,button{font:inherit;border-radius:8px;border:1px solid var(--line);padding:10px;background:#0b1426;color:var(--text);width:100%}
+h1{font-size:clamp(30px,5vw,46px);line-height:1.05;margin:10px 0}
+header p{max-width:820px;color:var(--muted);margin:0}
+main{max-width:1180px;margin:26px auto;padding:0 20px;display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:18px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px;min-width:0}
+h2{font-size:18px;margin:0 0 12px}.sub,.hint{color:var(--muted);font-size:13px}
+label{display:block;font-size:13px;color:var(--muted);margin:15px 0 6px}
+input,select,textarea,button{font:inherit;border-radius:8px;border:1px solid var(--line);padding:10px;background:#0b1426;color:var(--text);width:100%}
+select[multiple]{min-height:92px}textarea{min-height:88px;resize:vertical}
 button{background:#164e63;border-color:#0e7490;font-weight:700;cursor:pointer;margin-top:14px}
-button:disabled{opacity:.5;cursor:wait}
-pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#0a1221;padding:14px;border-radius:8px;min-height:70px}
-.stat{padding:12px 0;border-bottom:1px solid var(--line)}.stat strong{display:block;font-size:22px}
-footer{max-width:1120px;margin:20px auto;padding:0 20px 36px;color:var(--muted);font-size:12px}
-@media(max-width:780px){main{grid-template-columns:1fr}}
-</style>
-</head>
+button:disabled{opacity:.45;cursor:not-allowed}
+.field-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 14px}
+.field{min-width:0}.field small{display:block;color:var(--muted);font-size:11px;margin-top:4px}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#0a1221;padding:14px;border-radius:8px;min-height:110px;max-height:620px;overflow:auto;font-size:12px}
+.stat{padding:12px 0;border-bottom:1px solid var(--line)}.stat strong{display:block;font-size:21px}
+.status{margin:12px 0;padding:10px 12px;border-radius:8px;background:#0a1221;color:var(--muted);font-size:13px}
+.status.good{color:var(--good)}.status.warn{color:var(--warn)}
+footer{max-width:1180px;margin:20px auto;padding:0 20px 36px;color:var(--muted);font-size:12px}
+@media(max-width:820px){main{grid-template-columns:1fr}.field-grid{grid-template-columns:1fr}}
+</style></head>
 <body>
-<header><div class="kicker">Open Econometric Systems · 1000</div><h1>Econometric estimation,<br>executed in your browser.</h1><p>Python estimators running through Pyodide and Web Workers. Your dataset is processed locally; no estimation API or server-side data upload is used.</p></header>
+<header><div class="kicker">Open Econometric Systems · OES-1000</div>
+<h1>Econometric estimation,<br>executed in your browser.</h1>
+<p>Select an estimator from the legacy OES engine, upload a CSV, configure the estimator-specific inputs, and run the calculation locally through Pyodide in a Web Worker. Dataset contents are not sent to an estimation server.</p></header>
 <main>
 <section class="card">
-<h2>OLS estimation</h2><div class="sub">Initial executable model · Ordinary least squares with HC0–HC3 or conventional covariance.</div>
-<label>Upload numeric CSV</label><input id="file" type="file" accept=".csv,text/csv">
-<label>Dependent variable</label><select id="y"></select>
-<label>Regressors</label><select id="x" multiple size="5"></select>
-<label>Covariance estimator</label><select id="cov"><option>HC1</option><option>HC0</option><option>HC2</option><option>HC3</option><option>NONROBUST</option></select>
-<button id="run" disabled>Load a CSV to estimate</button>
-<h2 style="margin-top:24px">Estimation output</h2><pre id="output">Upload a CSV with a header row and numeric columns.</pre>
+<h2>Estimation workspace</h2>
+<div class="sub">Legacy OES estimator interface · Python / NumPy / SciPy / pandas / statsmodels / scikit-learn.</div>
+<div id="runtime" class="status">Loading browser runtime and estimator catalogue…</div>
+<label for="file">Dataset (CSV)</label><input id="file" type="file" accept=".csv,text/csv">
+<div class="hint" id="datasetHint">Upload a CSV with a header row. Date and entity identifiers may be text; estimator inputs determine which columns are numeric.</div>
+<label for="model">Estimator</label><select id="model" disabled><option>Loading catalogue…</option></select>
+<div id="modelDescription" class="hint"></div>
+<div id="fields" class="field-grid"></div>
+<label for="advanced">Advanced specification (optional JSON)</label>
+<textarea id="advanced" spellcheck="false" placeholder='{"ops":[{"op":"lag","vars":["x"],"lags":[1,2],"time":"date"}]}'></textarea>
+<div class="hint">Use this for data operations such as lag, difference, log, growth, demean, or sample restrictions supported by the selected legacy model.</div>
+<button id="run" disabled>Upload a CSV to begin</button>
+<h2 style="margin-top:26px">Estimation output</h2><pre id="output">The estimator catalogue will appear after the local Python runtime initializes.</pre>
 </section>
 <aside class="card">
-<h2>Library status</h2>
-<div class="stat"><strong>1 / 1,000</strong><span class="sub">Implemented estimator in this initial build</span></div>
-<div class="stat"><strong>Pyodide</strong><span class="sub">Python in WebAssembly</span></div>
-<div class="stat"><strong>Local</strong><span class="sub">Browser-side computation</span></div>
-<div class="stat"><strong>No API</strong><span class="sub">No estimation server or dataset upload</span></div>
-<p class="sub">The 1,000-model catalogue is a development target. Models will be marked implemented, tested and validated only after their numerical routines and benchmarks pass.</p>
+<h2>Runtime</h2>
+<div class="stat"><strong id="count">—</strong><span class="sub">Legacy estimator specifications discovered</span></div>
+<div class="stat"><strong>Pyodide 0.27.2</strong><span class="sub">Python compiled to WebAssembly</span></div>
+<div class="stat"><strong>Web Worker</strong><span class="sub">Estimation runs off the main UI thread</span></div>
+<div class="stat"><strong>Local execution</strong><span class="sub">No estimation API or dataset upload endpoint</span></div>
+<div class="status warn">XGBoost (xgb) requires a native compiled dependency not included in the standard Pyodide package set. Other catalogue models load through the browser runtime; unavailable dependencies will be reported by the selected estimator.</div>
+<p class="sub">This interface exposes the 44 existing OES model definitions and their original input specifications. New OES-1000 catalogue entries are not represented as executable until implemented.</p>
 </aside>
 </main>
-<footer>OES-1000 · Open-source development · Static assets are fetched by the browser; estimation runs locally in a dedicated Web Worker.</footer>
+<footer>OES-1000 · Static assets are downloaded by the browser. Uploaded CSV data and estimation calculations remain in the browser session.</footer>
 <script>
-const fileInput=document.querySelector("#file"), ySelect=document.querySelector("#y"), xSelect=document.querySelector("#x"), runButton=document.querySelector("#run"), output=document.querySelector("#output");
-let rows=[], headers=[], worker=null, requestId=0, ready=false;
-function parseCSV(text){
- const lines=text.trim().split(/\r?\n/); if(lines.length<3)throw Error("CSV needs a header and at least two observations.");
- const parseLine=line=>{const a=[];let s="",q=false;for(let i=0;i<line.length;i++){const c=line[i];if(c==='"'&&line[i+1]==='"'&&q){s+='"';i++;}else if(c==='"')q=!q;else if(c===','&&!q){a.push(s);s="";}else s+=c;}a.push(s);return a;};
- const h=parseLine(lines[0]).map(v=>v.trim());const data=lines.slice(1).filter(v=>v.trim()).map(parseLine);
- if(data.some(r=>r.length!==h.length))throw Error("Inconsistent CSV row width.");
- return {headers:h,columns:h.map((_,j)=>data.map(r=>Number(r[j])))};
+const $=s=>document.querySelector(s);
+const fileInput=$("#file"),modelSelect=$("#model"),fieldsBox=$("#fields"),runButton=$("#run"),output=$("#output"),runtime=$("#runtime");
+let csvText="",headers=[],catalog=[],selectedModel=null,worker=null,seq=0,pending=new Map(),ready=false;
+function request(action,payload={}){return new Promise((resolve,reject)=>{const id=++seq;pending.set(id,{resolve,reject});worker.postMessage({id,action,payload});});}
+function startWorker(){
+ if(worker)return;
+ worker=new Worker("../runtime/worker.js");
+ worker.onmessage=e=>{const m=e.data||{},p=pending.get(m.id);if(!p)return;pending.delete(m.id);m.ok?p.resolve(m.result):p.reject(new Error(m.error||"Worker error"));};
+ worker.onerror=e=>{runtime.textContent="Worker error: "+e.message;runtime.className="status warn";};
 }
-function setOptions(select, names){select.innerHTML="";names.forEach((name,i)=>{const o=document.createElement("option");o.value=String(i);o.textContent=name;select.append(o);});}
-fileInput.addEventListener("change",async e=>{try{const text=await e.target.files[0].text();const parsed=parseCSV(text);headers=parsed.headers;rows=parsed.columns;if(rows.some(c=>c.some(v=>!Number.isFinite(v))))throw Error("All columns must be numeric in this initial build.");setOptions(ySelect,headers);setOptions(xSelect,headers);if(xSelect.options.length>1)xSelect.options[1].selected=true;runButton.disabled=false;runButton.textContent="Estimate OLS";output.textContent="CSV loaded: "+rows[0].length+" observations, "+headers.length+" variables.";}catch(err){output.textContent=err.message;}});
-runButton.addEventListener("click",async()=>{const yi=Number(ySelect.value), xi=[...xSelect.selectedOptions].map(o=>Number(o.value));if(!xi.length||xi.includes(yi)){output.textContent="Select one or more regressors, excluding the dependent variable.";return;}runButton.disabled=true;output.textContent="Starting Pyodide and estimating…";try{if(!worker){worker=new Worker("../runtime/worker.js");worker.onmessage=e=>{const m=e.data;if(m.id!==requestId)return;runButton.disabled=false;if(!m.ok){output.textContent="Estimation error: "+m.error;return;}output.textContent=JSON.stringify(m.result,null,2);};}requestId++;worker.postMessage({id:requestId,action:"estimate",payload:{y:rows[yi],X:rows[0].map((_,i)=>xi.map(j=>rows[j][i])),cov_type:document.querySelector("#cov").value}});}catch(err){runButton.disabled=false;output.textContent=err.message;}});
-</script>
-</body></html>
+function parseHeader(text){
+ const first=(text.split(/\r?\n/,1)[0]||"");const out=[];let v="",q=false;
+ for(let i=0;i<first.length;i++){const c=first[i];if(c==='"'&&first[i+1]==='"'&&q){v+='"';i++;}else if(c==='"')q=!q;else if(c===","&&!q){out.push(v.trim());v="";}else v+=c;}out.push(v.trim());
+ return out;
+}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+function currentSpec(){
+ const spec={};
+ for(const f of selectedModel.fields||[]){
+  const el=document.getElementById("f_"+f.key);if(!el)continue;
+  let value;
+  if(f.type==="cols")value=[...el.selectedOptions].map(o=>o.value);
+  else value=el.value;
+  if(f.type==="num"){if(value!=="")spec[f.key]=Number(value);else if(f.default!==undefined&&f.default!=="")spec[f.key]=Number(f.default);}
+  else if(f.type==="cols"){if(value.length)spec[f.key]=value;}
+  else if(value!=="")spec[f.key]=value;
+ }
+ const extra=$("#advanced").value.trim();
+ if(extra){const parsed=JSON.parse(extra);Object.assign(spec,parsed);}
+ return spec;
+}
+function renderFields(){
+ selectedModel=catalog.find(m=>m.id===modelSelect.value);fieldsBox.innerHTML="";
+ if(!selectedModel)return;
+ $("#modelDescription").textContent=selectedModel.name+" · "+selectedModel.group+(selectedModel.guide?" · Guide: "+selectedModel.guide:"");
+ for(const f of selectedModel.fields||[]){
+  const wrap=document.createElement("div");wrap.className="field";
+  const label=document.createElement("label");label.htmlFor="f_"+f.key;label.textContent=f.label+(f.required===false?" (optional)":"");wrap.append(label);
+  let el;
+  if(f.type==="col"||f.type==="cols"){
+   el=document.createElement("select");if(f.type==="cols"){el.multiple=true;el.size=Math.min(5,Math.max(3,headers.length));}
+   if(f.type==="col"&&f.required===false){const op=document.createElement("option");op.value="";op.textContent="— none —";el.append(op);}
+   headers.forEach(h=>{const op=document.createElement("option");op.value=h;op.textContent=h;el.append(op);});
+  }else if(f.type==="select"){
+   el=document.createElement("select");(f.options||[]).forEach(o=>{const op=document.createElement("option");op.value=o[0];op.textContent=o[1];el.append(op);});
+   if(f.default!==undefined)el.value=String(f.default);
+  }else{
+   el=document.createElement("input");el.type="number";el.step="any";if(f.default!==undefined&&f.default!=="")el.value=f.default;
+  }
+  el.id="f_"+f.key;wrap.append(el);if(f.help){const sm=document.createElement("small");sm.textContent=f.help;wrap.append(sm);}fieldsBox.append(wrap);
+ }
+}
+function renderCatalog(){
+ modelSelect.innerHTML="";
+ const groups=[...new Set(catalog.map(m=>m.group))];
+ groups.forEach(group=>{const og=document.createElement("optgroup");og.label=group;catalog.filter(m=>m.group===group).forEach(m=>{const op=document.createElement("option");op.value=m.id;op.textContent=m.name+" ("+m.id+")";og.append(op);});modelSelect.append(og);});
+ modelSelect.disabled=false;$("#count").textContent=catalog.length+" / 44";
+ modelSelect.addEventListener("change",renderFields);renderFields();
+}
+fileInput.addEventListener("change",async e=>{
+ try{const f=e.target.files[0];if(!f)return;csvText=await f.text();headers=parseHeader(csvText);if(headers.length<2)throw Error("CSV must contain at least two columns.");
+ $("#datasetHint").textContent="Loaded "+f.name+" · "+headers.length+" columns · "+Math.max(0,csvText.trim().split(/\r?\n/).length-1)+" data rows.";
+ renderFields();runButton.disabled=!ready;runButton.textContent="Run selected estimator";output.textContent="Dataset loaded. Configure the estimator inputs and run.";
+ }catch(err){output.textContent=err.message;}
+});
+$("#run").addEventListener("click",async()=>{
+ if(!csvText||!selectedModel)return;
+ if(selectedModel.id==="xgb"){output.textContent="XGBoost cannot run in this Pyodide build because its native compiled runtime is unavailable. The xgb estimator remains listed but is not browser-executable here.";return;}
+ let spec;try{spec=currentSpec();}catch(err){output.textContent="Invalid advanced JSON: "+err.message;return;}
+ runButton.disabled=true;output.textContent="Estimating "+selectedModel.name+" locally…";
+ try{const result=await request("estimate",{model_id:selectedModel.id,csv_text:csvText,spec});output.textContent=JSON.stringify(result,null,2);}
+ catch(err){output.textContent="Estimation error: "+err.message;}
+ finally{runButton.disabled=false;}
+});
+(async()=>{
+ try{startWorker();await request("ping");const data=await request("catalog");catalog=data;renderCatalog();ready=true;runtime.textContent="Browser Python runtime initialized. "+catalog.length+" legacy model specifications loaded.";runtime.className="status good";runButton.disabled=!csvText;runButton.textContent=csvText?"Run selected estimator":"Upload a CSV to begin";output.textContent="Runtime ready. Upload a CSV and choose one of the legacy estimators.";
+ }catch(err){runtime.textContent="Runtime initialization failed: "+err.message;runtime.className="status warn";output.textContent="Could not initialize the local estimator runtime. "+err.message;}
+})();
+</script></body></html>
