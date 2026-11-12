@@ -7,7 +7,6 @@ The primary methodological blueprint is the owner's existing research website:
 - Time-series guide: https://tuhingm.github.io/almamun/research-guide/
 - Panel-data guide: https://tuhingm.github.io/almamun/panel-data-guide/
 - Causal-inference guide: https://tuhingm.github.io/almamun/causal-inference-guide/
-- DSGE guide: https://tuhingm.github.io/almamun/dsge-guide/
 - Machine-learning guide: https://tuhingm.github.io/almamun/ml-guide/
 - Existing browser OES: https://tuhingm.github.io/almamun/oes/
 
@@ -61,22 +60,6 @@ Guide pages currently present:
 - Staggered treatment adoption: `causal-inference-guide/staggered.html`
 
 Required workflow coverage includes treatment/control and timing definitions; identifying assumptions; estimator and estimand definitions; pre-treatment fit/trend assessment; placebo and falsification exercises; sensitivity to bandwidth, donor pool, comparison group, covariate set, and event window; inference appropriate to the design; graphical event-study or counterfactual outputs; explicit interpretation of the identifying variation.
-
-### DSGE and structural macroeconomic models
-
-Guide pages currently present:
-- Model overview: `dsge-guide/index.html`
-- RBC: `dsge-guide/rbc.html`
-- New Keynesian: `dsge-guide/nk.html`
-- Small open economy: `dsge-guide/soe.html`
-- Zero lower bound: `dsge-guide/zlb.html`
-- Medium-scale models: `dsge-guide/medium.html`
-- Higher-order solution: `dsge-guide/higher.html`
-- Optimal policy: `dsge-guide/optimal.html`
-- Bayesian estimation: `dsge-guide/estimation.html`
-- Identification: `dsge-guide/identification.html`
-
-Required workflow coverage includes equilibrium conditions and calibration; steady-state solution; log-linear or nonlinear solution; determinacy and solution diagnostics; perturbation order; likelihood construction and filtering; Bayesian priors, posterior sampling and convergence; parameter/data identification; impulse responses and variance decompositions; policy-rule and shock-process sensitivity; alternative priors and model specifications. DSGE workflows are a distinct family and must not be hidden inside generic state-space or Bayesian labels.
 
 ### Machine learning and statistical learning
 
