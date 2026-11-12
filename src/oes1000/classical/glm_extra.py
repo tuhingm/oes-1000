@@ -129,7 +129,7 @@ def estimate_inverse_gaussian_glm(y, X, *, add_constant=True, max_iter=3000):
     mu = np.exp(np.clip(X @ beta, -30, 30))
     pearson = (y-mu)/(mu**1.5)
     dispersion = float(pearson @ pearson/(y.size-X.shape[1]))
-    covariance = dispersion*np.linalg.pinv(X.T @ (X*(1/mu)[:, None]*X)) if False else dispersion*np.linalg.pinv(X.T @ (X*(1/mu)[:, None]))
+    covariance = dispersion*np.linalg.pinv(X.T @ (X*(1/mu)[:, None]))
     return _finish("inverse_gaussian_glm", y, X, beta, covariance, mu,
                    extra={"dispersion": dispersion, "iterations": iteration,
                           "converged": converged, "link": "log", "variance": "mu^3"})
@@ -157,7 +157,7 @@ def estimate_quasi_poisson(y, X, *, add_constant=True, max_iter=3000):
     dispersion = float(np.sum((y-mu)**2/mu)/(y.size-X.shape[1]))
     bread = np.linalg.pinv(X.T @ (X*mu[:, None]))
     scores = X*(y-mu)[:, None]
-    covariance = dispersion*bread if False else bread@(scores.T@scores)@bread
+    covariance = bread@(scores.T@scores)@bread
     return _finish("quasi_poisson", y, X, beta, covariance, mu,
                    extra={"dispersion": dispersion, "iterations": iteration,
                           "converged": converged, "cov_type": "HC0"})
