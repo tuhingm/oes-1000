@@ -25,10 +25,13 @@ EXPECTED_NATIVE = {
     "geometric_regression",
     "negative_binomial_nb1",
     "zero_inflated_poisson",
+    "beta_regression",
+    "multinomial_logit",
+    "hurdle_poisson",
 }
 
 
-def test_all_nineteen_native_estimators_are_registered():
+def test_all_twenty_two_native_estimators_are_registered():
     registered = set(list_estimators())
     assert EXPECTED_NATIVE <= registered
 
@@ -44,6 +47,7 @@ def test_browser_worker_loads_all_native_python_modules():
         "src/oes1000/classical/linear.py",
         "src/oes1000/classical/discrete.py",
         "src/oes1000/classical/glm_extra.py",
+        "src/oes1000/classical/advanced_discrete.py",
     ]
     for path in required_paths:
         assert path in worker
