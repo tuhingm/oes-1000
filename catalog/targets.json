@@ -1,0 +1,19 @@
+{
+  "catalogue_target": 1000,
+  "status_policy": ["planned", "implemented", "tested", "validated"],
+  "families": [
+    {"id":"classical_glm","label":"Classical regression and GLM","target":100},
+    {"id":"time_series","label":"Time-series econometrics","target":150},
+    {"id":"panel","label":"Panel-data econometrics","target":150},
+    {"id":"causal","label":"Causal inference and treatment effects","target":100},
+    {"id":"bayesian","label":"Bayesian econometrics and statistics","target":120},
+    {"id":"statespace","label":"State-space, filtering and forecasting","target":80},
+    {"id":"volatility","label":"Volatility and financial econometrics","target":60},
+    {"id":"machine_learning","label":"Machine learning and statistical learning","target":100},
+    {"id":"survival","label":"Survival, duration and event-history models","target":40},
+    {"id":"multivariate","label":"Multivariate statistics and dimension reduction","target":50},
+    {"id":"nonlinear","label":"Nonlinear, threshold and regime-switching models","target":50}
+  ],
+  "counting_rule": "Count a model only when it has a distinct statistical specification or estimator. Options such as lag order, covariance type, deterministic terms, or hyperparameters do not create additional models.",
+  "implemented_models": ["ols"]
+}
