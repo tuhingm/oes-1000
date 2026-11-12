@@ -1,20 +1,1486 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "catalogue_target": 1000,
   "models": [
     {
       "id": "ols",
-      "name": "Ordinary least squares",
-      "family": "classical_glm",
-      "subfamily": "linear_regression",
-      "status": "tested",
+      "name": "Ordinary least squares with diagnostics",
+      "family": "time_series",
+      "subfamily": "time_series",
+      "status": "validated",
       "implementation": "oes1000.classical.ols:estimate_ols",
-      "options": {
-        "add_constant": {"type": "boolean", "default": true},
-        "cov_type": {"type": "enum", "values": ["NONROBUST", "HC0", "HC1", "HC2", "HC3"], "default": "HC1"}
-      },
-      "outputs": ["params", "covariance", "std_errors", "t_statistics", "p_values", "residuals", "fitted", "r_squared", "adjusted_r_squared"],
-      "notes": "OLS with full-rank design validation and conventional or heteroskedasticity-consistent covariance."
+      "legacy_catalogue_id": "ols",
+      "guide": "research-guide/ols.html",
+      "options": {},
+      "outputs": [
+        "estimates",
+        "standard_errors",
+        "test_statistics",
+        "p_values",
+        "diagnostics",
+        "model_summary"
+      ],
+      "notes": "Migrated from the accepted OES legacy catalogue. Retain the established estimator definition and input workflow."
+    },
+    {
+      "id": "ardl",
+      "name": "ARDL bounds test",
+      "family": "time_series",
+      "subfamily": "time_series",
+      "status": "validated",
+      "implementation": null,
+      "legacy_catalogue_id": "ardl",
+      "guide": "research-guide/ardl.html",
+      "options": {},
+      "outputs": [
+        "estimates",
+        "standard_errors",
+        "test_statistics",
+        "p_values",
+        "diagnostics",
+        "model_summary"
+      ],
+      "notes": "Migrated from the accepted OES legacy catalogue. Retain the established estimator definition and input workflow."
+    },
+    {
+      "id": "nardl",
+      "name": "Nonlinear ARDL (NARDL)",
+      "family": "time_series",
+      "subfamily": "time_series",
+      "status": "validated",
+      "implementation": null,
+      "legacy_catalogue_id": "nardl",
+      "guide": "research-guide/nardl.html",
+      "options": {},
+      "outputs": [
+        "estimates",
+        "standard_errors",
+        "test_statistics",
+        "p_values",
+        "diagnostics",
+        "model_summary"
+      ],
+      "notes": "Migrated from the accepted OES legacy catalogue. Retain the established estimator definition and input workflow."
+    },
+    {
+      "id": "var",
+      "name": "Vector autoregression (VAR)",
+      "family": "time_series",
+      "subfamily": "time_series",
+      "status": "validated",
+      "implementation": null,
+      "legacy_catalogue_id": "var",
+      "guide": "research-guide/var.html",
+      "options": {},
+      "outputs": [
+        "estimates",
+        "standard_errors",
+        "test_statistics",
+        "p_values",
+        "diagnostics",
+        "model_summary"
+      ],
+      "notes": "Migrated from the accepted OES legacy catalogue. Retain the established estimator definition and input workflow."
+    },
+    {
+      "id": "vecm",
+      "name": "Vector error correction (VECM)",
+      "family": "time_series",
+      "subfamily": "time_series",
+      "status": "validated",
+      "implementation": null,
+      "legacy_catalogue_id": "vecm",
+      "guide": "research-guide/vecm.html",
+      "options": {},
+      "outputs": [
+        "estimates",
+        "standard_errors",
+        "test_statistics",
+        "p_values",
+        "diagnostics",
+        "model_summary"
+      ],
+      "notes": "Migrated from the accepted OES legacy catalogue. Retain the established estimator definition and input workflow."
+    },
+    {
+      "id": "iv_gmm",
+      "name": "2SLS and GMM",
+      "family": "time_series",
+      "subfamily": "time_series",
+      "status": "validated",
+      "implementation": null,
+      "legacy_catalogue_id": "iv_gmm",
+      "guide": "research-guide/gmm.html",
+      "options": {},
+      "outputs": [
+        "estimates",
+        "standard_errors",
+        "test_statistics",
+        "p_values",
+        "diagnostics",
+        "model_summary"
+      ],
+      "notes": "Migrated from the accepted OES legacy catalogue. Retain the established estimator definition and input workflow."
+    },
+    {
+      "id": "pols",
+      "name": "Pooled OLS",
+      "family": "panel",
+      "subfamily": "panel_data",
+      "status": "validated",
+      "implementation": null,
+      "legacy_catalogue_id": "pols",
+      "guide": "panel-data-guide/pols.html",
+      "options": {},
+      "outputs": [
+        "estimates",
+        "standard_errors",
+        "test_statistics",
+        "p_values",
+        "diagnostics",
+        "model_summary"
+      ],
+      "notes": "Migrated from the accepted OES legacy catalogue. Retain the established estimator definition and input workflow."
+    },
+    {
+      "id": "fe",
+      "name": "Fixed effects",
+      "family": "panel",
+      "subfamily": "panel_data",
+      "status": "validated",
+      "implementation": null,
+      "legacy_catalogue_id": "fe",
+      "guide": "panel-data-guide/fe.html",
+      "options": {},
+      "outputs": [
+        "estimates",
+        "standard_errors",
+        "test_statistics",
+        "p_values",
+        "diagnostics",
+        "model_summary"
+      ],
+      "notes": "Migrated from the accepted OES legacy catalogue. Retain the established estimator definition and input workflow."
+    },
+    {
+      "id": "re",
+      "name": "Random effects",
+      "family": "panel",
+      "subfamily": "panel_data",
+      "status": "validated",
+      "implementation": null,
+      "legacy_catalogue_id": "re",
+      "guide": "panel-data-guide/re.html",
+      "options": {},
+      "outputs": [
+        "estimates",
+        "standard_errors",
+        "test_statistics",
+        "p_values",
+        "diagnostics",
+        "model_summary"
+      ],
+      "notes": "Migrated from the accepted OES legacy catalogue. Retain the established estimator definition and input workflow."
+    },
+    {
+      "id": "fd",
+      "name": "Panel in first differences",
+      "family": "panel",
+      "subfamily": "panel_data",
+      "status": "validated",
+      "implementation": null,
+      "legacy_catalogue_id": "fd",
+      "guide": "panel-data-guide/diff.html",
+      "options": {},
+      "outputs": [
+        "estimates",
+        "standard_errors",
+        "test_statistics",
+        "p_values",
+        "diagnostics",
+        "model_summary"
+      ],
+      "notes": "Migrated from the accepted OES legacy catalogue. Retain the established estimator definition and input workflow."
+    },
+    {
+      "id": "fedk",
+      "name": "Fixed effects with Driscoll-Kraay errors",
+      "family": "panel",
+      "subfamily": "panel_data",
+      "status": "validated",
+      "implementation": null,
+      "legacy_catalogue_id": "fedk",
+      "guide": "panel-data-guide/fedk.html",
+      "options": {},
+      "outputs": [
+        "estimates",
+        "standard_errors",
+        "test_statistics",
+        "p_values",
+        "diagnostics",
+        "model_summary"
+      ],
+      "notes": "Migrated from the accepted OES legacy catalogue. Retain the established estimator definition and input workflow."
+    },
+    {
+      "id": "diff_gmm",
+      "name": "Difference GMM (Arellano-Bond)",
+      "family": "panel",
+      "subfamily": "panel_data",
+      "status": "validated",
+      "implementation": null,
+      "legacy_catalogue_id": "diff_gmm",
+      "guide": "panel-data-guide/gmm.html",
+      "options": {},
+      "outputs": [
+        "estimates",
+        "standard_errors",
+        "test_statistics",
+        "p_values",
+        "diagnostics",
+        "model_summary"
+      ],
+      "notes": "Migrated from the accepted OES legacy catalogue. Retain the established estimator definition and input workflow."
+    },
+    {
+      "id": "mg",
+      "name": "Mean group and CCE mean group",
+      "family": "panel",
+      "subfamily": "panel_data",
+      "status": "validated",
+      "implementation": null,
+      "legacy_catalogue_id": "mg",
+      "guide": "panel-data-guide/mg.html",
+      "options": {},
+      "outputs": [
+        "estimates",
+        "standard_errors",
+        "test_statistics",
+        "p_values",
+        "diagnostics",
+        "model_summary"
+      ],
+      "notes": "Migrated from the accepted OES legacy catalogue. Retain the established estimator definition and input workflow."
+    },
+    {
+      "id": "pmg",
+      "name": "Panel ARDL: PMG, MG and DFE",
+      "family": "panel",
+      "subfamily": "panel_data",
+      "status": "validated",
+      "implementation": null,
+      "legacy_catalogue_id": "pmg",
+      "guide": "panel-data-guide/pmg.html",
+      "options": {},
+      "outputs": [
+        "estimates",
+        "standard_errors",
+        "test_statistics",
+        "p_values",
+        "diagnostics",
+        "model_summary"
+      ],
+      "notes": "Migrated from the accepted OES legacy catalogue. Retain the established estimator definition and input workflow."
+    },
+    {
+      "id": "csardl",
+      "name": "Cross-sectionally augmented ARDL (CS-ARDL)",
+      "family": "panel",
+      "subfamily": "panel_data",
+      "status": "validated",
+      "implementation": null,
+      "legacy_catalogue_id": "csardl",
+      "guide": "panel-data-guide/csardl.html",
+      "options": {},
+      "outputs": [
+        "estimates",
+        "standard_errors",
+        "test_statistics",
+        "p_values",
+        "diagnostics",
+        "model_summary"
+      ],
+      "notes": "Migrated from the accepted OES legacy catalogue. Retain the established estimator definition and input workflow."
+    },
+    {
+      "id": "did",
+      "name": "Difference-in-differences",
+      "family": "causal",
+      "subfamily": "causal_inference",
+      "status": "validated",
+      "implementation": null,
+      "legacy_catalogue_id": "did",
+      "guide": "causal-inference-guide/did.html",
+      "options": {},
+      "outputs": [
+        "estimates",
+        "standard_errors",
+        "test_statistics",
+        "p_values",
+        "diagnostics",
+        "model_summary"
+      ],
+      "notes": "Migrated from the accepted OES legacy catalogue. Retain the established estimator definition and input workflow."
+    },
+    {
+      "id": "staggered",
+      "name": "Staggered DiD (Callaway-Sant'Anna)",
+      "family": "causal",
+      "subfamily": "causal_inference",
+      "status": "validated",
+      "implementation": null,
+      "legacy_catalogue_id": "staggered",
+      "guide": "causal-inference-guide/staggered.html",
+      "options": {},
+      "outputs": [
+        "estimates",
+        "standard_errors",
+        "test_statistics",
+        "p_values",
+        "diagnostics",
+        "model_summary"
+      ],
+      "notes": "Migrated from the accepted OES legacy catalogue. Retain the established estimator definition and input workflow."
+    },
+    {
+      "id": "its",
+      "name": "Interrupted time series",
+      "family": "causal",
+      "subfamily": "causal_inference",
+      "status": "validated",
+      "implementation": null,
+      "legacy_catalogue_id": "its",
+      "guide": "causal-inference-guide/its.html",
+      "options": {},
+      "outputs": [
+        "estimates",
+        "standard_errors",
+        "test_statistics",
+        "p_values",
+        "diagnostics",
+        "model_summary"
+      ],
+      "notes": "Migrated from the accepted OES legacy catalogue. Retain the established estimator definition and input workflow."
+    },
+    {
+      "id": "iv",
+      "name": "Instrumental variables (2SLS)",
+      "family": "causal",
+      "subfamily": "causal_inference",
+      "status": "validated",
+      "implementation": null,
+      "legacy_catalogue_id": "iv",
+      "guide": "causal-inference-guide/iv.html",
+      "options": {},
+      "outputs": [
+        "estimates",
+        "standard_errors",
+        "test_statistics",
+        "p_values",
+        "diagnostics",
+        "model_summary"
+      ],
+      "notes": "Migrated from the accepted OES legacy catalogue. Retain the established estimator definition and input workflow."
+    },
+    {
+      "id": "rdd",
+      "name": "Regression discontinuity",
+      "family": "causal",
+      "subfamily": "causal_inference",
+      "status": "validated",
+      "implementation": null,
+      "legacy_catalogue_id": "rdd",
+      "guide": "causal-inference-guide/rdd.html",
+      "options": {},
+      "outputs": [
+        "estimates",
+        "standard_errors",
+        "test_statistics",
+        "p_values",
+        "diagnostics",
+        "model_summary"
+      ],
+      "notes": "Migrated from the accepted OES legacy catalogue. Retain the established estimator definition and input workflow."
+    },
+    {
+      "id": "scm",
+      "name": "Synthetic control",
+      "family": "causal",
+      "subfamily": "causal_inference",
+      "status": "validated",
+      "implementation": null,
+      "legacy_catalogue_id": "scm",
+      "guide": "causal-inference-guide/scm.html",
+      "options": {},
+      "outputs": [
+        "estimates",
+        "standard_errors",
+        "test_statistics",
+        "p_values",
+        "diagnostics",
+        "model_summary"
+      ],
+      "notes": "Migrated from the accepted OES legacy catalogue. Retain the established estimator definition and input workflow."
+    },
+    {
+      "id": "gsc",
+      "name": "Generalized synthetic control",
+      "family": "causal",
+      "subfamily": "causal_inference",
+      "status": "validated",
+      "implementation": null,
+      "legacy_catalogue_id": "gsc",
+      "guide": "causal-inference-guide/gsc.html",
+      "options": {},
+      "outputs": [
+        "estimates",
+        "standard_errors",
+        "test_statistics",
+        "p_values",
+        "diagnostics",
+        "model_summary"
+      ],
+      "notes": "Migrated from the accepted OES legacy catalogue. Retain the established estimator definition and input workflow."
+    },
+    {
+      "id": "lasso",
+      "name": "LASSO",
+      "family": "machine_learning",
+      "subfamily": "machine_learning",
+      "status": "validated",
+      "implementation": null,
+      "legacy_catalogue_id": "lasso",
+      "guide": "ml-guide/lasso.html",
+      "options": {},
+      "outputs": [
+        "estimates",
+        "standard_errors",
+        "test_statistics",
+        "p_values",
+        "diagnostics",
+        "model_summary"
+      ],
+      "notes": "Migrated from the accepted OES legacy catalogue. Retain the established estimator definition and input workflow."
+    },
+    {
+      "id": "ridge",
+      "name": "Ridge",
+      "family": "machine_learning",
+      "subfamily": "machine_learning",
+      "status": "validated",
+      "implementation": null,
+      "legacy_catalogue_id": "ridge",
+      "guide": "ml-guide/ridge.html",
+      "options": {},
+      "outputs": [
+        "estimates",
+        "standard_errors",
+        "test_statistics",
+        "p_values",
+        "diagnostics",
+        "model_summary"
+      ],
+      "notes": "Migrated from the accepted OES legacy catalogue. Retain the established estimator definition and input workflow."
+    },
+    {
+      "id": "enet",
+      "name": "Elastic net",
+      "family": "machine_learning",
+      "subfamily": "machine_learning",
+      "status": "validated",
+      "implementation": null,
+      "legacy_catalogue_id": "enet",
+      "guide": "ml-guide/enet.html",
+      "options": {},
+      "outputs": [
+        "estimates",
+        "standard_errors",
+        "test_statistics",
+        "p_values",
+        "diagnostics",
+        "model_summary"
+      ],
+      "notes": "Migrated from the accepted OES legacy catalogue. Retain the established estimator definition and input workflow."
+    },
+    {
+      "id": "rf",
+      "name": "Random forest",
+      "family": "machine_learning",
+      "subfamily": "machine_learning",
+      "status": "validated",
+      "implementation": null,
+      "legacy_catalogue_id": "rf",
+      "guide": "ml-guide/rf.html",
+      "options": {},
+      "outputs": [
+        "estimates",
+        "standard_errors",
+        "test_statistics",
+        "p_values",
+        "diagnostics",
+        "model_summary"
+      ],
+      "notes": "Migrated from the accepted OES legacy catalogue. Retain the established estimator definition and input workflow."
+    },
+    {
+      "id": "xgb",
+      "name": "XGBoost",
+      "family": "machine_learning",
+      "subfamily": "machine_learning",
+      "status": "validated",
+      "implementation": null,
+      "legacy_catalogue_id": "xgb",
+      "guide": "ml-guide/xgb.html",
+      "options": {},
+      "outputs": [
+        "estimates",
+        "standard_errors",
+        "test_statistics",
+        "p_values",
+        "diagnostics",
+        "model_summary"
+      ],
+      "notes": "Migrated from the accepted OES legacy catalogue. Retain the established estimator definition and input workflow."
+    },
+    {
+      "id": "dml_plr",
+      "name": "Double ML: partially linear model",
+      "family": "machine_learning",
+      "subfamily": "machine_learning",
+      "status": "validated",
+      "implementation": null,
+      "legacy_catalogue_id": "dml_plr",
+      "guide": "ml-guide/dml-plr.html",
+      "options": {},
+      "outputs": [
+        "estimates",
+        "standard_errors",
+        "test_statistics",
+        "p_values",
+        "diagnostics",
+        "model_summary"
+      ],
+      "notes": "Migrated from the accepted OES legacy catalogue. Retain the established estimator definition and input workflow."
+    },
+    {
+      "id": "dml_irm",
+      "name": "Double ML: interactive model (binary treatment)",
+      "family": "machine_learning",
+      "subfamily": "machine_learning",
+      "status": "validated",
+      "implementation": null,
+      "legacy_catalogue_id": "dml_irm",
+      "guide": "ml-guide/dml-irm.html",
+      "options": {},
+      "outputs": [
+        "estimates",
+        "standard_errors",
+        "test_statistics",
+        "p_values",
+        "diagnostics",
+        "model_summary"
+      ],
+      "notes": "Migrated from the accepted OES legacy catalogue. Retain the established estimator definition and input workflow."
+    },
+    {
+      "id": "dml_iv",
+      "name": "Double ML: partially linear IV",
+      "family": "machine_learning",
+      "subfamily": "machine_learning",
+      "status": "validated",
+      "implementation": null,
+      "legacy_catalogue_id": "dml_iv",
+      "guide": "ml-guide/dml-iv.html",
+      "options": {},
+      "outputs": [
+        "estimates",
+        "standard_errors",
+        "test_statistics",
+        "p_values",
+        "diagnostics",
+        "model_summary"
+      ],
+      "notes": "Migrated from the accepted OES legacy catalogue. Retain the established estimator definition and input workflow."
+    },
+    {
+      "id": "causal_forest",
+      "name": "Causal forest (heterogeneous effects)",
+      "family": "machine_learning",
+      "subfamily": "machine_learning",
+      "status": "validated",
+      "implementation": null,
+      "legacy_catalogue_id": "causal_forest",
+      "guide": "ml-guide/causal-forest.html",
+      "options": {},
+      "outputs": [
+        "estimates",
+        "standard_errors",
+        "test_statistics",
+        "p_values",
+        "diagnostics",
+        "model_summary"
+      ],
+      "notes": "Migrated from the accepted OES legacy catalogue. Retain the established estimator definition and input workflow."
+    },
+    {
+      "id": "bayes_reg",
+      "name": "Bayesian linear regression",
+      "family": "bayesian",
+      "subfamily": "bayesian",
+      "status": "validated",
+      "implementation": null,
+      "legacy_catalogue_id": "bayes_reg",
+      "guide": null,
+      "options": {},
+      "outputs": [
+        "estimates",
+        "standard_errors",
+        "test_statistics",
+        "p_values",
+        "diagnostics",
+        "model_summary"
+      ],
+      "notes": "Migrated from the accepted OES legacy catalogue. Retain the established estimator definition and input workflow."
+    },
+    {
+      "id": "bvar",
+      "name": "Bayesian VAR (Minnesota, Normal-Wishart, ...)",
+      "family": "bayesian",
+      "subfamily": "bayesian",
+      "status": "validated",
+      "implementation": null,
+      "legacy_catalogue_id": "bvar",
+      "guide": null,
+      "options": {},
+      "outputs": [
+        "estimates",
+        "standard_errors",
+        "test_statistics",
+        "p_values",
+        "diagnostics",
+        "model_summary"
+      ],
+      "notes": "Migrated from the accepted OES legacy catalogue. Retain the established estimator definition and input workflow."
+    },
+    {
+      "id": "favar",
+      "name": "Factor-augmented VAR (FAVAR)",
+      "family": "bayesian",
+      "subfamily": "bayesian",
+      "status": "validated",
+      "implementation": null,
+      "legacy_catalogue_id": "favar",
+      "guide": null,
+      "options": {},
+      "outputs": [
+        "estimates",
+        "standard_errors",
+        "test_statistics",
+        "p_values",
+        "diagnostics",
+        "model_summary"
+      ],
+      "notes": "Migrated from the accepted OES legacy catalogue. Retain the established estimator definition and input workflow."
+    },
+    {
+      "id": "mabvar",
+      "name": "Mean-adjusted (steady-state) BVAR",
+      "family": "bayesian",
+      "subfamily": "bayesian",
+      "status": "validated",
+      "implementation": null,
+      "legacy_catalogue_id": "mabvar",
+      "guide": null,
+      "options": {},
+      "outputs": [
+        "estimates",
+        "standard_errors",
+        "test_statistics",
+        "p_values",
+        "diagnostics",
+        "model_summary"
+      ],
+      "notes": "Migrated from the accepted OES legacy catalogue. Retain the established estimator definition and input workflow."
+    },
+    {
+      "id": "pvar",
+      "name": "Panel VAR (6 estimators)",
+      "family": "bayesian",
+      "subfamily": "bayesian",
+      "status": "validated",
+      "implementation": null,
+      "legacy_catalogue_id": "pvar",
+      "guide": null,
+      "options": {},
+      "outputs": [
+        "estimates",
+        "standard_errors",
+        "test_statistics",
+        "p_values",
+        "diagnostics",
+        "model_summary"
+      ],
+      "notes": "Migrated from the accepted OES legacy catalogue. Retain the established estimator definition and input workflow."
+    },
+    {
+      "id": "tvpvar",
+      "name": "Time-varying parameter VAR (TVP-VAR)",
+      "family": "bayesian",
+      "subfamily": "bayesian",
+      "status": "validated",
+      "implementation": null,
+      "legacy_catalogue_id": "tvpvar",
+      "guide": null,
+      "options": {},
+      "outputs": [
+        "estimates",
+        "standard_errors",
+        "test_statistics",
+        "p_values",
+        "diagnostics",
+        "model_summary"
+      ],
+      "notes": "Migrated from the accepted OES legacy catalogue. Retain the established estimator definition and input workflow."
+    },
+    {
+      "id": "svvar",
+      "name": "Stochastic-volatility VAR (SV-VAR)",
+      "family": "bayesian",
+      "subfamily": "bayesian",
+      "status": "validated",
+      "implementation": null,
+      "legacy_catalogue_id": "svvar",
+      "guide": null,
+      "options": {},
+      "outputs": [
+        "estimates",
+        "standard_errors",
+        "test_statistics",
+        "p_values",
+        "diagnostics",
+        "model_summary"
+      ],
+      "notes": "Migrated from the accepted OES legacy catalogue. Retain the established estimator definition and input workflow."
+    },
+    {
+      "id": "mfbvar",
+      "name": "Mixed-frequency BVAR (monthly + quarterly)",
+      "family": "bayesian",
+      "subfamily": "bayesian",
+      "status": "validated",
+      "implementation": null,
+      "legacy_catalogue_id": "mfbvar",
+      "guide": null,
+      "options": {},
+      "outputs": [
+        "estimates",
+        "standard_errors",
+        "test_statistics",
+        "p_values",
+        "diagnostics",
+        "model_summary"
+      ],
+      "notes": "Migrated from the accepted OES legacy catalogue. Retain the established estimator definition and input workflow."
+    },
+    {
+      "id": "tvar",
+      "name": "Threshold VAR (Bayesian)",
+      "family": "bayesian",
+      "subfamily": "bayesian",
+      "status": "validated",
+      "implementation": null,
+      "legacy_catalogue_id": "tvar",
+      "guide": null,
+      "options": {},
+      "outputs": [
+        "estimates",
+        "standard_errors",
+        "test_statistics",
+        "p_values",
+        "diagnostics",
+        "model_summary"
+      ],
+      "notes": "Migrated from the accepted OES legacy catalogue. Retain the established estimator definition and input workflow."
+    },
+    {
+      "id": "ms_reg",
+      "name": "Markov-switching regression",
+      "family": "nonlinear",
+      "subfamily": "markov_switching",
+      "status": "validated",
+      "implementation": null,
+      "legacy_catalogue_id": "ms_reg",
+      "guide": null,
+      "options": {},
+      "outputs": [
+        "estimates",
+        "standard_errors",
+        "test_statistics",
+        "p_values",
+        "diagnostics",
+        "model_summary"
+      ],
+      "notes": "Migrated from the accepted OES legacy catalogue. Retain the established estimator definition and input workflow."
+    },
+    {
+      "id": "ms_ar",
+      "name": "Markov-switching autoregression (Hamilton)",
+      "family": "nonlinear",
+      "subfamily": "markov_switching",
+      "status": "validated",
+      "implementation": null,
+      "legacy_catalogue_id": "ms_ar",
+      "guide": null,
+      "options": {},
+      "outputs": [
+        "estimates",
+        "standard_errors",
+        "test_statistics",
+        "p_values",
+        "diagnostics",
+        "model_summary"
+      ],
+      "notes": "Migrated from the accepted OES legacy catalogue. Retain the established estimator definition and input workflow."
+    },
+    {
+      "id": "msvar",
+      "name": "Markov-switching VAR",
+      "family": "nonlinear",
+      "subfamily": "markov_switching",
+      "status": "validated",
+      "implementation": null,
+      "legacy_catalogue_id": "msvar",
+      "guide": null,
+      "options": {},
+      "outputs": [
+        "estimates",
+        "standard_errors",
+        "test_statistics",
+        "p_values",
+        "diagnostics",
+        "model_summary"
+      ],
+      "notes": "Migrated from the accepted OES legacy catalogue. Retain the established estimator definition and input workflow."
+    },
+    {
+      "id": "mspvar",
+      "name": "Markov-switching panel VAR",
+      "family": "nonlinear",
+      "subfamily": "markov_switching",
+      "status": "validated",
+      "implementation": null,
+      "legacy_catalogue_id": "mspvar",
+      "guide": null,
+      "options": {},
+      "outputs": [
+        "estimates",
+        "standard_errors",
+        "test_statistics",
+        "p_values",
+        "diagnostics",
+        "model_summary"
+      ],
+      "notes": "Migrated from the accepted OES legacy catalogue. Retain the established estimator definition and input workflow."
+    },
+    {
+      "id": "wls",
+      "name": "Weighted least squares",
+      "family": "classical_glm",
+      "subfamily": "weighted_regression",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full mathematical specification, inference, diagnostics, robustness workflow, browser implementation, and numerical tests are scheduled under the OES-1000 implementation contract."
+    },
+    {
+      "id": "gls",
+      "name": "Generalized least squares",
+      "family": "classical_glm",
+      "subfamily": "generalized_regression",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full mathematical specification, inference, diagnostics, robustness workflow, browser implementation, and numerical tests are scheduled under the OES-1000 implementation contract."
+    },
+    {
+      "id": "fgls",
+      "name": "Feasible generalized least squares",
+      "family": "classical_glm",
+      "subfamily": "generalized_regression",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full mathematical specification, inference, diagnostics, robustness workflow, browser implementation, and numerical tests are scheduled under the OES-1000 implementation contract."
+    },
+    {
+      "id": "quantile_regression",
+      "name": "Quantile regression",
+      "family": "classical_glm",
+      "subfamily": "quantile_models",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full mathematical specification, inference, diagnostics, robustness workflow, browser implementation, and numerical tests are scheduled under the OES-1000 implementation contract."
+    },
+    {
+      "id": "lad",
+      "name": "Least absolute deviations regression",
+      "family": "classical_glm",
+      "subfamily": "robust_regression",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full mathematical specification, inference, diagnostics, robustness workflow, browser implementation, and numerical tests are scheduled under the OES-1000 implementation contract."
+    },
+    {
+      "id": "huber_regression",
+      "name": "Huber M-estimator regression",
+      "family": "classical_glm",
+      "subfamily": "robust_regression",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full mathematical specification, inference, diagnostics, robustness workflow, browser implementation, and numerical tests are scheduled under the OES-1000 implementation contract."
+    },
+    {
+      "id": "tukey_bisquare",
+      "name": "Tukey bisquare robust regression",
+      "family": "classical_glm",
+      "subfamily": "robust_regression",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full mathematical specification, inference, diagnostics, robustness workflow, browser implementation, and numerical tests are scheduled under the OES-1000 implementation contract."
+    },
+    {
+      "id": "logit",
+      "name": "Binary logistic regression",
+      "family": "classical_glm",
+      "subfamily": "binary_response",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full mathematical specification, inference, diagnostics, robustness workflow, browser implementation, and numerical tests are scheduled under the OES-1000 implementation contract."
+    },
+    {
+      "id": "probit",
+      "name": "Binary probit regression",
+      "family": "classical_glm",
+      "subfamily": "binary_response",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full mathematical specification, inference, diagnostics, robustness workflow, browser implementation, and numerical tests are scheduled under the OES-1000 implementation contract."
+    },
+    {
+      "id": "cloglog",
+      "name": "Complementary log-log regression",
+      "family": "classical_glm",
+      "subfamily": "binary_response",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full mathematical specification, inference, diagnostics, robustness workflow, browser implementation, and numerical tests are scheduled under the OES-1000 implementation contract."
+    },
+    {
+      "id": "poisson",
+      "name": "Poisson regression",
+      "family": "classical_glm",
+      "subfamily": "count_models",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full mathematical specification, inference, diagnostics, robustness workflow, browser implementation, and numerical tests are scheduled under the OES-1000 implementation contract."
+    },
+    {
+      "id": "negative_binomial",
+      "name": "Negative binomial regression",
+      "family": "classical_glm",
+      "subfamily": "count_models",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full mathematical specification, inference, diagnostics, robustness workflow, browser implementation, and numerical tests are scheduled under the OES-1000 implementation contract."
+    },
+    {
+      "id": "zero_inflated_poisson",
+      "name": "Zero-inflated Poisson regression",
+      "family": "classical_glm",
+      "subfamily": "count_models",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full mathematical specification, inference, diagnostics, robustness workflow, browser implementation, and numerical tests are scheduled under the OES-1000 implementation contract."
+    },
+    {
+      "id": "hurdle_poisson",
+      "name": "Hurdle Poisson regression",
+      "family": "classical_glm",
+      "subfamily": "count_models",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full mathematical specification, inference, diagnostics, robustness workflow, browser implementation, and numerical tests are scheduled under the OES-1000 implementation contract."
+    },
+    {
+      "id": "gamma_glm",
+      "name": "Gamma generalized linear model",
+      "family": "classical_glm",
+      "subfamily": "glm",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full mathematical specification, inference, diagnostics, robustness workflow, browser implementation, and numerical tests are scheduled under the OES-1000 implementation contract."
+    },
+    {
+      "id": "inverse_gaussian_glm",
+      "name": "Inverse Gaussian generalized linear model",
+      "family": "classical_glm",
+      "subfamily": "glm",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full mathematical specification, inference, diagnostics, robustness workflow, browser implementation, and numerical tests are scheduled under the OES-1000 implementation contract."
+    },
+    {
+      "id": "beta_regression",
+      "name": "Beta regression",
+      "family": "classical_glm",
+      "subfamily": "fractional_response",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full mathematical specification, inference, diagnostics, robustness workflow, browser implementation, and numerical tests are scheduled under the OES-1000 implementation contract."
+    },
+    {
+      "id": "fractional_logit",
+      "name": "Fractional logit regression",
+      "family": "classical_glm",
+      "subfamily": "fractional_response",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full mathematical specification, inference, diagnostics, robustness workflow, browser implementation, and numerical tests are scheduled under the OES-1000 implementation contract."
+    },
+    {
+      "id": "multinomial_logit",
+      "name": "Multinomial logistic regression",
+      "family": "classical_glm",
+      "subfamily": "categorical_response",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full mathematical specification, inference, diagnostics, robustness workflow, browser implementation, and numerical tests are scheduled under the OES-1000 implementation contract."
+    },
+    {
+      "id": "ordered_logit",
+      "name": "Ordered logistic regression",
+      "family": "classical_glm",
+      "subfamily": "ordinal_response",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full mathematical specification, inference, diagnostics, robustness workflow, browser implementation, and numerical tests are scheduled under the OES-1000 implementation contract."
+    },
+    {
+      "id": "ordered_probit",
+      "name": "Ordered probit regression",
+      "family": "classical_glm",
+      "subfamily": "ordinal_response",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full mathematical specification, inference, diagnostics, robustness workflow, browser implementation, and numerical tests are scheduled under the OES-1000 implementation contract."
+    },
+    {
+      "id": "tobit",
+      "name": "Tobit censored regression",
+      "family": "classical_glm",
+      "subfamily": "limited_dependent",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full mathematical specification, inference, diagnostics, robustness workflow, browser implementation, and numerical tests are scheduled under the OES-1000 implementation contract."
+    },
+    {
+      "id": "heckman_selection",
+      "name": "Heckman sample-selection model",
+      "family": "classical_glm",
+      "subfamily": "limited_dependent",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full mathematical specification, inference, diagnostics, robustness workflow, browser implementation, and numerical tests are scheduled under the OES-1000 implementation contract."
+    },
+    {
+      "id": "truncated_regression",
+      "name": "Truncated regression",
+      "family": "classical_glm",
+      "subfamily": "limited_dependent",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full mathematical specification, inference, diagnostics, robustness workflow, browser implementation, and numerical tests are scheduled under the OES-1000 implementation contract."
+    },
+    {
+      "id": "negative_binomial_nb2",
+      "name": "Negative binomial NB2 regression",
+      "family": "classical_glm",
+      "subfamily": "count_models",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full mathematical specification, inference, diagnostics, robustness workflow, browser implementation, and numerical tests are scheduled under the OES-1000 implementation contract."
+    },
+    {
+      "id": "negative_binomial_nb1",
+      "name": "Negative binomial NB1 regression",
+      "family": "classical_glm",
+      "subfamily": "count_models",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full mathematical specification, inference, diagnostics, robustness workflow, browser implementation, and numerical tests are scheduled under the OES-1000 implementation contract."
+    },
+    {
+      "id": "quasi_poisson",
+      "name": "Quasi-Poisson regression",
+      "family": "classical_glm",
+      "subfamily": "count_models",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full mathematical specification, inference, diagnostics, robustness workflow, browser implementation, and numerical tests are scheduled under the OES-1000 implementation contract."
+    },
+    {
+      "id": "geometric_regression",
+      "name": "Geometric count regression",
+      "family": "classical_glm",
+      "subfamily": "count_models",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full mathematical specification, inference, diagnostics, robustness workflow, browser implementation, and numerical tests are scheduled under the OES-1000 implementation contract."
+    },
+    {
+      "id": "conditional_logit",
+      "name": "Conditional logistic regression",
+      "family": "classical_glm",
+      "subfamily": "binary_response",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full mathematical specification, inference, diagnostics, robustness workflow, browser implementation, and numerical tests are scheduled under the OES-1000 implementation contract."
+    },
+    {
+      "id": "mixed_logit",
+      "name": "Random-coefficients mixed logit",
+      "family": "classical_glm",
+      "subfamily": "discrete_choice",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full mathematical specification, inference, diagnostics, robustness workflow, browser implementation, and numerical tests are scheduled under the OES-1000 implementation contract."
     }
   ]
 }
