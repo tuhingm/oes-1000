@@ -1127,8 +1127,8 @@
       "name": "Zero-inflated Poisson regression",
       "family": "classical_glm",
       "subfamily": "count_models",
-      "status": "planned",
-      "implementation": null,
+      "status": "implemented",
+      "implementation": "oes1000.classical.glm_extra:estimate_zero_inflated_poisson",
       "options": {},
       "outputs": [
         "params",
@@ -1140,7 +1140,7 @@
         "residuals",
         "model_diagnostics"
       ],
-      "notes": "Distinct estimator specification. Full mathematical specification, inference, diagnostics, robustness workflow, browser implementation, and numerical tests are scheduled under the OES-1000 implementation contract."
+      "notes": "Python-native implementation committed; numerical tests and browser integration checks are in progress."
     },
     {
       "id": "hurdle_poisson",
@@ -1167,8 +1167,8 @@
       "name": "Gamma generalized linear model",
       "family": "classical_glm",
       "subfamily": "glm",
-      "status": "planned",
-      "implementation": null,
+      "status": "implemented",
+      "implementation": "oes1000.classical.glm_extra:estimate_gamma_glm",
       "options": {},
       "outputs": [
         "params",
@@ -1180,15 +1180,15 @@
         "residuals",
         "model_diagnostics"
       ],
-      "notes": "Distinct estimator specification. Full mathematical specification, inference, diagnostics, robustness workflow, browser implementation, and numerical tests are scheduled under the OES-1000 implementation contract."
+      "notes": "Python-native implementation committed; numerical tests and browser integration checks are in progress."
     },
     {
       "id": "inverse_gaussian_glm",
       "name": "Inverse Gaussian generalized linear model",
       "family": "classical_glm",
       "subfamily": "glm",
-      "status": "planned",
-      "implementation": null,
+      "status": "implemented",
+      "implementation": "oes1000.classical.glm_extra:estimate_inverse_gaussian_glm",
       "options": {},
       "outputs": [
         "params",
@@ -1200,7 +1200,7 @@
         "residuals",
         "model_diagnostics"
       ],
-      "notes": "Distinct estimator specification. Full mathematical specification, inference, diagnostics, robustness workflow, browser implementation, and numerical tests are scheduled under the OES-1000 implementation contract."
+      "notes": "Python-native implementation committed; numerical tests and browser integration checks are in progress."
     },
     {
       "id": "beta_regression",
@@ -1227,8 +1227,8 @@
       "name": "Fractional logit regression",
       "family": "classical_glm",
       "subfamily": "fractional_response",
-      "status": "planned",
-      "implementation": null,
+      "status": "implemented",
+      "implementation": "oes1000.classical.glm_extra:estimate_fractional_logit",
       "options": {},
       "outputs": [
         "params",
@@ -1240,7 +1240,7 @@
         "residuals",
         "model_diagnostics"
       ],
-      "notes": "Distinct estimator specification. Full mathematical specification, inference, diagnostics, robustness workflow, browser implementation, and numerical tests are scheduled under the OES-1000 implementation contract."
+      "notes": "Python-native implementation committed; numerical tests and browser integration checks are in progress."
     },
     {
       "id": "multinomial_logit",
@@ -1387,8 +1387,8 @@
       "name": "Negative binomial NB1 regression",
       "family": "classical_glm",
       "subfamily": "count_models",
-      "status": "planned",
-      "implementation": null,
+      "status": "implemented",
+      "implementation": "oes1000.classical.glm_extra:estimate_negative_binomial_nb1",
       "options": {},
       "outputs": [
         "params",
@@ -1400,15 +1400,15 @@
         "residuals",
         "model_diagnostics"
       ],
-      "notes": "Distinct estimator specification. Full mathematical specification, inference, diagnostics, robustness workflow, browser implementation, and numerical tests are scheduled under the OES-1000 implementation contract."
+      "notes": "Python-native implementation committed; numerical tests and browser integration checks are in progress."
     },
     {
       "id": "quasi_poisson",
       "name": "Quasi-Poisson regression",
       "family": "classical_glm",
       "subfamily": "count_models",
-      "status": "planned",
-      "implementation": null,
+      "status": "implemented",
+      "implementation": "oes1000.classical.glm_extra:estimate_quasi_poisson",
       "options": {},
       "outputs": [
         "params",
@@ -1420,15 +1420,15 @@
         "residuals",
         "model_diagnostics"
       ],
-      "notes": "Distinct estimator specification. Full mathematical specification, inference, diagnostics, robustness workflow, browser implementation, and numerical tests are scheduled under the OES-1000 implementation contract."
+      "notes": "Python-native implementation committed; numerical tests and browser integration checks are in progress."
     },
     {
       "id": "geometric_regression",
       "name": "Geometric count regression",
       "family": "classical_glm",
       "subfamily": "count_models",
-      "status": "planned",
-      "implementation": null,
+      "status": "implemented",
+      "implementation": "oes1000.classical.glm_extra:estimate_geometric_regression",
       "options": {},
       "outputs": [
         "params",
@@ -1440,7 +1440,7 @@
         "residuals",
         "model_diagnostics"
       ],
-      "notes": "Distinct estimator specification. Full mathematical specification, inference, diagnostics, robustness workflow, browser implementation, and numerical tests are scheduled under the OES-1000 implementation contract."
+      "notes": "Python-native implementation committed; numerical tests and browser integration checks are in progress."
     },
     {
       "id": "conditional_logit",
