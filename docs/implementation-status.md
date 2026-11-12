@@ -41,3 +41,7 @@ The accepted 44-model OES catalogue is carried forward without re-auditing, as d
 - **Validated:** benchmark comparison, assumptions, tolerances, diagnostics, and documented robustness procedures are complete.
 
 The 44 legacy models retain the accepted status assigned to the existing OES implementation. Browser integration is a separate delivery status from that prior validation status.
+
+## Native browser integration checks
+
+A GitHub Actions workflow runs the Python test suite on pushes to `main` and pull requests. The native browser integration tests verify that all 12 estimator IDs are registered, every required Python module is loaded by `web/worker.js`, and the browser dropdown exposes exactly those 12 IDs. These static integration checks do not replace an actual Pyodide browser smoke test or numerical benchmark validation.
