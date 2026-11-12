@@ -10,9 +10,9 @@ async function boot(version){
  importScripts(PYODIDE+"pyodide.js"); say("Starting Python in your browser…");
  py=await loadPyodide({indexURL:PYODIDE});
  say("Loading NumPy, pandas, SciPy and statsmodels…"); await py.loadPackage(BASE); BASE.forEach(p=>loaded.add(p));
- say("Loading the existing OES estimation engine…"); py.FS.mkdirTree("/oes1000/legacy/oes_engine");
- for(const f of FILES){const url=new URL(f,ROOT);const r=await fetch(url);if(!r.ok)throw new Error("Could not load engine file "+f+" ("+r.status+").");py.FS.writeFile("/oes1000/legacy/oes_engine/"+f,await r.text());}
- py.runPython("import sys; sys.path.insert(0, '/'); import oes1000.legacy.oes_engine as oes_engine");
+ say("Loading the existing OES estimation engine…"); py.FS.mkdirTree("/oes_engine");
+ for(const f of FILES){const url=new URL(f,ROOT);const r=await fetch(url);if(!r.ok)throw new Error("Could not load engine file "+f+" ("+r.status+").");py.FS.writeFile("/oes_engine/"+f,await r.text());}
+ py.runPython("import sys; sys.path.insert(0, '/'); import oes_engine");
  return py.runPython("oes_engine.__version__");
 }
 async function ensure(packages){
