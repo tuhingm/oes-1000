@@ -31,7 +31,9 @@ EXPECTED_NATIVE = {
     "ordered_logit",
     "ordered_probit",
     "tobit",
-    "truncated_regression",\n    "glm_binomial_logit_penalized",\n    "glm_binomial_probit_penalized",
+    "truncated_regression",
+    "glm_binomial_logit_penalized",
+    "glm_binomial_probit_penalized",
 }
 
 
@@ -53,7 +55,8 @@ def test_browser_worker_loads_all_native_python_modules():
         "src/oes1000/classical/glm_extra.py",
         "src/oes1000/classical/advanced_discrete.py",
         "src/oes1000/classical/ordinal_censored.py",
-        "src/oes1000/classical/truncated.py",\n        "src/oes1000/classical/penalized.py",
+        "src/oes1000/classical/truncated.py",
+        "src/oes1000/classical/penalized.py",
     ]
     for path in required_paths:
         assert path in worker
