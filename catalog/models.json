@@ -1481,6 +1481,1006 @@
         "model_diagnostics"
       ],
       "notes": "Distinct estimator specification. Full mathematical specification, inference, diagnostics, robustness workflow, browser implementation, and numerical tests are scheduled under the OES-1000 implementation contract."
+    },
+    {
+      "id": "ar",
+      "name": "Autoregressive model (AR)",
+      "family": "time_series",
+      "subfamily": "univariate_dynamics",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement the full model-specific likelihood/objective or moment conditions, inference, diagnostics, guide-derived robustness workflow, browser execution, and numerical reference tests."
+    },
+    {
+      "id": "ma",
+      "name": "Moving-average model (MA)",
+      "family": "time_series",
+      "subfamily": "univariate_dynamics",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement the full model-specific likelihood/objective or moment conditions, inference, diagnostics, guide-derived robustness workflow, browser execution, and numerical reference tests."
+    },
+    {
+      "id": "arma",
+      "name": "Autoregressive moving-average model (ARMA)",
+      "family": "time_series",
+      "subfamily": "univariate_dynamics",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement the full model-specific likelihood/objective or moment conditions, inference, diagnostics, guide-derived robustness workflow, browser execution, and numerical reference tests."
+    },
+    {
+      "id": "arima",
+      "name": "Autoregressive integrated moving-average model (ARIMA)",
+      "family": "time_series",
+      "subfamily": "univariate_dynamics",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement the full model-specific likelihood/objective or moment conditions, inference, diagnostics, guide-derived robustness workflow, browser execution, and numerical reference tests."
+    },
+    {
+      "id": "sarima",
+      "name": "Seasonal ARIMA model",
+      "family": "time_series",
+      "subfamily": "seasonal_dynamics",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement the full model-specific likelihood/objective or moment conditions, inference, diagnostics, guide-derived robustness workflow, browser execution, and numerical reference tests."
+    },
+    {
+      "id": "arimax",
+      "name": "ARIMAX with exogenous regressors",
+      "family": "time_series",
+      "subfamily": "conditional_dynamics",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement the full model-specific likelihood/objective or moment conditions, inference, diagnostics, guide-derived robustness workflow, browser execution, and numerical reference tests."
+    },
+    {
+      "id": "sarimax",
+      "name": "Seasonal ARIMAX model",
+      "family": "time_series",
+      "subfamily": "seasonal_dynamics",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement the full model-specific likelihood/objective or moment conditions, inference, diagnostics, guide-derived robustness workflow, browser execution, and numerical reference tests."
+    },
+    {
+      "id": "adl",
+      "name": "Autoregressive distributed-lag model (ADL)",
+      "family": "time_series",
+      "subfamily": "distributed_lag",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement the full model-specific likelihood/objective or moment conditions, inference, diagnostics, guide-derived robustness workflow, browser execution, and numerical reference tests."
+    },
+    {
+      "id": "ecm",
+      "name": "Single-equation error-correction model",
+      "family": "time_series",
+      "subfamily": "cointegration",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement the full model-specific likelihood/objective or moment conditions, inference, diagnostics, guide-derived robustness workflow, browser execution, and numerical reference tests."
+    },
+    {
+      "id": "engle_granger",
+      "name": "Engle-Granger two-step cointegration",
+      "family": "time_series",
+      "subfamily": "cointegration",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement the full model-specific likelihood/objective or moment conditions, inference, diagnostics, guide-derived robustness workflow, browser execution, and numerical reference tests."
+    },
+    {
+      "id": "johansen",
+      "name": "Johansen system cointegration",
+      "family": "time_series",
+      "subfamily": "cointegration",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement the full model-specific likelihood/objective or moment conditions, inference, diagnostics, guide-derived robustness workflow, browser execution, and numerical reference tests."
+    },
+    {
+      "id": "phillips_ouliaris",
+      "name": "Phillips-Ouliaris residual cointegration test",
+      "family": "time_series",
+      "subfamily": "cointegration_tests",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement the full model-specific likelihood/objective or moment conditions, inference, diagnostics, guide-derived robustness workflow, browser execution, and numerical reference tests."
+    },
+    {
+      "id": "dols",
+      "name": "Dynamic OLS cointegrating regression",
+      "family": "time_series",
+      "subfamily": "cointegrating_regression",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement the full model-specific likelihood/objective or moment conditions, inference, diagnostics, guide-derived robustness workflow, browser execution, and numerical reference tests."
+    },
+    {
+      "id": "fmols",
+      "name": "Fully modified OLS cointegrating regression",
+      "family": "time_series",
+      "subfamily": "cointegrating_regression",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement the full model-specific likelihood/objective or moment conditions, inference, diagnostics, guide-derived robustness workflow, browser execution, and numerical reference tests."
+    },
+    {
+      "id": "ccr",
+      "name": "Canonical cointegrating regression",
+      "family": "time_series",
+      "subfamily": "cointegrating_regression",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement the full model-specific likelihood/objective or moment conditions, inference, diagnostics, guide-derived robustness workflow, browser execution, and numerical reference tests."
+    },
+    {
+      "id": "local_projections",
+      "name": "Jordà local projections",
+      "family": "time_series",
+      "subfamily": "impulse_response",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement the full model-specific likelihood/objective or moment conditions, inference, diagnostics, guide-derived robustness workflow, browser execution, and numerical reference tests."
+    },
+    {
+      "id": "lp_iv",
+      "name": "Instrumented local projections",
+      "family": "time_series",
+      "subfamily": "impulse_response",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement the full model-specific likelihood/objective or moment conditions, inference, diagnostics, guide-derived robustness workflow, browser execution, and numerical reference tests."
+    },
+    {
+      "id": "granger_causality",
+      "name": "Granger non-causality system test",
+      "family": "time_series",
+      "subfamily": "causality_tests",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement the full model-specific likelihood/objective or moment conditions, inference, diagnostics, guide-derived robustness workflow, browser execution, and numerical reference tests."
+    },
+    {
+      "id": "toda_yamamoto",
+      "name": "Toda-Yamamoto augmented VAR causality",
+      "family": "time_series",
+      "subfamily": "causality_tests",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement the full model-specific likelihood/objective or moment conditions, inference, diagnostics, guide-derived robustness workflow, browser execution, and numerical reference tests."
+    },
+    {
+      "id": "varx",
+      "name": "VAR with exogenous regressors",
+      "family": "time_series",
+      "subfamily": "multivariate_dynamics",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement the full model-specific likelihood/objective or moment conditions, inference, diagnostics, guide-derived robustness workflow, browser execution, and numerical reference tests."
+    },
+    {
+      "id": "varma",
+      "name": "Vector ARMA model",
+      "family": "time_series",
+      "subfamily": "multivariate_dynamics",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement the full model-specific likelihood/objective or moment conditions, inference, diagnostics, guide-derived robustness workflow, browser execution, and numerical reference tests."
+    },
+    {
+      "id": "svar_short_run",
+      "name": "Short-run recursive structural VAR",
+      "family": "time_series",
+      "subfamily": "structural_var",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement the full model-specific likelihood/objective or moment conditions, inference, diagnostics, guide-derived robustness workflow, browser execution, and numerical reference tests."
+    },
+    {
+      "id": "svar_long_run",
+      "name": "Long-run restricted structural VAR",
+      "family": "time_series",
+      "subfamily": "structural_var",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement the full model-specific likelihood/objective or moment conditions, inference, diagnostics, guide-derived robustness workflow, browser execution, and numerical reference tests."
+    },
+    {
+      "id": "svar_sign",
+      "name": "Sign-restricted structural VAR",
+      "family": "time_series",
+      "subfamily": "structural_var",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement the full model-specific likelihood/objective or moment conditions, inference, diagnostics, guide-derived robustness workflow, browser execution, and numerical reference tests."
+    },
+    {
+      "id": "svecm",
+      "name": "Structural vector error-correction model",
+      "family": "time_series",
+      "subfamily": "structural_var",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement the full model-specific likelihood/objective or moment conditions, inference, diagnostics, guide-derived robustness workflow, browser execution, and numerical reference tests."
+    },
+    {
+      "id": "vecmx",
+      "name": "VECM with exogenous variables",
+      "family": "time_series",
+      "subfamily": "cointegration",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement the full model-specific likelihood/objective or moment conditions, inference, diagnostics, guide-derived robustness workflow, browser execution, and numerical reference tests."
+    },
+    {
+      "id": "bayesian_var",
+      "name": "Bayesian VAR (conjugate prior)",
+      "family": "time_series",
+      "subfamily": "bayesian_systems",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement the full model-specific likelihood/objective or moment conditions, inference, diagnostics, guide-derived robustness workflow, browser execution, and numerical reference tests."
+    },
+    {
+      "id": "factor_var",
+      "name": "Factor-augmented VAR estimation",
+      "family": "time_series",
+      "subfamily": "factor_models",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement the full model-specific likelihood/objective or moment conditions, inference, diagnostics, guide-derived robustness workflow, browser execution, and numerical reference tests."
+    },
+    {
+      "id": "dynamic_factor",
+      "name": "Dynamic factor model",
+      "family": "time_series",
+      "subfamily": "factor_models",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement the full model-specific likelihood/objective or moment conditions, inference, diagnostics, guide-derived robustness workflow, browser execution, and numerical reference tests."
+    },
+    {
+      "id": "unobserved_components",
+      "name": "Unobserved-components time-series model",
+      "family": "time_series",
+      "subfamily": "decomposition",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement the full model-specific likelihood/objective or moment conditions, inference, diagnostics, guide-derived robustness workflow, browser execution, and numerical reference tests."
+    },
+    {
+      "id": "between_estimator",
+      "name": "Between-effects panel estimator",
+      "family": "panel",
+      "subfamily": "static_panel",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement the full model-specific likelihood/objective or moment conditions, inference, diagnostics, guide-derived robustness workflow, browser execution, and numerical reference tests."
+    },
+    {
+      "id": "within_estimator",
+      "name": "Within-transformed fixed-effects estimator",
+      "family": "panel",
+      "subfamily": "static_panel",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement the full model-specific likelihood/objective or moment conditions, inference, diagnostics, guide-derived robustness workflow, browser execution, and numerical reference tests."
+    },
+    {
+      "id": "twoway_fe",
+      "name": "Two-way fixed-effects estimator",
+      "family": "panel",
+      "subfamily": "static_panel",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement the full model-specific likelihood/objective or moment conditions, inference, diagnostics, guide-derived robustness workflow, browser execution, and numerical reference tests."
+    },
+    {
+      "id": "cre_mundlak",
+      "name": "Correlated random-effects (Mundlak) estimator",
+      "family": "panel",
+      "subfamily": "static_panel",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement the full model-specific likelihood/objective or moment conditions, inference, diagnostics, guide-derived robustness workflow, browser execution, and numerical reference tests."
+    },
+    {
+      "id": "hausman_taylor",
+      "name": "Hausman-Taylor instrumental-variable estimator",
+      "family": "panel",
+      "subfamily": "static_panel",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement the full model-specific likelihood/objective or moment conditions, inference, diagnostics, guide-derived robustness workflow, browser execution, and numerical reference tests."
+    },
+    {
+      "id": "amemiya_ma",
+      "name": "Amemiya-Ma random-effects IV estimator",
+      "family": "panel",
+      "subfamily": "static_panel",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement the full model-specific likelihood/objective or moment conditions, inference, diagnostics, guide-derived robustness workflow, browser execution, and numerical reference tests."
+    },
+    {
+      "id": "baltagi_chang",
+      "name": "Baltagi-Chang error-components estimator",
+      "family": "panel",
+      "subfamily": "static_panel",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement the full model-specific likelihood/objective or moment conditions, inference, diagnostics, guide-derived robustness workflow, browser execution, and numerical reference tests."
+    },
+    {
+      "id": "arellano_bond",
+      "name": "Arellano-Bond difference GMM",
+      "family": "panel",
+      "subfamily": "dynamic_panel",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement the full model-specific likelihood/objective or moment conditions, inference, diagnostics, guide-derived robustness workflow, browser execution, and numerical reference tests."
+    },
+    {
+      "id": "system_gmm",
+      "name": "Blundell-Bond system GMM",
+      "family": "panel",
+      "subfamily": "dynamic_panel",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement the full model-specific likelihood/objective or moment conditions, inference, diagnostics, guide-derived robustness workflow, browser execution, and numerical reference tests."
+    },
+    {
+      "id": "bias_corrected_fe",
+      "name": "Bias-corrected dynamic fixed effects",
+      "family": "panel",
+      "subfamily": "dynamic_panel",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement the full model-specific likelihood/objective or moment conditions, inference, diagnostics, guide-derived robustness workflow, browser execution, and numerical reference tests."
+    },
+    {
+      "id": "long_difference",
+      "name": "Long-difference panel estimator",
+      "family": "panel",
+      "subfamily": "static_panel",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement the full model-specific likelihood/objective or moment conditions, inference, diagnostics, guide-derived robustness workflow, browser execution, and numerical reference tests."
+    },
+    {
+      "id": "panel_quantile",
+      "name": "Panel quantile regression",
+      "family": "panel",
+      "subfamily": "heterogeneous_panel",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement the full model-specific likelihood/objective or moment conditions, inference, diagnostics, guide-derived robustness workflow, browser execution, and numerical reference tests."
+    },
+    {
+      "id": "mm_quantile",
+      "name": "Method-of-moments panel quantile regression",
+      "family": "panel",
+      "subfamily": "heterogeneous_panel",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement the full model-specific likelihood/objective or moment conditions, inference, diagnostics, guide-derived robustness workflow, browser execution, and numerical reference tests."
+    },
+    {
+      "id": "panel_threshold",
+      "name": "Panel threshold regression (Hansen)",
+      "family": "panel",
+      "subfamily": "nonlinear_panel",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement the full model-specific likelihood/objective or moment conditions, inference, diagnostics, guide-derived robustness workflow, browser execution, and numerical reference tests."
+    },
+    {
+      "id": "panel_smooth_transition",
+      "name": "Panel smooth-transition regression",
+      "family": "panel",
+      "subfamily": "nonlinear_panel",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement the full model-specific likelihood/objective or moment conditions, inference, diagnostics, guide-derived robustness workflow, browser execution, and numerical reference tests."
+    },
+    {
+      "id": "panel_ardl_mg",
+      "name": "Mean-group panel ARDL",
+      "family": "panel",
+      "subfamily": "dynamic_heterogeneous_panel",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement the full model-specific likelihood/objective or moment conditions, inference, diagnostics, guide-derived robustness workflow, browser execution, and numerical reference tests."
+    },
+    {
+      "id": "panel_ardl_dfe",
+      "name": "Dynamic fixed-effects panel ARDL",
+      "family": "panel",
+      "subfamily": "dynamic_homogeneous_panel",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement the full model-specific likelihood/objective or moment conditions, inference, diagnostics, guide-derived robustness workflow, browser execution, and numerical reference tests."
+    },
+    {
+      "id": "panel_cce_pooled",
+      "name": "Common-correlated-effects pooled estimator",
+      "family": "panel",
+      "subfamily": "cross_sectional_dependence",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement the full model-specific likelihood/objective or moment conditions, inference, diagnostics, guide-derived robustness workflow, browser execution, and numerical reference tests."
+    },
+    {
+      "id": "panel_cce_mg",
+      "name": "Common-correlated-effects mean-group estimator",
+      "family": "panel",
+      "subfamily": "cross_sectional_dependence",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement the full model-specific likelihood/objective or moment conditions, inference, diagnostics, guide-derived robustness workflow, browser execution, and numerical reference tests."
+    },
+    {
+      "id": "panel_cce_dynamic",
+      "name": "Dynamic common-correlated-effects estimator",
+      "family": "panel",
+      "subfamily": "cross_sectional_dependence",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "residuals",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement the full model-specific likelihood/objective or moment conditions, inference, diagnostics, guide-derived robustness workflow, browser execution, and numerical reference tests."
     }
   ]
 }
