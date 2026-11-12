@@ -40,7 +40,7 @@ async function ensure(packages){
 onmessage=async e=>{
  const m=e.data||{};
  try{
-  if(!booting)booting=boot(m.version||"1");
+  if(!booting)booting=boot(m.version||"1").catch(err=>{booting=null;py=null;throw err;});
   const version=await booting;
   if(m.cmd==="init"){postMessage({type:"ready",version});return;}
   if(m.cmd==="native_run"){
