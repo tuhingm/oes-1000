@@ -25,15 +25,15 @@ The existing 44-model OES engine is now wired into the OES-1000 browser applicat
 | Measure | Count | Status |
 |---|---:|---|
 | Accepted legacy OES models | 44 | Retained as validated legacy estimators |
-| New catalogue additions in this development batch | 180 | Planned |
-| Canonical catalogue entries | 224 / 1,000 | In progress |
-| Remaining catalogue target | 776 | Not yet catalogued |
+| New catalogue additions in this development batch | 956 | Planned |
+| Canonical catalogue entries | 1,000 / 1,000 | Catalogue complete |
+| Remaining catalogue target | 0 | Catalogue complete; implementation remains in progress |
 | New browser-native OLS path | 1 | Implemented in the initial runtime |
 | Legacy models exposed through browser interface | 44 | Integrated; XGBoost runtime limitation documented |
 
-The accepted 44-model OES catalogue is carried forward without re-auditing, as directed. Their existing implementation entry points and specifications are retained. The additional 180 entries are model specifications, not claims of completed implementations.
+The accepted 44-model OES catalogue is carried forward without re-auditing, as directed. Their existing implementation entry points and specifications are retained. The additional 956 entries are model specifications, not claims of completed implementations. The catalogue is complete at 1,000 unique IDs; these entries remain planned until estimator code, numerical tests, and benchmark validation are completed.
 
-## Validation gates
+## Catalogue completion\n\nThe canonical catalogue contains exactly 1,000 unique model IDs: 44 retained legacy entries and 956 planned specifications. The browser page exposes a searchable catalogue with family and lifecycle filters. Only models with implemented estimator routes should be presented as executable.\n\n## Validation gates
 
 - **Planned:** distinct model specification and catalogue metadata exist.
 - **Implemented:** executable estimator code exists and returns documented outputs.
