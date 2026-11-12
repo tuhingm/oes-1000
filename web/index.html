@@ -372,7 +372,7 @@ function renderResult() {
   $("charts").innerHTML = out.charts.map(svgChart).join("");
   $("notes").hidden = !out.notes.length;
   $("notes").innerHTML = out.notes.map(n => `<p>${esc(n)}</p>`).join("");
-  $("res-guide").style.display = out.guide ? "" : "none"; if (out.guide) $("res-guide").href = "../" + out.guide;
+  $("res-guide").style.display = out.guide ? "" : "none"; if (out.guide) $("res-guide").href = "https://tuhingm.github.io/almamun/" + out.guide;
   const s = JSON.stringify(spec, null, 1).replace(/\n\s*/g, " ");
   $("code").textContent = `# git clone https://github.com/tuhingm/oes-1000\n# pip install -e open-econometric-systems/oes-engine\nimport oes_engine\n\nresult = oes_engine.run("${model.id}", open("${RESULT.data}").read(), ${s})\nfor table in result["tables"]:\n    print(table["title"])\n    for row in table["rows"]:\n        print(row)`;
   $("s-results").scrollIntoView({behavior: "smooth"});
