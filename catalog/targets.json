@@ -66,7 +66,26 @@
   ],
   "counting_rule": "Count a model only when it has a distinct statistical specification or estimator. Lag order, covariance type, bandwidth, deterministic terms, prior hyperparameters, and tuning values are options or robustness configurations, not additional models.",
   "implemented_models": [
-    "ols"
+    "ols",
+    "wls",
+    "gls",
+    "fgls",
+    "lad",
+    "quantile_regression",
+    "huber_regression",
+    "tukey_bisquare",
+    "logit",
+    "probit",
+    "cloglog",
+    "poisson",
+    "negative_binomial",
+    "fractional_logit",
+    "gamma_glm",
+    "inverse_gaussian_glm",
+    "quasi_poisson",
+    "geometric_regression",
+    "negative_binomial_nb1",
+    "zero_inflated_poisson"
   ],
   "validated_models": [
     "ols",
