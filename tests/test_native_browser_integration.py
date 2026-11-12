@@ -18,6 +18,13 @@ EXPECTED_NATIVE = {
     "cloglog",
     "poisson",
     "negative_binomial",
+    "fractional_logit",
+    "gamma_glm",
+    "inverse_gaussian_glm",
+    "quasi_poisson",
+    "geometric_regression",
+    "negative_binomial_nb1",
+    "zero_inflated_poisson",
 }
 
 
