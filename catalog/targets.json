@@ -1,21 +1,71 @@
 {
   "catalogue_target": 1000,
   "methodological_blueprint": "docs/methodology-blueprint.md",
-  "status_policy": ["planned", "implemented", "tested", "validated"],
+  "status_policy": [
+    "planned",
+    "implemented",
+    "tested",
+    "validated"
+  ],
   "families": [
-    {"id":"classical_glm","label":"Classical regression and GLM","target":90},
-    {"id":"time_series","label":"Time-series econometrics","target":140},
-    {"id":"panel","label":"Panel-data econometrics","target":140},
-    {"id":"causal","label":"Causal inference and treatment effects","target":90},
-    {"id":"bayesian","label":"Bayesian econometrics and statistics","target":110},
-    {"id":"statespace","label":"State-space, filtering and forecasting","target":70},
-    {"id":"volatility","label":"Volatility and financial econometrics","target":50},
-    {"id":"machine_learning","label":"Machine learning and statistical learning","target":90},
-    {"id":"survival","label":"Survival, duration and event-history models","target":40},
-    {"id":"multivariate","label":"Multivariate statistics and dimension reduction","target":50},
-    {"id":"nonlinear","label":"Nonlinear, threshold and regime-switching models","target":50},
-    {"id":"dsge","label":"DSGE and structural macroeconomic models","target":80}
+    {
+      "id": "classical_glm",
+      "label": "Classical regression and GLM",
+      "target": 90
+    },
+    {
+      "id": "time_series",
+      "label": "Time-series econometrics",
+      "target": 165
+    },
+    {
+      "id": "panel",
+      "label": "Panel-data econometrics",
+      "target": 165
+    },
+    {
+      "id": "causal",
+      "label": "Causal inference and treatment effects",
+      "target": 105
+    },
+    {
+      "id": "bayesian",
+      "label": "Bayesian econometrics and statistics",
+      "target": 110
+    },
+    {
+      "id": "statespace",
+      "label": "State-space, filtering and forecasting",
+      "target": 70
+    },
+    {
+      "id": "volatility",
+      "label": "Volatility and financial econometrics",
+      "target": 50
+    },
+    {
+      "id": "machine_learning",
+      "label": "Machine learning and statistical learning",
+      "target": 105
+    },
+    {
+      "id": "survival",
+      "label": "Survival, duration and event-history models",
+      "target": 40
+    },
+    {
+      "id": "multivariate",
+      "label": "Multivariate statistics and dimension reduction",
+      "target": 50
+    },
+    {
+      "id": "nonlinear",
+      "label": "Nonlinear, threshold and regime-switching models",
+      "target": 50
+    }
   ],
   "counting_rule": "Count a model only when it has a distinct statistical specification or estimator. Lag order, covariance type, bandwidth, deterministic terms, prior hyperparameters, and tuning values are options or robustness configurations, not additional models.",
-  "implemented_models": ["ols"]
+  "implemented_models": [
+    "ols"
+  ]
 }
