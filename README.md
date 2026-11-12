@@ -26,7 +26,7 @@ Each model is intended to include its mathematical specification, data requireme
 
 ## Browser integration status
 
-The browser application now exposes the 44 existing OES estimator definitions through a generic Pyodide worker bridge. It dynamically renders each estimator's original input fields and calls the legacy engine's `run(model_id, csv_text, spec)` entry point. NumPy, SciPy, pandas, statsmodels, and scikit-learn are loaded in the browser runtime.
+The browser application exposes a searchable catalogue of 1,000 distinct model specifications, with family and lifecycle filters. The 44 existing OES estimator definitions remain connected through the generic Pyodide worker bridge; the other 956 entries are planned specifications and are not yet executable. It dynamically renders each estimator's original input fields and calls the legacy engine's `run(model_id, csv_text, spec)` entry point. NumPy, SciPy, pandas, statsmodels, and scikit-learn are loaded in the browser runtime.
 
 The `xgb` entry is visible but cannot execute in the standard Pyodide build because its native XGBoost runtime is unavailable. It is explicitly reported as unavailable rather than substituted with a different estimator. The other 43 legacy entries are routed through the browser engine, subject to their model-specific data and specification requirements.
 
