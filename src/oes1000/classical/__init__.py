@@ -6,3 +6,5 @@ from . import discrete as _discrete  # register binary-response and count estima
 from . import glm_extra as _glm_extra  # register additional GLM and count estimators
 
 from . import advanced_discrete as _advanced_discrete  # register beta, multinomial, and hurdle models
+
+from . import ordinal_censored as _ordinal_censored  # register ordered and censored-response models
