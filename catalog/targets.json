@@ -92,7 +92,9 @@
     "ordered_logit",
     "ordered_probit",
     "tobit",
-    "truncated_regression"
+    "truncated_regression",
+    "glm_binomial_logit_penalized",
+    "glm_binomial_probit_penalized"
   ],
   "validated_models": [
     "ols",
