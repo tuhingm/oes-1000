@@ -20,6 +20,6 @@ def test_canonical_catalogue_has_unique_ids_and_expected_progress():
     assert len(ids) == len(set(ids))
     assert len(ids) == 1000
     assert sum(model.get("legacy_catalogue_id") is not None for model in data["models"]) == 44
-    assert sum(model["status"] == "planned" for model in data["models"]) == 930
-    assert sum(model["status"] == "implemented" for model in data["models"]) == 26
+    assert sum(model["status"] == "planned" for model in data["models"]) == 928
+    assert sum(model["status"] == "implemented" for model in data["models"]) == 28
     assert all(model["status"] in {"planned", "implemented", "tested", "validated"} for model in data["models"])
