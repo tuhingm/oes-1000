@@ -94,8 +94,10 @@ pre.code{background:#0f1b33;color:#dce6f7;border-radius:10px;padding:14px 16px;f
   <div class="field" id="native-weights-wrap"><label for="native-weights">Weights column (WLS)</label><select id="native-weights"><option value="">Choose weights…</option></select></div>
   <div class="field"><label for="native-cov">WLS covariance</label><select id="native-cov"><option value="HC1">HC1 robust</option><option value="HC0">HC0 robust</option><option value="NONROBUST">Conventional</option></select></div>
   <div class="field"><label for="native-quantile">Quantile (quantile regression)</label><input id="native-quantile" type="number" min="0.01" max="0.99" step="0.01" value="0.50"></div>
-  <div class="field"><label for="native-tuning">Robust tuning constant</label><input id="native-tuning" type="number" min="0.01" step="0.01" value="1.345"></div>\n  <div class="field" id="native-penalty-wrap"><label for="native-penalty">L2 penalty strength (λ)</label><input id="native-penalty" type="number" min="0" step="0.1" value="1"></div>
-  <div class="field" style="grid-column:1/-1" id="native-sigma-wrap"><label for="native-sigma">GLS covariance matrix (JSON, n × n)</label><textarea id="native-sigma" rows="3" placeholder="[[1,0],[0,1]]"></textarea></div>\n  <div class="field" id="native-lower-wrap"><label for="native-lower">Lower censoring / truncation threshold</label><input id="native-lower" type="number" value="0" step="any"></div>\n  <div class="field" id="native-upper-wrap"><label for="native-upper">Tobit upper censoring point</label><input id="native-upper" type="number" placeholder="Leave blank for no upper censoring" step="any"></div>
+  <div class="field"><label for="native-tuning">Robust tuning constant</label><input id="native-tuning" type="number" min="0.01" step="0.01" value="1.345"></div>
+  <div class="field" id="native-penalty-wrap"><label for="native-penalty">L2 penalty strength (λ)</label><input id="native-penalty" type="number" min="0" step="0.1" value="1"></div>
+  <div class="field" style="grid-column:1/-1" id="native-sigma-wrap"><label for="native-sigma">GLS covariance matrix (JSON, n × n)</label><textarea id="native-sigma" rows="3" placeholder="[[1,0],[0,1]]"></textarea></div>\n  <div class="field" id="native-lower-wrap"><label for="native-lower">Lower censoring / truncation threshold</label><input id="native-lower" type="number" value="0" step="any"></div>
+  <div class="field" id="native-upper-wrap"><label for="native-upper">Tobit upper censoring point</label><input id="native-upper" type="number" placeholder="Leave blank for no upper censoring" step="any"></div>
  </div>
  <label class="hint"><input type="checkbox" id="native-constant" checked> Include intercept</label>
  <div class="row" style="margin-top:12px"><button class="btn" id="native-run" type="button" disabled>Run native estimator</button><span class="hint" id="native-hint">Load a CSV file to enable estimation.</span></div>
@@ -431,7 +433,8 @@ $("native-run").addEventListener("click", async () => {
   if (model === "quantile_regression") spec.quantile=+$("native-quantile").value;
   if (["huber_regression","tukey_bisquare"].includes(model)) spec.tuning=+$("native-tuning").value;
   if (model === "gls") { try { spec.sigma=JSON.parse($("native-sigma").value); } catch(e) {$("native-error").hidden=false;$("native-error").textContent="GLS covariance must be valid JSON.";return;} }
-  if (model.endsWith("_penalized")) spec.penalty=+$("native-penalty").value;\n  if (["tobit","truncated_regression"].includes(model)) { spec.lower=+$("native-lower").value; spec.upper=$("native-upper").value.trim()===""?null:+$("native-upper").value; if(spec.upper!==null && !(spec.lower<spec.upper)) {$("native-error").hidden=false;$("native-error").textContent="Tobit upper bound must exceed lower bound.";return;} }
+  if (model.endsWith("_penalized")) spec.penalty=+$("native-penalty").value;
+  if (["tobit","truncated_regression"].includes(model)) { spec.lower=+$("native-lower").value; spec.upper=$("native-upper").value.trim()===""?null:+$("native-upper").value; if(spec.upper!==null && !(spec.lower<spec.upper)) {$("native-error").hidden=false;$("native-error").textContent="Tobit upper bound must exceed lower bound.";return;} }
   const job=++jobs;
   $("native-run").disabled=true; $("native-error").hidden=true; $("native-output").hidden=true;
   status.on("Running "+model+" in the browser…");
