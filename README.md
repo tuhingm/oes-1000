@@ -42,17 +42,16 @@ A catalogue entry is not production-ready merely because it is listed.
 | Family | Target |
 |---|---:|
 | Classical regression and GLM | 90 |
-| Time-series econometrics | 140 |
-| Panel-data econometrics | 140 |
-| Causal inference and treatment effects | 90 |
+| Time-series econometrics | 165 |
+| Panel-data econometrics | 165 |
+| Causal inference and treatment effects | 105 |
 | Bayesian econometrics and statistics | 110 |
 | State-space, filtering and forecasting | 70 |
 | Volatility and financial econometrics | 50 |
-| Machine learning and statistical learning | 90 |
+| Machine learning and statistical learning | 105 |
 | Survival, duration and event-history models | 40 |
 | Multivariate statistics and dimension reduction | 50 |
 | Nonlinear, threshold and regime-switching models | 50 |
-| DSGE and structural macroeconomic models | 80 |
 | **Total** | **1,000** |
 
 ## Architecture
