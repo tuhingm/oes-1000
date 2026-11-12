@@ -27,7 +27,10 @@ EXPECTED_NATIVE = {
     "zero_inflated_poisson",
     "beta_regression",
     "multinomial_logit",
-    "hurdle_poisson",\n    "ordered_logit",\n    "ordered_probit",\n    "tobit",
+    "hurdle_poisson",
+    "ordered_logit",
+    "ordered_probit",
+    "tobit",
     "truncated_regression",
 }
 
@@ -48,7 +51,8 @@ def test_browser_worker_loads_all_native_python_modules():
         "src/oes1000/classical/linear.py",
         "src/oes1000/classical/discrete.py",
         "src/oes1000/classical/glm_extra.py",
-        "src/oes1000/classical/advanced_discrete.py",\n        "src/oes1000/classical/ordinal_censored.py",
+        "src/oes1000/classical/advanced_discrete.py",
+        "src/oes1000/classical/ordinal_censored.py",
         "src/oes1000/classical/truncated.py",
     ]
     for path in required_paths:
