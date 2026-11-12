@@ -58,8 +58,8 @@ pre.code{background:#0f1b33;color:#dce6f7;border-radius:10px;padding:14px 16px;f
 <body id="top">
 <header class="site-header oes-header"><div class="wrap nav"><a class="brand" href="#top" aria-label="OES-1000 home">OES <span>1000</span></a><nav id="nav" aria-label="OES-1000 navigation"><a href="#s-library">Library</a><a href="#s-model">Legacy estimator</a><a href="#s-native">New estimators</a><a href="#s-data">Data</a><a href="#s-ops">Variables</a><a href="#s-spec">Specification</a><a href="#s-results">Results</a><a href="#s-tests">Diagnostics</a><a href="#s-about">About</a></nav></div></header>
 <section class="hero"><div class="wrap"><div class="kicker">Open-source econometric workspace</div><h1>Open Econometric Systems 1000</h1>
-<p class="lead">Every model in the Time-Series, Panel Data, Causal Inference, and Machine Learning guides is ready to run. Bayesian VAR and Markov-Switching models are also included. Choose a model and load its example dataset or upload your own CSV file. Get estimation results, diagnostic tests, statistical outputs, and charts. No installation or external software is required. Python runs directly in your browser.</p>
-<div class="meta"><span><strong id="n-models">44</strong> legacy models</span><span><strong>6</strong> model groups</span><span>Runs in your browser: <strong>your data stays on your device</strong></span><span><strong>Free</strong> and open source</span></div></div></section>
+<p class="lead">Run the accepted legacy OES estimators and the new Python-native regression and generalized linear models directly in your browser. Explore the 1,000-model catalogue; planned specifications are clearly separated from executable estimators. Upload your own CSV, select variables, and estimate locally without sending your data to a server.</p>
+<div class="meta"><span><strong id="n-models">44</strong> legacy models</span><span><strong>12</strong> new Python-native estimators</span><span><strong>1,000</strong> catalogue entries</span><span>Runs in your browser: <strong>your data stays on your device</strong></span><span><strong>Free</strong> and open source</span></div></div></section>
 <main class="wrap">
 
 <section class="step" id="s-model"><span class="stepno">01 · Model</span><h2>Choose a model</h2><p class="sub">The first four groups follow the research guides, and each model links to its guide, which explains when to use it and how to write up the results. The Bayesian and Markov-switching groups have no guide pages yet.</p>
@@ -152,7 +152,7 @@ pre.code{background:#0f1b33;color:#dce6f7;border-radius:10px;padding:14px 16px;f
 
 <section class="step" id="s-about"><span class="stepno">07 · About</span><h2>How it works</h2>
 <div class="info">
-<div><b>Python in the browser</b>The estimators are Python (NumPy, pandas, SciPy, statsmodels, scikit-learn, XGBoost) running in <a href="https://pyodide.org" style="text-decoration:underline" target="_blank" rel="noopener">Pyodide</a>. The first run downloads Python once (about 30 MB); later runs start at once. Your file is read on your device and never uploaded.</div>
+<div><b>Python in the browser</b>The estimators run as Python (NumPy, pandas, SciPy and statsmodels where required) in <a href="https://pyodide.org" style="text-decoration:underline" target="_blank" rel="noopener">Pyodide</a>. The first run downloads Python once (about 30 MB); later runs start at once. Your file is read on your device and never uploaded.</div>
 <div><b>Bayesian and regime-switching models</b>The Bayesian VARs follow the ECB's BEAR toolbox (Minnesota, Normal-Wishart, Independent Normal-Wishart and Normal-diffuse priors, FAVAR, steady-state, panel, TVP, stochastic-volatility, mixed-frequency and threshold VARs). Markov-switching models are estimated by maximum likelihood; the regression and AR versions reproduce Stata's and Hamilton's published estimates.</div>
 <div><b>The same code as the guides</b>Difference GMM, the panel ARDL estimators, the causal designs and double machine learning use the helper files published with the guides. Static panel models reproduce linearmodels, including its small-sample scaling.</div>
 <div><b>What is not here</b>DSGE models are solved and estimated in Dynare; see the <a href="https://tuhingm.github.io/almamun/dsge-guide/" style="text-decoration:underline">DSGE Guide</a>. The causal forest is a doubly robust forest, not EconML's implementation, which does not run in a browser.</div>
@@ -435,7 +435,7 @@ $("native-run").addEventListener("click", async () => {
     const se=Array.from(out.std_errors||[]);
     const stat=Array.from(out.test_statistics||out.t_statistics||[]);
     const pv=Array.from(out.p_values||[]);
-    const labels=(out.model==="negative_binomial" ? ["Intercept",...names] : (spec.add_constant ? ["Intercept",...names] : names));
+    const labels=spec.add_constant ? ["Intercept",...names] : names;
     const rows=labels.map((name,i)=>'<tr><td>'+esc(name)+'</td><td>'+esc(NUM(params[i]))+'</td><td>'+esc(NUM(se[i]))+'</td><td>'+esc(NUM(stat[i]))+'</td><td>'+esc(NUM(pv[i]))+'</td></tr>').join("");
     const metrics=[["Observations",out.nobs],["Log likelihood",out.log_likelihood],["R-squared",out.r_squared],["Dispersion α",out.dispersion_alpha],["AR(1) ρ",out.rho],["Iterations",out.iterations],["Converged",out.converged]];
     $("native-output").innerHTML='<div style="padding:10px 12px;font-weight:800">Results · '+esc(model)+' · '+esc(response.seconds.toFixed(2))+' s</div><table><thead><tr><th>Coefficient</th><th>Estimate</th><th>Std. error</th><th>Statistic</th><th>p-value</th></tr></thead><tbody>'+rows+'</tbody></table><div style="padding:10px 12px;font-size:12px">'+metrics.filter(x=>x[1]!==undefined).map(x=>'<span style="display:inline-block;margin:0 16px 4px 0"><b>'+esc(x[0])+':</b> '+esc(typeof x[1]==="boolean"?(x[1]?"Yes":"No"):NUM(x[1]))+'</span>').join("")+'<br>Complete-case rows dropped: '+esc(out.nobs_dropped||0)+'</div>';
@@ -557,7 +557,7 @@ fetch("engine/catalog.json", {cache: "no-cache"}).then(r => r.json()).then(c => 
  }
  function render(){
    const rows=filtered(), pages=Math.max(1,Math.ceil(rows.length/pageSize)); page=Math.min(page,pages-1);
-   $("library-stats").textContent=rows.length.toLocaleString()+" matching specifications · "+models.length.toLocaleString()+" total · "+models.filter(m=>m.status==="validated").length+" validated legacy estimators · "+models.filter(m=>m.status==="planned").length+" planned";
+   $("library-stats").textContent=rows.length.toLocaleString()+" matching specifications · "+models.length.toLocaleString()+" total · "+models.filter(m=>m.status==="validated").length+" validated legacy estimators · "+models.filter(m=>m.status==="implemented").length+" implemented · "+models.filter(m=>m.status==="planned").length+" planned";
    $("library-list").innerHTML=rows.slice(page*pageSize,(page+1)*pageSize).map(m=>'<article class="library-item"><strong>'+esc(m.name)+'</strong><small>'+esc(m.id)+' · '+esc(familyLabel(m.family))+' / '+esc(familyLabel(m.subfamily))+'</small><span class="library-status '+esc(m.status)+'">'+esc(m.status)+'</span></article>').join("") || '<p class="sub">No matching models.</p>';
    $("library-page").textContent="Page "+(page+1)+" of "+pages;
    $("library-prev").disabled=page===0; $("library-next").disabled=page>=pages-1;
