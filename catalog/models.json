@@ -13160,8 +13160,8 @@
       "name": "Binomial response regression with logit link and penalized-likelihood estimation",
       "family": "classical_glm",
       "subfamily": "distribution_link_models",
-      "status": "planned",
-      "implementation": null,
+      "status": "implemented",
+      "implementation": "oes1000.classical.penalized:estimate_penalized_logit",
       "options": {
         "base_specification": "binomial",
         "structural_specification": "logit",
@@ -13174,7 +13174,7 @@
         "residuals",
         "model_diagnostics"
       ],
-      "notes": "Distinct joint specification: Binomial response regression; logit link; penalized-likelihood estimation. Planned catalogue entry only. Estimator code, identification checks, inference, diagnostics, robustness procedures, Pyodide compatibility, and numerical benchmark tests remain to be implemented."
+      "notes": "L2-penalized binomial likelihood with intercept-exempt penalty; numerical tests and browser integration checks in progress."
     },
     {
       "id": "glm_binomial_probit_mle",
@@ -13202,8 +13202,8 @@
       "name": "Binomial response regression with probit link and penalized-likelihood estimation",
       "family": "classical_glm",
       "subfamily": "distribution_link_models",
-      "status": "planned",
-      "implementation": null,
+      "status": "implemented",
+      "implementation": "oes1000.classical.penalized:estimate_penalized_probit",
       "options": {
         "base_specification": "binomial",
         "structural_specification": "probit",
@@ -13216,7 +13216,7 @@
         "residuals",
         "model_diagnostics"
       ],
-      "notes": "Distinct joint specification: Binomial response regression; probit link; penalized-likelihood estimation. Planned catalogue entry only. Estimator code, identification checks, inference, diagnostics, robustness procedures, Pyodide compatibility, and numerical benchmark tests remain to be implemented."
+      "notes": "L2-penalized binomial likelihood with intercept-exempt penalty; numerical tests and browser integration checks in progress."
     },
     {
       "id": "glm_binomial_cloglog_mle",
