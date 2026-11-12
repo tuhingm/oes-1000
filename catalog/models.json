@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "catalogue_target": 1000,
+  "models": [
+    {
+      "id": "ols",
+      "name": "Ordinary least squares",
+      "family": "classical_glm",
+      "subfamily": "linear_regression",
+      "status": "tested",
+      "implementation": "oes1000.classical.ols:estimate_ols",
+      "options": {
+        "add_constant": {"type": "boolean", "default": true},
+        "cov_type": {"type": "enum", "values": ["NONROBUST", "HC0", "HC1", "HC2", "HC3"], "default": "HC1"}
+      },
+      "outputs": ["params", "covariance", "std_errors", "t_statistics", "p_values", "residuals", "fitted", "r_squared", "adjusted_r_squared"],
+      "notes": "OLS with full-rank design validation and conventional or heteroskedasticity-consistent covariance."
+    }
+  ]
+}
