@@ -2481,6 +2481,806 @@
         "model_diagnostics"
       ],
       "notes": "Distinct estimator specification. Implement the full model-specific likelihood/objective or moment conditions, inference, diagnostics, guide-derived robustness workflow, browser execution, and numerical reference tests."
+    },
+    {
+      "id": "did_twfe",
+      "name": "Two-way fixed-effects difference-in-differences",
+      "family": "causal",
+      "subfamily": "did",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "validation_metrics",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement estimator-specific objective, identification or learning assumptions, inference/uncertainty, diagnostics, sensitivity workflow, browser runtime, and numerical tests."
+    },
+    {
+      "id": "did_event_study",
+      "name": "Dynamic event-study difference-in-differences",
+      "family": "causal",
+      "subfamily": "did",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "validation_metrics",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement estimator-specific objective, identification or learning assumptions, inference/uncertainty, diagnostics, sensitivity workflow, browser runtime, and numerical tests."
+    },
+    {
+      "id": "did_sun_abraham",
+      "name": "Sun-Abraham interaction-weighted event study",
+      "family": "causal",
+      "subfamily": "staggered_did",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "validation_metrics",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement estimator-specific objective, identification or learning assumptions, inference/uncertainty, diagnostics, sensitivity workflow, browser runtime, and numerical tests."
+    },
+    {
+      "id": "did_imputation",
+      "name": "Borusyak-Jaravel-Spiess imputation estimator",
+      "family": "causal",
+      "subfamily": "staggered_did",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "validation_metrics",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement estimator-specific objective, identification or learning assumptions, inference/uncertainty, diagnostics, sensitivity workflow, browser runtime, and numerical tests."
+    },
+    {
+      "id": "did_twfe_decomp",
+      "name": "Goodman-Bacon decomposition",
+      "family": "causal",
+      "subfamily": "staggered_did",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "validation_metrics",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement estimator-specific objective, identification or learning assumptions, inference/uncertainty, diagnostics, sensitivity workflow, browser runtime, and numerical tests."
+    },
+    {
+      "id": "did_group_time",
+      "name": "Group-time average treatment effects",
+      "family": "causal",
+      "subfamily": "staggered_did",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "validation_metrics",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement estimator-specific objective, identification or learning assumptions, inference/uncertainty, diagnostics, sensitivity workflow, browser runtime, and numerical tests."
+    },
+    {
+      "id": "did_synthetic",
+      "name": "Synthetic difference-in-differences",
+      "family": "causal",
+      "subfamily": "did",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "validation_metrics",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement estimator-specific objective, identification or learning assumptions, inference/uncertainty, diagnostics, sensitivity workflow, browser runtime, and numerical tests."
+    },
+    {
+      "id": "did_matrix_completion",
+      "name": "Matrix-completion treatment effects",
+      "family": "causal",
+      "subfamily": "panel_counterfactual",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "validation_metrics",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement estimator-specific objective, identification or learning assumptions, inference/uncertainty, diagnostics, sensitivity workflow, browser runtime, and numerical tests."
+    },
+    {
+      "id": "did_factor",
+      "name": "Interactive fixed-effects treatment effects",
+      "family": "causal",
+      "subfamily": "panel_counterfactual",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "validation_metrics",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement estimator-specific objective, identification or learning assumptions, inference/uncertainty, diagnostics, sensitivity workflow, browser runtime, and numerical tests."
+    },
+    {
+      "id": "iv_late",
+      "name": "Local average treatment effects (LATE)",
+      "family": "causal",
+      "subfamily": "instrumental_variables",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "validation_metrics",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement estimator-specific objective, identification or learning assumptions, inference/uncertainty, diagnostics, sensitivity workflow, browser runtime, and numerical tests."
+    },
+    {
+      "id": "iv_limd",
+      "name": "Limited-information maximum-likelihood IV",
+      "family": "causal",
+      "subfamily": "instrumental_variables",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "validation_metrics",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement estimator-specific objective, identification or learning assumptions, inference/uncertainty, diagnostics, sensitivity workflow, browser runtime, and numerical tests."
+    },
+    {
+      "id": "iv_fuller",
+      "name": "Fuller modified-LIML estimator",
+      "family": "causal",
+      "subfamily": "instrumental_variables",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "validation_metrics",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement estimator-specific objective, identification or learning assumptions, inference/uncertainty, diagnostics, sensitivity workflow, browser runtime, and numerical tests."
+    },
+    {
+      "id": "iv_heteroskedastic",
+      "name": "Heteroskedasticity-efficient IV",
+      "family": "causal",
+      "subfamily": "instrumental_variables",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "validation_metrics",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement estimator-specific objective, identification or learning assumptions, inference/uncertainty, diagnostics, sensitivity workflow, browser runtime, and numerical tests."
+    },
+    {
+      "id": "rdd_local_linear",
+      "name": "Local-linear sharp regression discontinuity",
+      "family": "causal",
+      "subfamily": "regression_discontinuity",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "validation_metrics",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement estimator-specific objective, identification or learning assumptions, inference/uncertainty, diagnostics, sensitivity workflow, browser runtime, and numerical tests."
+    },
+    {
+      "id": "rdd_local_quadratic",
+      "name": "Local-quadratic regression discontinuity",
+      "family": "causal",
+      "subfamily": "regression_discontinuity",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "validation_metrics",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement estimator-specific objective, identification or learning assumptions, inference/uncertainty, diagnostics, sensitivity workflow, browser runtime, and numerical tests."
+    },
+    {
+      "id": "rdd_fuzzy",
+      "name": "Fuzzy regression discontinuity",
+      "family": "causal",
+      "subfamily": "regression_discontinuity",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "validation_metrics",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement estimator-specific objective, identification or learning assumptions, inference/uncertainty, diagnostics, sensitivity workflow, browser runtime, and numerical tests."
+    },
+    {
+      "id": "rdd_donut",
+      "name": "Donut regression discontinuity",
+      "family": "causal",
+      "subfamily": "regression_discontinuity",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "validation_metrics",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement estimator-specific objective, identification or learning assumptions, inference/uncertainty, diagnostics, sensitivity workflow, browser runtime, and numerical tests."
+    },
+    {
+      "id": "scm_augmented",
+      "name": "Augmented synthetic control",
+      "family": "causal",
+      "subfamily": "synthetic_control",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "validation_metrics",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement estimator-specific objective, identification or learning assumptions, inference/uncertainty, diagnostics, sensitivity workflow, browser runtime, and numerical tests."
+    },
+    {
+      "id": "scm_penalized",
+      "name": "Penalized synthetic control",
+      "family": "causal",
+      "subfamily": "synthetic_control",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "validation_metrics",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement estimator-specific objective, identification or learning assumptions, inference/uncertainty, diagnostics, sensitivity workflow, browser runtime, and numerical tests."
+    },
+    {
+      "id": "scm_in_space_placebo",
+      "name": "Synthetic-control in-space placebo inference",
+      "family": "causal",
+      "subfamily": "synthetic_control",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "validation_metrics",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement estimator-specific objective, identification or learning assumptions, inference/uncertainty, diagnostics, sensitivity workflow, browser runtime, and numerical tests."
+    },
+    {
+      "id": "gradient_boosting",
+      "name": "Gradient boosting regression",
+      "family": "machine_learning",
+      "subfamily": "boosting",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "validation_metrics",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement estimator-specific objective, identification or learning assumptions, inference/uncertainty, diagnostics, sensitivity workflow, browser runtime, and numerical tests."
+    },
+    {
+      "id": "hist_gradient_boosting",
+      "name": "Histogram gradient boosting",
+      "family": "machine_learning",
+      "subfamily": "boosting",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "validation_metrics",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement estimator-specific objective, identification or learning assumptions, inference/uncertainty, diagnostics, sensitivity workflow, browser runtime, and numerical tests."
+    },
+    {
+      "id": "extra_trees",
+      "name": "Extremely randomized trees",
+      "family": "machine_learning",
+      "subfamily": "tree_ensembles",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "validation_metrics",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement estimator-specific objective, identification or learning assumptions, inference/uncertainty, diagnostics, sensitivity workflow, browser runtime, and numerical tests."
+    },
+    {
+      "id": "random_forest_quantile",
+      "name": "Quantile regression forest",
+      "family": "machine_learning",
+      "subfamily": "tree_ensembles",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "validation_metrics",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement estimator-specific objective, identification or learning assumptions, inference/uncertainty, diagnostics, sensitivity workflow, browser runtime, and numerical tests."
+    },
+    {
+      "id": "random_forest_classifier",
+      "name": "Random forest classification",
+      "family": "machine_learning",
+      "subfamily": "tree_ensembles",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "validation_metrics",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement estimator-specific objective, identification or learning assumptions, inference/uncertainty, diagnostics, sensitivity workflow, browser runtime, and numerical tests."
+    },
+    {
+      "id": "extra_trees_classifier",
+      "name": "Extra-trees classification",
+      "family": "machine_learning",
+      "subfamily": "tree_ensembles",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "validation_metrics",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement estimator-specific objective, identification or learning assumptions, inference/uncertainty, diagnostics, sensitivity workflow, browser runtime, and numerical tests."
+    },
+    {
+      "id": "svr_linear",
+      "name": "Linear support-vector regression",
+      "family": "machine_learning",
+      "subfamily": "support_vector",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "validation_metrics",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement estimator-specific objective, identification or learning assumptions, inference/uncertainty, diagnostics, sensitivity workflow, browser runtime, and numerical tests."
+    },
+    {
+      "id": "svr_rbf",
+      "name": "RBF support-vector regression",
+      "family": "machine_learning",
+      "subfamily": "support_vector",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "validation_metrics",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement estimator-specific objective, identification or learning assumptions, inference/uncertainty, diagnostics, sensitivity workflow, browser runtime, and numerical tests."
+    },
+    {
+      "id": "svr_poly",
+      "name": "Polynomial support-vector regression",
+      "family": "machine_learning",
+      "subfamily": "support_vector",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "validation_metrics",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement estimator-specific objective, identification or learning assumptions, inference/uncertainty, diagnostics, sensitivity workflow, browser runtime, and numerical tests."
+    },
+    {
+      "id": "svc_linear",
+      "name": "Linear support-vector classification",
+      "family": "machine_learning",
+      "subfamily": "support_vector",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "validation_metrics",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement estimator-specific objective, identification or learning assumptions, inference/uncertainty, diagnostics, sensitivity workflow, browser runtime, and numerical tests."
+    },
+    {
+      "id": "svc_rbf",
+      "name": "RBF support-vector classification",
+      "family": "machine_learning",
+      "subfamily": "support_vector",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "validation_metrics",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement estimator-specific objective, identification or learning assumptions, inference/uncertainty, diagnostics, sensitivity workflow, browser runtime, and numerical tests."
+    },
+    {
+      "id": "knn_regression",
+      "name": "K-nearest-neighbor regression",
+      "family": "machine_learning",
+      "subfamily": "nearest_neighbors",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "validation_metrics",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement estimator-specific objective, identification or learning assumptions, inference/uncertainty, diagnostics, sensitivity workflow, browser runtime, and numerical tests."
+    },
+    {
+      "id": "knn_classification",
+      "name": "K-nearest-neighbor classification",
+      "family": "machine_learning",
+      "subfamily": "nearest_neighbors",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "validation_metrics",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement estimator-specific objective, identification or learning assumptions, inference/uncertainty, diagnostics, sensitivity workflow, browser runtime, and numerical tests."
+    },
+    {
+      "id": "mlp_regression",
+      "name": "Multilayer perceptron regression",
+      "family": "machine_learning",
+      "subfamily": "neural_networks",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "validation_metrics",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement estimator-specific objective, identification or learning assumptions, inference/uncertainty, diagnostics, sensitivity workflow, browser runtime, and numerical tests."
+    },
+    {
+      "id": "mlp_classification",
+      "name": "Multilayer perceptron classification",
+      "family": "machine_learning",
+      "subfamily": "neural_networks",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "validation_metrics",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement estimator-specific objective, identification or learning assumptions, inference/uncertainty, diagnostics, sensitivity workflow, browser runtime, and numerical tests."
+    },
+    {
+      "id": "pcr",
+      "name": "Principal-components regression",
+      "family": "machine_learning",
+      "subfamily": "dimension_reduction",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "validation_metrics",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement estimator-specific objective, identification or learning assumptions, inference/uncertainty, diagnostics, sensitivity workflow, browser runtime, and numerical tests."
+    },
+    {
+      "id": "pls_regression",
+      "name": "Partial least-squares regression",
+      "family": "machine_learning",
+      "subfamily": "dimension_reduction",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "validation_metrics",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement estimator-specific objective, identification or learning assumptions, inference/uncertainty, diagnostics, sensitivity workflow, browser runtime, and numerical tests."
+    },
+    {
+      "id": "gam",
+      "name": "Generalized additive model",
+      "family": "machine_learning",
+      "subfamily": "additive_models",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "validation_metrics",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement estimator-specific objective, identification or learning assumptions, inference/uncertainty, diagnostics, sensitivity workflow, browser runtime, and numerical tests."
+    },
+    {
+      "id": "isotonic_regression",
+      "name": "Isotonic regression",
+      "family": "machine_learning",
+      "subfamily": "nonparametric_regression",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "validation_metrics",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement estimator-specific objective, identification or learning assumptions, inference/uncertainty, diagnostics, sensitivity workflow, browser runtime, and numerical tests."
+    },
+    {
+      "id": "huber_regressor",
+      "name": "Huber robust linear regression",
+      "family": "machine_learning",
+      "subfamily": "robust_learning",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "validation_metrics",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Implement estimator-specific objective, identification or learning assumptions, inference/uncertainty, diagnostics, sensitivity workflow, browser runtime, and numerical tests."
     }
   ]
 }
