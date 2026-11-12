@@ -116,8 +116,11 @@ def estimate_negative_binomial(y,X,*,add_constant=True):
     def ll(theta):
         b=theta[:k]; alpha=np.exp(np.clip(theta[k],-12,8)); mu=np.exp(np.clip(X@b,-30,30)); r=1/alpha
         return float(np.sum(gammaln(y+r)-gammaln(r)-gammaln(y+1)+r*np.log(r/(r+mu))+y*np.log(mu/(r+mu))))
-    fit=minimize(lambda th:-ll(th),np.r_[np.zeros(k),np.log(0.2)],method="BFGS",options={"gtol":1e-8,"maxiter":3000})
-    if not fit.success and np.linalg.norm(fit.jac)>1e-5: raise RuntimeError("Negative-binomial MLE failed: "+str(fit.message))
+    fit=minimize(lambda th:-ll(th),np.r_[np.zeros(k),np.log(0.2)],method="L-BFGS-B",
+                 bounds=[(None,None)]*k+[(-12,8)],
+                 options={"ftol":1e-12,"gtol":1e-7,"maxiter":10000,"maxls":50})
+    if not fit.success and np.linalg.norm(fit.jac)>1e-3:
+        raise RuntimeError("Negative-binomial MLE failed: "+str(fit.message))
     theta=fit.x
     # Numerical observed Hessian for joint parameter covariance.
     eps=1e-4; d=k+1; H=np.zeros((d,d)); f0=-ll(theta)
