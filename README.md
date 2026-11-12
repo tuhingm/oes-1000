@@ -2,7 +2,7 @@
 
 **A browser-native econometrics and statistical estimation library.**
 
-OES-1000 is designed to provide a broad catalogue of econometric and statistical estimators executed locally in the user's browser with Python running in Pyodide. The application uses Web Workers to keep estimation work off the UI thread.
+OES-1000 is an independent, free estimation library targeting 1,000 genuinely distinct econometric and statistical models. Its primary methodological blueprint is the existing research website's Time-Series, Panel-Data, Causal-Inference, DSGE, and Machine-Learning guides. The full mapping and required workflow standard are documented in [the methodology blueprint](docs/methodology-blueprint.md).
 
 ## Execution contract
 
@@ -11,14 +11,23 @@ OES-1000 is designed to provide a broad catalogue of econometric and statistical
 - **Execution:** browser-side only, in a Web Worker.
 - **Estimation API:** none.
 - **Dataset upload:** none; user data remains in the browser session.
-- **Static assets:** the browser downloads the application, Python modules, and compatible package assets from the static host/CDN. This is static asset delivery, not an estimation service.
+- **Static assets:** the browser downloads application, Python modules, and compatible package assets from a static host/CDN. This is static asset delivery, not an estimation service.
 - **Reproducibility:** deterministic seeds where supported, explicit estimator metadata, and numerical regression tests.
+
+## Primary methodological source
+
+- [Time-Series guide](https://tuhingm.github.io/almamun/research-guide/)
+- [Panel-Data guide](https://tuhingm.github.io/almamun/panel-data-guide/)
+- [Causal-Inference guide](https://tuhingm.github.io/almamun/causal-inference-guide/)
+- [DSGE guide](https://tuhingm.github.io/almamun/dsge-guide/)
+- [Machine-Learning guide](https://tuhingm.github.io/almamun/ml-guide/)
+- [Existing browser OES](https://tuhingm.github.io/almamun/oes/)
+
+Each model is intended to include its mathematical specification, data requirements, identification conditions, estimation algorithm, inference, diagnostics, guide-derived robustness procedures, numerical tests, and reproducible output. Model options such as lag length or covariance type do not inflate the distinct-model count.
 
 ## Repository status
 
-This repository is the independent home for OES-1000. It is being developed in validated stages. The target catalogue size is 1,000 genuinely distinct estimators/specifications; the target is not represented as 1,000 completed implementations.
-
-Model lifecycle labels:
+This repository is developed in validated stages. The 1,000 figure is a catalogue target, not a claim that 1,000 estimators are already complete.
 
 | Status | Meaning |
 |---|---|
@@ -27,42 +36,32 @@ Model lifecycle labels:
 | tested | Numerical tests pass against controlled fixtures |
 | validated | Benchmark comparisons and documented assumptions are complete |
 
-A model must not be counted as production-ready merely because it appears in the catalogue.
+A catalogue entry is not production-ready merely because it is listed.
 
 ## Planned model allocation
 
 | Family | Target |
 |---|---:|
-| Classical regression and GLM | 100 |
-| Time-series econometrics | 150 |
-| Panel-data econometrics | 150 |
-| Causal inference and treatment effects | 100 |
-| Bayesian econometrics and statistics | 120 |
-| State-space, filtering and forecasting | 80 |
-| Volatility and financial econometrics | 60 |
-| Machine learning and statistical learning | 100 |
+| Classical regression and GLM | 90 |
+| Time-series econometrics | 140 |
+| Panel-data econometrics | 140 |
+| Causal inference and treatment effects | 90 |
+| Bayesian econometrics and statistics | 110 |
+| State-space, filtering and forecasting | 70 |
+| Volatility and financial econometrics | 50 |
+| Machine learning and statistical learning | 90 |
 | Survival, duration and event-history models | 40 |
 | Multivariate statistics and dimension reduction | 50 |
 | Nonlinear, threshold and regime-switching models | 50 |
+| DSGE and structural macroeconomic models | 80 |
 | **Total** | **1,000** |
 
 ## Architecture
 
-```text
+```
 oes-1000/
 ├── catalog/             # machine-readable model catalogue and schemas
 ├── src/oes1000/         # Python estimators and shared numerical routines
-│   ├── classical/
-│   ├── timeseries/
-│   ├── panel/
-│   ├── causal/
-│   ├── bayesian/
-│   ├── statespace/
-│   ├── volatility/
-│   ├── machine_learning/
-│   ├── survival/
-│   ├── multivariate/
-│   └── nonlinear/
 ├── runtime/             # Pyodide Web Worker and browser bridge
 ├── web/                 # static browser application
 ├── examples/            # small, redistributable example datasets
@@ -73,21 +72,18 @@ oes-1000/
 ## Numerical standards
 
 Every estimator implementation must document:
-
 1. Statistical model and parameterization.
-2. Objective function / likelihood / moment conditions.
-3. Estimation algorithm and convergence criteria.
+2. Objective function, likelihood, moment conditions, or splitting criterion.
+3. Estimation algorithm, initialization, tolerances, and convergence criteria.
 4. Covariance estimator and inferential assumptions.
 5. Identification and sample-size constraints.
 6. Diagnostics and post-estimation quantities.
-7. Reference implementation or published benchmark.
-8. Unit tests, edge cases, and reproducibility behavior.
-
-The catalogue records estimator identity separately from options such as lag order, covariance type, deterministic terms, and prior hyperparameters. Such options do not inflate the model count.
+7. Guide-derived robustness and sensitivity procedures.
+8. Reference implementation or published benchmark.
+9. Unit tests, edge cases, and reproducibility behavior.
+10. Pyodide compatibility and required packages.
 
 ## Development
-
-Python-native tests can be run with:
 
 ```bash
 python -m pip install -e ".[test]"
