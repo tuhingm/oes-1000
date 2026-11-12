@@ -55,7 +55,7 @@ def estimate_frame(frame: pd.DataFrame, model_id: str, spec: dict[str, Any]) -> 
         kwargs["tuning"] = float(spec.get("tuning", 1.345 if model_id == "huber_regression" else 4.685))
     elif model_id == "tobit":
         kwargs["lower"] = float(spec.get("lower", 0.0))
-        kwargs["upper"] = float(spec.get("upper", float("inf")))
+        kwargs["upper"] = float("inf") if spec.get("upper") is None else float(spec["upper"])
     result = dict(get_estimator(model_id)(y, X, **kwargs))
     result.update({"model": model_id, "nobs_input": int(len(frame)),
                    "nobs_dropped": int(len(frame)-len(selected)),
