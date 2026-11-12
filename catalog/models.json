@@ -1267,8 +1267,8 @@
       "name": "Ordered logistic regression",
       "family": "classical_glm",
       "subfamily": "ordinal_response",
-      "status": "planned",
-      "implementation": null,
+      "status": "implemented",
+      "implementation": "oes1000.classical.ordinal_censored:estimate_ordered_logit",
       "options": {},
       "outputs": [
         "params",
@@ -1280,15 +1280,15 @@
         "residuals",
         "model_diagnostics"
       ],
-      "notes": "Distinct estimator specification. Full mathematical specification, inference, diagnostics, robustness workflow, browser implementation, and numerical tests are scheduled under the OES-1000 implementation contract."
+      "notes": "Python-native MLE committed; numerical tests and browser integration checks are in progress."
     },
     {
       "id": "ordered_probit",
       "name": "Ordered probit regression",
       "family": "classical_glm",
       "subfamily": "ordinal_response",
-      "status": "planned",
-      "implementation": null,
+      "status": "implemented",
+      "implementation": "oes1000.classical.ordinal_censored:estimate_ordered_probit",
       "options": {},
       "outputs": [
         "params",
@@ -1300,15 +1300,15 @@
         "residuals",
         "model_diagnostics"
       ],
-      "notes": "Distinct estimator specification. Full mathematical specification, inference, diagnostics, robustness workflow, browser implementation, and numerical tests are scheduled under the OES-1000 implementation contract."
+      "notes": "Python-native MLE committed; numerical tests and browser integration checks are in progress."
     },
     {
       "id": "tobit",
       "name": "Tobit censored regression",
       "family": "classical_glm",
       "subfamily": "limited_dependent",
-      "status": "planned",
-      "implementation": null,
+      "status": "implemented",
+      "implementation": "oes1000.classical.ordinal_censored:estimate_tobit",
       "options": {},
       "outputs": [
         "params",
@@ -1320,7 +1320,7 @@
         "residuals",
         "model_diagnostics"
       ],
-      "notes": "Distinct estimator specification. Full mathematical specification, inference, diagnostics, robustness workflow, browser implementation, and numerical tests are scheduled under the OES-1000 implementation contract."
+      "notes": "Python-native MLE committed; numerical tests and browser integration checks are in progress."
     },
     {
       "id": "heckman_selection",
@@ -20779,4 +20779,4 @@
       "notes": "Distinct joint specification: Generalized synthetic-control estimator; staggered treatment adoption; average treatment effect on treated target. Planned catalogue entry only. Estimator code, identification checks, inference, diagnostics, robustness procedures, Pyodide compatibility, and numerical benchmark tests remain to be implemented."
     }
   ]
-}
+}\n
