@@ -3,5 +3,6 @@
 __version__ = "0.1.0"
 
 from .registry import get_estimator, list_estimators, register_estimator
+from .classical import ols as _ols  # register the initial estimator
 
 __all__ = ["get_estimator", "list_estimators", "register_estimator", "__version__"]
