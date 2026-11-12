@@ -28,12 +28,12 @@ The existing 44-model OES engine is now wired into the OES-1000 browser applicat
 | New catalogue additions in this development batch | 956 | Planned |
 | Canonical catalogue entries | 1,000 / 1,000 | Catalogue complete |
 | Remaining catalogue target | 0 | Catalogue complete; implementation remains in progress |
-| New Python-native estimators | 12 | Implemented; worker route and dedicated browser panel committed |
+| New Python-native estimators | 19 | Implemented; worker route and dedicated browser panel committed |
 | Legacy models exposed through browser interface | 44 | Integrated; XGBoost runtime limitation documented |
 
 The accepted 44-model OES catalogue is carried forward without re-auditing, as directed. Their existing implementation entry points and specifications are retained. The additional 956 entries are model specifications, not claims of completed implementations. The catalogue is complete at 1,000 unique IDs; these entries remain planned until estimator code, numerical tests, and benchmark validation are completed.
 
-## Catalogue completion\n\nThe canonical catalogue contains exactly 1,000 unique model IDs: 44 retained legacy entries, 12 additional Python-native estimators marked implemented, and 944 planned specifications. The 12 additional estimators are WLS, GLS, AR(1) FGLS, LAD, quantile regression, Huber, Tukey bisquare, logit, probit, complementary log-log, Poisson, and negative binomial. They are registered in the Python package and exposed through a separate native route in the shared browser worker and a dedicated estimator panel. The browser page exposes a searchable catalogue with family and lifecycle filters. Only models with implemented estimator routes should be presented as executable.\n\n## Validation gates
+## Catalogue completion\n\nThe canonical catalogue contains exactly 1,000 unique model IDs: 44 retained legacy entries, 19 additional Python-native estimators marked implemented, and 937 planned specifications. The 19 additional estimators are WLS, GLS, AR(1) FGLS, LAD, quantile regression, Huber, Tukey bisquare, logit, probit, complementary log-log, Poisson, NB2, fractional logit, Gamma GLM, inverse-Gaussian GLM, quasi-Poisson, geometric count regression, NB1, and zero-inflated Poisson. They are registered in the Python package and exposed through a separate native route in the shared browser worker and a dedicated estimator panel. The browser page exposes a searchable catalogue with family and lifecycle filters. Only models with implemented estimator routes should be presented as executable.\n\n## Validation gates
 
 - **Planned:** distinct model specification and catalogue metadata exist.
 - **Implemented:** executable estimator code exists and returns documented outputs.
@@ -44,4 +44,4 @@ The 44 legacy models retain the accepted status assigned to the existing OES imp
 
 ## Native browser integration checks
 
-A GitHub Actions workflow runs the Python test suite on pushes to `main` and pull requests. The native browser integration tests verify that all 12 estimator IDs are registered, every required Python module is loaded by `web/worker.js`, and the browser dropdown exposes exactly those 12 IDs. The test suite also includes numerical regression checks for the probit and complementary log-log expected-information covariance matrices. Static integration checks do not replace an actual Pyodide browser smoke test or broader cross-package benchmark validation.
+A GitHub Actions workflow runs the Python test suite on pushes to `main` and pull requests. The native browser integration tests verify that all 19 estimator IDs are registered, every required Python module is loaded by `web/worker.js`, and the browser dropdown exposes exactly those 19 IDs. The test suite also includes numerical regression checks for the probit and complementary log-log expected-information covariance matrices. Static integration checks do not replace an actual Pyodide browser smoke test or broader cross-package benchmark validation.
