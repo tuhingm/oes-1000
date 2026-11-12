@@ -123,7 +123,7 @@ def estimate_multinomial_logit(y, X, *, add_constant=True, base_category=None):
             "params":B,"covariance":covariance,"std_errors":se,
             "test_statistics":z,"p_values":2*norm.sf(np.abs(z)),
             "fitted_probabilities":P,"log_likelihood":float(-nll(theta)),
-            "joint_parameters":theta,"converged":bool(fit.success or np.linalg.norm(fit.jac)<=2e-4),
+            "joint_parameters":theta,"joint_covariance":covariance,"converged":bool(fit.success or np.linalg.norm(fit.jac)<=2e-4),
             "iterations":int(fit.nit)}
 
 
