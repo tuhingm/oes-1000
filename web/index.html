@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OES-1000 | Open Econometric Systems</title>
+<style>
+:root{color-scheme:dark;--bg:#0b1020;--panel:#131c31;--line:#263650;--muted:#9aabc2;--text:#edf3fb;--accent:#7dd3fc}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.55 Inter,system-ui,sans-serif}
+header{padding:34px max(22px,calc((100vw - 1120px)/2));border-bottom:1px solid var(--line);background:#0e1729}
+.kicker{color:var(--accent);font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:700}
+h1{font-size:clamp(30px,5vw,48px);line-height:1.05;margin:10px 0}
+header p{max-width:720px;color:var(--muted);margin:0}
+main{max-width:1120px;margin:28px auto;padding:0 20px;display:grid;grid-template-columns:1fr 320px;gap:18px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px}
+h2{font-size:18px;margin:0 0 14px}.sub{color:var(--muted);font-size:13px}
+label{display:block;font-size:13px;color:var(--muted);margin:16px 0 6px}
+input,select,button{font:inherit;border-radius:8px;border:1px solid var(--line);padding:10px;background:#0b1426;color:var(--text);width:100%}
+button{background:#164e63;border-color:#0e7490;font-weight:700;cursor:pointer;margin-top:14px}
+button:disabled{opacity:.5;cursor:wait}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#0a1221;padding:14px;border-radius:8px;min-height:70px}
+.stat{padding:12px 0;border-bottom:1px solid var(--line)}.stat strong{display:block;font-size:22px}
+footer{max-width:1120px;margin:20px auto;padding:0 20px 36px;color:var(--muted);font-size:12px}
+@media(max-width:780px){main{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><div class="kicker">Open Econometric Systems · 1000</div><h1>Econometric estimation,<br>executed in your browser.</h1><p>Python estimators running through Pyodide and Web Workers. Your dataset is processed locally; no estimation API or server-side data upload is used.</p></header>
+<main>
+<section class="card">
+<h2>OLS estimation</h2><div class="sub">Initial executable model · Ordinary least squares with HC0–HC3 or conventional covariance.</div>
+<label>Upload numeric CSV</label><input id="file" type="file" accept=".csv,text/csv">
+<label>Dependent variable</label><select id="y"></select>
+<label>Regressors</label><select id="x" multiple size="5"></select>
+<label>Covariance estimator</label><select id="cov"><option>HC1</option><option>HC0</option><option>HC2</option><option>HC3</option><option>NONROBUST</option></select>
+<button id="run" disabled>Load a CSV to estimate</button>
+<h2 style="margin-top:24px">Estimation output</h2><pre id="output">Upload a CSV with a header row and numeric columns.</pre>
+</section>
+<aside class="card">
+<h2>Library status</h2>
+<div class="stat"><strong>1 / 1,000</strong><span class="sub">Implemented estimator in this initial build</span></div>
+<div class="stat"><strong>Pyodide</strong><span class="sub">Python in WebAssembly</span></div>
+<div class="stat"><strong>Local</strong><span class="sub">Browser-side computation</span></div>
+<div class="stat"><strong>No API</strong><span class="sub">No estimation server or dataset upload</span></div>
+<p class="sub">The 1,000-model catalogue is a development target. Models will be marked implemented, tested and validated only after their numerical routines and benchmarks pass.</p>
+</aside>
+</main>
+<footer>OES-1000 · Open-source development · Static assets are fetched by the browser; estimation runs locally in a dedicated Web Worker.</footer>
+<script>
+const fileInput=document.querySelector("#file"), ySelect=document.querySelector("#y"), xSelect=document.querySelector("#x"), runButton=document.querySelector("#run"), output=document.querySelector("#output");
+let rows=[], headers=[], worker=null, requestId=0, ready=false;
+function parseCSV(text){
+ const lines=text.trim().split(/\r?\n/); if(lines.length<3)throw Error("CSV needs a header and at least two observations.");
+ const parseLine=line=>{const a=[];let s="",q=false;for(let i=0;i<line.length;i++){const c=line[i];if(c==='"'&&line[i+1]==='"'&&q){s+='"';i++;}else if(c==='"')q=!q;else if(c===','&&!q){a.push(s);s="";}else s+=c;}a.push(s);return a;};
+ const h=parseLine(lines[0]).map(v=>v.trim());const data=lines.slice(1).filter(v=>v.trim()).map(parseLine);
+ if(data.some(r=>r.length!==h.length))throw Error("Inconsistent CSV row width.");
+ return {headers:h,columns:h.map((_,j)=>data.map(r=>Number(r[j])))};
+}
+function setOptions(select, names){select.innerHTML="";names.forEach((name,i)=>{const o=document.createElement("option");o.value=String(i);o.textContent=name;select.append(o);});}
+fileInput.addEventListener("change",async e=>{try{const text=await e.target.files[0].text();const parsed=parseCSV(text);headers=parsed.headers;rows=parsed.columns;if(rows.some(c=>c.some(v=>!Number.isFinite(v))))throw Error("All columns must be numeric in this initial build.");setOptions(ySelect,headers);setOptions(xSelect,headers);if(xSelect.options.length>1)xSelect.options[1].selected=true;runButton.disabled=false;runButton.textContent="Estimate OLS";output.textContent="CSV loaded: "+rows[0].length+" observations, "+headers.length+" variables.";}catch(err){output.textContent=err.message;}});
+runButton.addEventListener("click",async()=>{const yi=Number(ySelect.value), xi=[...xSelect.selectedOptions].map(o=>Number(o.value));if(!xi.length||xi.includes(yi)){output.textContent="Select one or more regressors, excluding the dependent variable.";return;}runButton.disabled=true;output.textContent="Starting Pyodide and estimating…";try{if(!worker){worker=new Worker("../runtime/worker.js");worker.onmessage=e=>{const m=e.data;if(m.id!==requestId)return;runButton.disabled=false;if(!m.ok){output.textContent="Estimation error: "+m.error;return;}output.textContent=JSON.stringify(m.result,null,2);};}requestId++;worker.postMessage({id:requestId,action:"estimate",payload:{y:rows[yi],X:rows[0].map((_,i)=>xi.map(j=>rows[j][i])),cov_type:document.querySelector("#cov").value}});}catch(err){runButton.disabled=false;output.textContent=err.message;}});
+</script>
+</body></html>
