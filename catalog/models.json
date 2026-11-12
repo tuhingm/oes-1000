@@ -3281,6 +3281,1206 @@
         "model_diagnostics"
       ],
       "notes": "Distinct estimator specification. Implement estimator-specific objective, identification or learning assumptions, inference/uncertainty, diagnostics, sensitivity workflow, browser runtime, and numerical tests."
+    },
+    {
+      "id": "bayes_logit",
+      "name": "Bayesian logistic regression",
+      "family": "bayesian",
+      "subfamily": "bayesian_glm",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full estimator-specific algorithm, uncertainty quantification, diagnostics, robustness/sensitivity analysis, browser implementation, and reference tests are required before promotion from planned."
+    },
+    {
+      "id": "bayes_probit",
+      "name": "Bayesian probit regression",
+      "family": "bayesian",
+      "subfamily": "bayesian_glm",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full estimator-specific algorithm, uncertainty quantification, diagnostics, robustness/sensitivity analysis, browser implementation, and reference tests are required before promotion from planned."
+    },
+    {
+      "id": "bayes_poisson",
+      "name": "Bayesian Poisson regression",
+      "family": "bayesian",
+      "subfamily": "bayesian_glm",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full estimator-specific algorithm, uncertainty quantification, diagnostics, robustness/sensitivity analysis, browser implementation, and reference tests are required before promotion from planned."
+    },
+    {
+      "id": "bayes_nb",
+      "name": "Bayesian negative-binomial regression",
+      "family": "bayesian",
+      "subfamily": "bayesian_glm",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full estimator-specific algorithm, uncertainty quantification, diagnostics, robustness/sensitivity analysis, browser implementation, and reference tests are required before promotion from planned."
+    },
+    {
+      "id": "bayes_quantile",
+      "name": "Bayesian quantile regression",
+      "family": "bayesian",
+      "subfamily": "bayesian_regression",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full estimator-specific algorithm, uncertainty quantification, diagnostics, robustness/sensitivity analysis, browser implementation, and reference tests are required before promotion from planned."
+    },
+    {
+      "id": "bayes_hierarchical",
+      "name": "Hierarchical Bayesian regression",
+      "family": "bayesian",
+      "subfamily": "hierarchical_models",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full estimator-specific algorithm, uncertainty quantification, diagnostics, robustness/sensitivity analysis, browser implementation, and reference tests are required before promotion from planned."
+    },
+    {
+      "id": "bayes_multilevel",
+      "name": "Multilevel random-intercept and random-slope model",
+      "family": "bayesian",
+      "subfamily": "hierarchical_models",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full estimator-specific algorithm, uncertainty quantification, diagnostics, robustness/sensitivity analysis, browser implementation, and reference tests are required before promotion from planned."
+    },
+    {
+      "id": "bayes_spatial",
+      "name": "Bayesian spatial autoregressive model",
+      "family": "bayesian",
+      "subfamily": "spatial_bayesian",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full estimator-specific algorithm, uncertainty quantification, diagnostics, robustness/sensitivity analysis, browser implementation, and reference tests are required before promotion from planned."
+    },
+    {
+      "id": "bayes_var_sv",
+      "name": "Bayesian VAR with stochastic volatility",
+      "family": "bayesian",
+      "subfamily": "bayesian_timeseries",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full estimator-specific algorithm, uncertainty quantification, diagnostics, robustness/sensitivity analysis, browser implementation, and reference tests are required before promotion from planned."
+    },
+    {
+      "id": "bayes_dynamic_factor",
+      "name": "Bayesian dynamic factor model",
+      "family": "bayesian",
+      "subfamily": "bayesian_timeseries",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full estimator-specific algorithm, uncertainty quantification, diagnostics, robustness/sensitivity analysis, browser implementation, and reference tests are required before promotion from planned."
+    },
+    {
+      "id": "kalman_filter",
+      "name": "Linear Gaussian Kalman filter",
+      "family": "statespace",
+      "subfamily": "filtering",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full estimator-specific algorithm, uncertainty quantification, diagnostics, robustness/sensitivity analysis, browser implementation, and reference tests are required before promotion from planned."
+    },
+    {
+      "id": "kalman_smoother",
+      "name": "Fixed-interval Kalman smoother",
+      "family": "statespace",
+      "subfamily": "filtering",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full estimator-specific algorithm, uncertainty quantification, diagnostics, robustness/sensitivity analysis, browser implementation, and reference tests are required before promotion from planned."
+    },
+    {
+      "id": "diffuse_kalman",
+      "name": "Diffuse-initialization Kalman filter",
+      "family": "statespace",
+      "subfamily": "filtering",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full estimator-specific algorithm, uncertainty quantification, diagnostics, robustness/sensitivity analysis, browser implementation, and reference tests are required before promotion from planned."
+    },
+    {
+      "id": "local_level",
+      "name": "Local-level structural time-series model",
+      "family": "statespace",
+      "subfamily": "structural_timeseries",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full estimator-specific algorithm, uncertainty quantification, diagnostics, robustness/sensitivity analysis, browser implementation, and reference tests are required before promotion from planned."
+    },
+    {
+      "id": "local_linear_trend",
+      "name": "Local-linear-trend state-space model",
+      "family": "statespace",
+      "subfamily": "structural_timeseries",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full estimator-specific algorithm, uncertainty quantification, diagnostics, robustness/sensitivity analysis, browser implementation, and reference tests are required before promotion from planned."
+    },
+    {
+      "id": "seasonal_state_space",
+      "name": "Seasonal state-space model",
+      "family": "statespace",
+      "subfamily": "structural_timeseries",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full estimator-specific algorithm, uncertainty quantification, diagnostics, robustness/sensitivity analysis, browser implementation, and reference tests are required before promotion from planned."
+    },
+    {
+      "id": "structural_trend_cycle",
+      "name": "Trend-cycle state-space model",
+      "family": "statespace",
+      "subfamily": "structural_timeseries",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full estimator-specific algorithm, uncertainty quantification, diagnostics, robustness/sensitivity analysis, browser implementation, and reference tests are required before promotion from planned."
+    },
+    {
+      "id": "dynamic_linear_model",
+      "name": "Dynamic linear model",
+      "family": "statespace",
+      "subfamily": "dynamic_models",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full estimator-specific algorithm, uncertainty quantification, diagnostics, robustness/sensitivity analysis, browser implementation, and reference tests are required before promotion from planned."
+    },
+    {
+      "id": "time_varying_regression",
+      "name": "Time-varying-parameter regression",
+      "family": "statespace",
+      "subfamily": "dynamic_models",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full estimator-specific algorithm, uncertainty quantification, diagnostics, robustness/sensitivity analysis, browser implementation, and reference tests are required before promotion from planned."
+    },
+    {
+      "id": "kalman_missing",
+      "name": "Kalman filtering with missing observations",
+      "family": "statespace",
+      "subfamily": "filtering",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full estimator-specific algorithm, uncertainty quantification, diagnostics, robustness/sensitivity analysis, browser implementation, and reference tests are required before promotion from planned."
+    },
+    {
+      "id": "arch",
+      "name": "ARCH model",
+      "family": "volatility",
+      "subfamily": "univariate_volatility",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full estimator-specific algorithm, uncertainty quantification, diagnostics, robustness/sensitivity analysis, browser implementation, and reference tests are required before promotion from planned."
+    },
+    {
+      "id": "garch",
+      "name": "GARCH(1,1) model",
+      "family": "volatility",
+      "subfamily": "univariate_volatility",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full estimator-specific algorithm, uncertainty quantification, diagnostics, robustness/sensitivity analysis, browser implementation, and reference tests are required before promotion from planned."
+    },
+    {
+      "id": "egarch",
+      "name": "Exponential GARCH model",
+      "family": "volatility",
+      "subfamily": "asymmetric_volatility",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full estimator-specific algorithm, uncertainty quantification, diagnostics, robustness/sensitivity analysis, browser implementation, and reference tests are required before promotion from planned."
+    },
+    {
+      "id": "gjr_garch",
+      "name": "GJR-GARCH model",
+      "family": "volatility",
+      "subfamily": "asymmetric_volatility",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full estimator-specific algorithm, uncertainty quantification, diagnostics, robustness/sensitivity analysis, browser implementation, and reference tests are required before promotion from planned."
+    },
+    {
+      "id": "aparch",
+      "name": "Asymmetric power ARCH model",
+      "family": "volatility",
+      "subfamily": "asymmetric_volatility",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full estimator-specific algorithm, uncertainty quantification, diagnostics, robustness/sensitivity analysis, browser implementation, and reference tests are required before promotion from planned."
+    },
+    {
+      "id": "igarch",
+      "name": "Integrated GARCH model",
+      "family": "volatility",
+      "subfamily": "integrated_volatility",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full estimator-specific algorithm, uncertainty quantification, diagnostics, robustness/sensitivity analysis, browser implementation, and reference tests are required before promotion from planned."
+    },
+    {
+      "id": "figarch",
+      "name": "Fractionally integrated GARCH model",
+      "family": "volatility",
+      "subfamily": "long_memory_volatility",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full estimator-specific algorithm, uncertainty quantification, diagnostics, robustness/sensitivity analysis, browser implementation, and reference tests are required before promotion from planned."
+    },
+    {
+      "id": "component_garch",
+      "name": "Component GARCH model",
+      "family": "volatility",
+      "subfamily": "component_volatility",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full estimator-specific algorithm, uncertainty quantification, diagnostics, robustness/sensitivity analysis, browser implementation, and reference tests are required before promotion from planned."
+    },
+    {
+      "id": "dcc_garch",
+      "name": "Dynamic conditional correlation GARCH",
+      "family": "volatility",
+      "subfamily": "multivariate_volatility",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full estimator-specific algorithm, uncertainty quantification, diagnostics, robustness/sensitivity analysis, browser implementation, and reference tests are required before promotion from planned."
+    },
+    {
+      "id": "bekk_garch",
+      "name": "BEKK multivariate GARCH",
+      "family": "volatility",
+      "subfamily": "multivariate_volatility",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full estimator-specific algorithm, uncertainty quantification, diagnostics, robustness/sensitivity analysis, browser implementation, and reference tests are required before promotion from planned."
+    },
+    {
+      "id": "kaplan_meier",
+      "name": "Kaplan-Meier survival estimator",
+      "family": "survival",
+      "subfamily": "nonparametric_survival",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full estimator-specific algorithm, uncertainty quantification, diagnostics, robustness/sensitivity analysis, browser implementation, and reference tests are required before promotion from planned."
+    },
+    {
+      "id": "nelson_aalen",
+      "name": "Nelson-Aalen cumulative hazard estimator",
+      "family": "survival",
+      "subfamily": "nonparametric_survival",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full estimator-specific algorithm, uncertainty quantification, diagnostics, robustness/sensitivity analysis, browser implementation, and reference tests are required before promotion from planned."
+    },
+    {
+      "id": "cox_ph",
+      "name": "Cox proportional-hazards model",
+      "family": "survival",
+      "subfamily": "semiparametric_survival",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full estimator-specific algorithm, uncertainty quantification, diagnostics, robustness/sensitivity analysis, browser implementation, and reference tests are required before promotion from planned."
+    },
+    {
+      "id": "weibull_aft",
+      "name": "Weibull accelerated-failure-time model",
+      "family": "survival",
+      "subfamily": "parametric_survival",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full estimator-specific algorithm, uncertainty quantification, diagnostics, robustness/sensitivity analysis, browser implementation, and reference tests are required before promotion from planned."
+    },
+    {
+      "id": "exponential_survival",
+      "name": "Exponential survival regression",
+      "family": "survival",
+      "subfamily": "parametric_survival",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full estimator-specific algorithm, uncertainty quantification, diagnostics, robustness/sensitivity analysis, browser implementation, and reference tests are required before promotion from planned."
+    },
+    {
+      "id": "lognormal_aft",
+      "name": "Log-normal accelerated-failure-time model",
+      "family": "survival",
+      "subfamily": "parametric_survival",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full estimator-specific algorithm, uncertainty quantification, diagnostics, robustness/sensitivity analysis, browser implementation, and reference tests are required before promotion from planned."
+    },
+    {
+      "id": "loglogistic_aft",
+      "name": "Log-logistic accelerated-failure-time model",
+      "family": "survival",
+      "subfamily": "parametric_survival",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full estimator-specific algorithm, uncertainty quantification, diagnostics, robustness/sensitivity analysis, browser implementation, and reference tests are required before promotion from planned."
+    },
+    {
+      "id": "gompertz_survival",
+      "name": "Gompertz survival regression",
+      "family": "survival",
+      "subfamily": "parametric_survival",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full estimator-specific algorithm, uncertainty quantification, diagnostics, robustness/sensitivity analysis, browser implementation, and reference tests are required before promotion from planned."
+    },
+    {
+      "id": "competing_risks",
+      "name": "Competing-risks regression",
+      "family": "survival",
+      "subfamily": "competing_risks",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full estimator-specific algorithm, uncertainty quantification, diagnostics, robustness/sensitivity analysis, browser implementation, and reference tests are required before promotion from planned."
+    },
+    {
+      "id": "frailty_survival",
+      "name": "Shared-frailty survival model",
+      "family": "survival",
+      "subfamily": "frailty_models",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full estimator-specific algorithm, uncertainty quantification, diagnostics, robustness/sensitivity analysis, browser implementation, and reference tests are required before promotion from planned."
+    },
+    {
+      "id": "pca",
+      "name": "Principal component analysis",
+      "family": "multivariate",
+      "subfamily": "dimension_reduction",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full estimator-specific algorithm, uncertainty quantification, diagnostics, robustness/sensitivity analysis, browser implementation, and reference tests are required before promotion from planned."
+    },
+    {
+      "id": "factor_analysis",
+      "name": "Common factor analysis",
+      "family": "multivariate",
+      "subfamily": "latent_variable",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full estimator-specific algorithm, uncertainty quantification, diagnostics, robustness/sensitivity analysis, browser implementation, and reference tests are required before promotion from planned."
+    },
+    {
+      "id": "ica",
+      "name": "Independent component analysis",
+      "family": "multivariate",
+      "subfamily": "latent_variable",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full estimator-specific algorithm, uncertainty quantification, diagnostics, robustness/sensitivity analysis, browser implementation, and reference tests are required before promotion from planned."
+    },
+    {
+      "id": "canonical_correlation",
+      "name": "Canonical correlation analysis",
+      "family": "multivariate",
+      "subfamily": "multivariate_association",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full estimator-specific algorithm, uncertainty quantification, diagnostics, robustness/sensitivity analysis, browser implementation, and reference tests are required before promotion from planned."
+    },
+    {
+      "id": "pls_canonical",
+      "name": "Partial least-squares canonical analysis",
+      "family": "multivariate",
+      "subfamily": "multivariate_association",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full estimator-specific algorithm, uncertainty quantification, diagnostics, robustness/sensitivity analysis, browser implementation, and reference tests are required before promotion from planned."
+    },
+    {
+      "id": "manova",
+      "name": "Multivariate analysis of variance",
+      "family": "multivariate",
+      "subfamily": "multivariate_inference",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full estimator-specific algorithm, uncertainty quantification, diagnostics, robustness/sensitivity analysis, browser implementation, and reference tests are required before promotion from planned."
+    },
+    {
+      "id": "discriminant_lda",
+      "name": "Linear discriminant analysis",
+      "family": "multivariate",
+      "subfamily": "classification",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full estimator-specific algorithm, uncertainty quantification, diagnostics, robustness/sensitivity analysis, browser implementation, and reference tests are required before promotion from planned."
+    },
+    {
+      "id": "discriminant_qda",
+      "name": "Quadratic discriminant analysis",
+      "family": "multivariate",
+      "subfamily": "classification",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full estimator-specific algorithm, uncertainty quantification, diagnostics, robustness/sensitivity analysis, browser implementation, and reference tests are required before promotion from planned."
+    },
+    {
+      "id": "mcd_covariance",
+      "name": "Minimum covariance determinant estimator",
+      "family": "multivariate",
+      "subfamily": "robust_multivariate",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full estimator-specific algorithm, uncertainty quantification, diagnostics, robustness/sensitivity analysis, browser implementation, and reference tests are required before promotion from planned."
+    },
+    {
+      "id": "robust_pca",
+      "name": "Robust principal component analysis",
+      "family": "multivariate",
+      "subfamily": "robust_multivariate",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full estimator-specific algorithm, uncertainty quantification, diagnostics, robustness/sensitivity analysis, browser implementation, and reference tests are required before promotion from planned."
+    },
+    {
+      "id": "threshold_ar",
+      "name": "Threshold autoregressive model",
+      "family": "nonlinear",
+      "subfamily": "threshold_timeseries",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full estimator-specific algorithm, uncertainty quantification, diagnostics, robustness/sensitivity analysis, browser implementation, and reference tests are required before promotion from planned."
+    },
+    {
+      "id": "smooth_transition_ar",
+      "name": "Smooth-transition autoregressive model",
+      "family": "nonlinear",
+      "subfamily": "regime_switching",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full estimator-specific algorithm, uncertainty quantification, diagnostics, robustness/sensitivity analysis, browser implementation, and reference tests are required before promotion from planned."
+    },
+    {
+      "id": "markov_switching_garch",
+      "name": "Markov-switching GARCH model",
+      "family": "nonlinear",
+      "subfamily": "regime_switching",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full estimator-specific algorithm, uncertainty quantification, diagnostics, robustness/sensitivity analysis, browser implementation, and reference tests are required before promotion from planned."
+    },
+    {
+      "id": "panel_threshold_dynamic",
+      "name": "Dynamic panel threshold model",
+      "family": "nonlinear",
+      "subfamily": "nonlinear_panel",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full estimator-specific algorithm, uncertainty quantification, diagnostics, robustness/sensitivity analysis, browser implementation, and reference tests are required before promotion from planned."
+    },
+    {
+      "id": "quantile_regression_nonlinear",
+      "name": "Nonlinear quantile regression",
+      "family": "nonlinear",
+      "subfamily": "nonlinear_regression",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full estimator-specific algorithm, uncertainty quantification, diagnostics, robustness/sensitivity analysis, browser implementation, and reference tests are required before promotion from planned."
+    },
+    {
+      "id": "spline_regression",
+      "name": "Regression spline model",
+      "family": "nonlinear",
+      "subfamily": "nonlinear_regression",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full estimator-specific algorithm, uncertainty quantification, diagnostics, robustness/sensitivity analysis, browser implementation, and reference tests are required before promotion from planned."
+    },
+    {
+      "id": "kernel_regression",
+      "name": "Nadaraya-Watson kernel regression",
+      "family": "nonlinear",
+      "subfamily": "nonparametric_regression",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full estimator-specific algorithm, uncertainty quantification, diagnostics, robustness/sensitivity analysis, browser implementation, and reference tests are required before promotion from planned."
+    },
+    {
+      "id": "local_polynomial",
+      "name": "Local-polynomial regression",
+      "family": "nonlinear",
+      "subfamily": "nonparametric_regression",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full estimator-specific algorithm, uncertainty quantification, diagnostics, robustness/sensitivity analysis, browser implementation, and reference tests are required before promotion from planned."
+    },
+    {
+      "id": "semiparametric_partial_linear",
+      "name": "Partially linear semiparametric model",
+      "family": "nonlinear",
+      "subfamily": "semiparametric_models",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full estimator-specific algorithm, uncertainty quantification, diagnostics, robustness/sensitivity analysis, browser implementation, and reference tests are required before promotion from planned."
+    },
+    {
+      "id": "single_index",
+      "name": "Single-index regression model",
+      "family": "nonlinear",
+      "subfamily": "semiparametric_models",
+      "status": "planned",
+      "implementation": null,
+      "options": {},
+      "outputs": [
+        "params",
+        "covariance",
+        "std_errors",
+        "test_statistics",
+        "p_values",
+        "fitted",
+        "predictions",
+        "model_diagnostics"
+      ],
+      "notes": "Distinct estimator specification. Full estimator-specific algorithm, uncertainty quantification, diagnostics, robustness/sensitivity analysis, browser implementation, and reference tests are required before promotion from planned."
     }
   ]
 }
