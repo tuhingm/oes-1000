@@ -24,6 +24,14 @@ OES-1000 is an independent, free estimation library targeting 1,000 genuinely di
 
 Each model is intended to include its mathematical specification, data requirements, identification conditions, estimation algorithm, inference, diagnostics, guide-derived robustness procedures, numerical tests, and reproducible output. Model options such as lag length or covariance type do not inflate the distinct-model count.
 
+## Browser integration status
+
+The browser application now exposes the 44 existing OES estimator definitions through a generic Pyodide worker bridge. It dynamically renders each estimator's original input fields and calls the legacy engine's `run(model_id, csv_text, spec)` entry point. NumPy, SciPy, pandas, statsmodels, and scikit-learn are loaded in the browser runtime.
+
+The `xgb` entry is visible but cannot execute in the standard Pyodide build because its native XGBoost runtime is unavailable. It is explicitly reported as unavailable rather than substituted with a different estimator. The other 43 legacy entries are routed through the browser engine, subject to their model-specific data and specification requirements.
+
+To run locally, serve the repository over HTTP (not `file://`) and open `web/index.html`. GitHub Pages can serve the same static application from the repository root.
+
 ## Repository status
 
 This repository is developed in validated stages. The 1,000 figure is a catalogue target, not a claim that 1,000 estimators are already complete.
