@@ -88,7 +88,10 @@
     "zero_inflated_poisson",
     "beta_regression",
     "multinomial_logit",
-    "hurdle_poisson"
+    "hurdle_poisson",
+    "ordered_logit",
+    "ordered_probit",
+    "tobit"
   ],
   "validated_models": [
     "ols",
