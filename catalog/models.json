@@ -1027,8 +1027,8 @@
       "name": "Binary logistic regression",
       "family": "classical_glm",
       "subfamily": "binary_response",
-      "status": "planned",
-      "implementation": null,
+      "status": "implemented",
+      "implementation": "oes1000.classical.discrete:estimate_logit",
       "options": {},
       "outputs": [
         "params",
@@ -1040,15 +1040,15 @@
         "residuals",
         "model_diagnostics"
       ],
-      "notes": "Distinct estimator specification. Full mathematical specification, inference, diagnostics, robustness workflow, browser implementation, and numerical tests are scheduled under the OES-1000 implementation contract."
+      "notes": "NumPy/SciPy maximum-likelihood implementation added. Numerical tests and Pyodide browser-worker integration pending; not yet available through the legacy browser estimator selector."
     },
     {
       "id": "probit",
       "name": "Binary probit regression",
       "family": "classical_glm",
       "subfamily": "binary_response",
-      "status": "planned",
-      "implementation": null,
+      "status": "implemented",
+      "implementation": "oes1000.classical.discrete:estimate_probit",
       "options": {},
       "outputs": [
         "params",
@@ -1060,15 +1060,15 @@
         "residuals",
         "model_diagnostics"
       ],
-      "notes": "Distinct estimator specification. Full mathematical specification, inference, diagnostics, robustness workflow, browser implementation, and numerical tests are scheduled under the OES-1000 implementation contract."
+      "notes": "NumPy/SciPy maximum-likelihood implementation added. Numerical tests and Pyodide browser-worker integration pending; not yet available through the legacy browser estimator selector."
     },
     {
       "id": "cloglog",
       "name": "Complementary log-log regression",
       "family": "classical_glm",
       "subfamily": "binary_response",
-      "status": "planned",
-      "implementation": null,
+      "status": "implemented",
+      "implementation": "oes1000.classical.discrete:estimate_cloglog",
       "options": {},
       "outputs": [
         "params",
@@ -1080,15 +1080,15 @@
         "residuals",
         "model_diagnostics"
       ],
-      "notes": "Distinct estimator specification. Full mathematical specification, inference, diagnostics, robustness workflow, browser implementation, and numerical tests are scheduled under the OES-1000 implementation contract."
+      "notes": "NumPy/SciPy maximum-likelihood implementation added. Numerical tests and Pyodide browser-worker integration pending; not yet available through the legacy browser estimator selector."
     },
     {
       "id": "poisson",
       "name": "Poisson regression",
       "family": "classical_glm",
       "subfamily": "count_models",
-      "status": "planned",
-      "implementation": null,
+      "status": "implemented",
+      "implementation": "oes1000.classical.discrete:estimate_poisson",
       "options": {},
       "outputs": [
         "params",
@@ -1100,15 +1100,15 @@
         "residuals",
         "model_diagnostics"
       ],
-      "notes": "Distinct estimator specification. Full mathematical specification, inference, diagnostics, robustness workflow, browser implementation, and numerical tests are scheduled under the OES-1000 implementation contract."
+      "notes": "NumPy/SciPy maximum-likelihood implementation added. Numerical tests and Pyodide browser-worker integration pending; not yet available through the legacy browser estimator selector."
     },
     {
       "id": "negative_binomial",
       "name": "Negative binomial regression",
       "family": "classical_glm",
       "subfamily": "count_models",
-      "status": "planned",
-      "implementation": null,
+      "status": "implemented",
+      "implementation": "oes1000.classical.discrete:estimate_negative_binomial",
       "options": {},
       "outputs": [
         "params",
@@ -1120,7 +1120,7 @@
         "residuals",
         "model_diagnostics"
       ],
-      "notes": "Distinct estimator specification. Full mathematical specification, inference, diagnostics, robustness workflow, browser implementation, and numerical tests are scheduled under the OES-1000 implementation contract."
+      "notes": "NumPy/SciPy maximum-likelihood implementation added. Numerical tests and Pyodide browser-worker integration pending; not yet available through the legacy browser estimator selector."
     },
     {
       "id": "zero_inflated_poisson",
