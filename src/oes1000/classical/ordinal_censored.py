@@ -43,7 +43,8 @@ def _hessian(fun, theta):
 
 
 def _ordered(y, X, link, add_constant=True, max_iter=6000):
-    y, X = _prepare(y, X, add_constant)
+    # A free intercept is not identified separately from unrestricted cutpoints.
+    y, X = _prepare(y, X, False)
     categories = np.unique(y)
     if categories.size < 3 or not np.allclose(categories, np.round(categories)):
         raise ValueError("Ordered response must contain at least three integer-coded categories")
