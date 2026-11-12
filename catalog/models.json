@@ -1147,8 +1147,8 @@
       "name": "Hurdle Poisson regression",
       "family": "classical_glm",
       "subfamily": "count_models",
-      "status": "planned",
-      "implementation": null,
+      "status": "implemented",
+      "implementation": "oes1000.classical.advanced_discrete:estimate_hurdle_poisson",
       "options": {},
       "outputs": [
         "params",
@@ -1160,7 +1160,7 @@
         "residuals",
         "model_diagnostics"
       ],
-      "notes": "Distinct estimator specification. Full mathematical specification, inference, diagnostics, robustness workflow, browser implementation, and numerical tests are scheduled under the OES-1000 implementation contract."
+      "notes": "Python-native implementation committed; numerical tests and browser integration checks are in progress."
     },
     {
       "id": "gamma_glm",
@@ -1207,8 +1207,8 @@
       "name": "Beta regression",
       "family": "classical_glm",
       "subfamily": "fractional_response",
-      "status": "planned",
-      "implementation": null,
+      "status": "implemented",
+      "implementation": "oes1000.classical.advanced_discrete:estimate_beta_regression",
       "options": {},
       "outputs": [
         "params",
@@ -1220,7 +1220,7 @@
         "residuals",
         "model_diagnostics"
       ],
-      "notes": "Distinct estimator specification. Full mathematical specification, inference, diagnostics, robustness workflow, browser implementation, and numerical tests are scheduled under the OES-1000 implementation contract."
+      "notes": "Python-native implementation committed; numerical tests and browser integration checks are in progress."
     },
     {
       "id": "fractional_logit",
@@ -1247,8 +1247,8 @@
       "name": "Multinomial logistic regression",
       "family": "classical_glm",
       "subfamily": "categorical_response",
-      "status": "planned",
-      "implementation": null,
+      "status": "implemented",
+      "implementation": "oes1000.classical.advanced_discrete:estimate_multinomial_logit",
       "options": {},
       "outputs": [
         "params",
@@ -1260,7 +1260,7 @@
         "residuals",
         "model_diagnostics"
       ],
-      "notes": "Distinct estimator specification. Full mathematical specification, inference, diagnostics, robustness workflow, browser implementation, and numerical tests are scheduled under the OES-1000 implementation contract."
+      "notes": "Python-native implementation committed; numerical tests and browser integration checks are in progress."
     },
     {
       "id": "ordered_logit",
