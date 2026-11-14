@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#082b67">
+<meta name="description" content="OES Academy — professional training in econometrics, statistics and computational research.">
+<title>OES Academy | Open Econometric Systems</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./lms.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="./index.html"><span class="brand-mark">OES</span><span><b>OES ACADEMY</b><small>OPEN ECONOMETRIC SYSTEMS</small></span></a>
+  <nav><a href="#catalog">Courses</a><a href="#paths">Learning paths</a><a href="#about">About</a><a class="nav-lab" href="../web/index.html">Open OES Laboratory ↗</a></nav>
+  <button class="primary small" id="loginBtn">Student sign in</button>
+</header>
+<section class="hero">
+ <div class="hero-inner">
+  <div class="eyebrow">OES ACADEMY · PROFESSIONAL DEVELOPMENT</div>
+  <h1>Econometrics, learned<br><em>by doing.</em></h1>
+  <p>Structured training in econometric theory, estimation and computational research — connected directly to the OES browser laboratory.</p>
+  <div class="hero-actions"><a class="primary" href="#catalog">Explore courses <span>→</span></a><a class="ghost" href="#paths">Explore learning paths</a></div>
+  <div class="hero-meta"><span><b>12-week</b> flagship programme</span><span><b>Applied</b> computational learning</span><span><b>OES</b> browser laboratory</span></div>
+ </div>
+ <div class="hero-panel"><div class="panel-label">LEARN · ESTIMATE · INTERPRET</div><div class="formula">\(\hat{\beta}=(X'X)^{-1}X'y\)</div><div class="panel-rule"></div><div class="panel-caption">From econometric specification to reproducible empirical results.</div><div class="panel-stats"><div><b>12</b><small>WEEKS</small></div><div><b>6</b><small>CORE AREAS</small></div><div><b>1</b><small>RESEARCH PROJECT</small></div></div></div>
+</section>
+<main>
+ <section class="welcome-row"><div><div class="eyebrow blue">THE LEARNING EXPERIENCE</div><h2>Build skills that translate<br>into empirical research.</h2></div><p>Study the underlying methods, work through guided estimation exercises, test your understanding and develop a complete empirical project.</p></section>
+ <section class="feature-grid">
+  <article><span class="feature-icon">01</span><h3>Structured courses</h3><p>Modules, lessons, readings and clear learning outcomes organized into a coherent sequence.</p></article>
+  <article><span class="feature-icon">02</span><h3>Practical estimation</h3><p>Move from lecture to the OES Laboratory to work with datasets and econometric estimators.</p></article>
+  <article><span class="feature-icon">03</span><h3>Assessment</h3><p>Knowledge checks, problem sets, practical exercises and a capstone research project.</p></article>
+  <article><span class="feature-icon">04</span><h3>Learning records</h3><p>A student workspace concept for course progress, assessment results and completion records.</p></article>
+ </section>
+ <section id="catalog" class="section">
+  <div class="section-heading"><div><div class="eyebrow blue">COURSE CATALOGUE</div><h2>Choose your course.</h2><p>Start with the flagship programme or focus on a specialist method.</p></div><div class="catalog-controls"><input id="courseSearch" type="search" placeholder="Search courses…" aria-label="Search courses"><select id="levelFilter" aria-label="Filter by level"><option value="all">All levels</option><option>Foundational</option><option>Intermediate</option><option>Advanced</option></select></div></div>
+  <div id="courseGrid" class="course-grid"></div>
+ </section>
+ <section id="paths" class="section paths">
+  <div class="eyebrow">LEARNING PATHS</div><h2>Progress by methodology.</h2>
+  <div class="path-grid"><a href="#catalog"><span>01 / FOUNDATIONS</span><b>Econometric foundations</b><small>Probability · Regression · Inference</small></a><a href="#catalog"><span>02 / DYNAMIC MODELS</span><b>Time-series and panel data</b><small>Stationarity · Cointegration · Heterogeneity</small></a><a href="#catalog"><span>03 / MODERN METHODS</span><b>Causal and Bayesian methods</b><small>Policy evaluation · MCMC · Machine learning</small></a></div>
+ </section>
+ <section class="cta" id="about"><div><div class="eyebrow">COMPUTATION INTEGRATED</div><h2>Learn a method.<br>Run it in OES.</h2><p>OES Academy connects methodological instruction with a browser-based econometric environment. Your estimation practice can happen alongside your learning.</p><a class="primary light" href="../web/index.html">Launch OES Laboratory ↗</a></div><div class="cta-mark">OES<span>ACADEMY</span></div></section>
+</main>
+<footer><a class="brand" href="./index.html"><span class="brand-mark">OES</span><span><b>OES ACADEMY</b><small>OPEN ECONOMETRIC SYSTEMS</small></span></a><span>© <span id="year"></span> OES Academy · Founded by Dr. Tuhin G. M. Al Mamun</span><a href="../web/index.html">OES Laboratory ↗</a></footer>
+<dialog id="loginDialog"><form method="dialog" class="dialog-card"><button class="close" aria-label="Close">×</button><div class="eyebrow blue">STUDENT PORTAL</div><h2>Student sign in</h2><p>This preview uses a local demonstration profile. Production accounts require a secure authentication service.</p><label>Email address<input type="email" id="demoEmail" placeholder="student@example.com" required></label><button class="primary" id="demoLogin" type="button">Open demonstration dashboard</button><small class="note">Do not enter a real password. No account is created and no data is transmitted.</small></form></dialog>
+<script src="./lms.js"></script>
+</body></html>
