@@ -51,7 +51,12 @@ opcache.max_accelerated_files = 10000
 EOF
 
 systemctl enable --now mariadb apache2
-mariadb-secure-installation || true
+mariadb <<'SQL'
+DELETE FROM mysql.user WHERE User='';
+DROP DATABASE IF EXISTS test;
+DELETE FROM mysql.db WHERE Db='test' OR Db LIKE 'test\\_%';
+FLUSH PRIVILEGES;
+SQL
 
 DB_PASS="$(openssl rand -hex 32)"
 install -m 600 /dev/null /root/oes-academy-secrets.env
@@ -116,7 +121,7 @@ php /var/www/moodle/admin/cli/install.php \
   --agree-license
 
 unset ADMIN_PASS
-chown root:root /var/www/moodle/config.php
+chown root:www-data /var/www/moodle/config.php
 chmod 640 /var/www/moodle/config.php
 
 # Add a persistent top-level link back to the OES browser laboratory.
