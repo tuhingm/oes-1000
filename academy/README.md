@@ -1,27 +1,46 @@
-# OES Academy — LMS frontend
+# OES Academy — Static LMS
 
-This directory contains the first OES Academy learning portal interface, deployed as a separate static section of OES-1000.
+OES Academy is a self-contained, browser-based learning management interface served as static files from GitHub Pages. It does not require Moodle, a VPS, a database server, Supabase, or another hosted backend.
 
-## Current capabilities
-- Academy landing page and course catalogue
-- Search and level filtering
-- Six specialist courses plus a 12-week flagship curriculum
-- Module and lesson syllabus previews
-- Links to the OES browser laboratory
-- Explicit demonstration-only sign-in dialog
+## Included learner pages
 
-## Important deployment boundary
-GitHub Pages serves static assets. This frontend is a UI and curriculum prototype, not a production LMS. It does not create accounts, securely authenticate learners, process payments, persist enrollment or grades, store video, or issue authoritative certificates. The sign-in interaction is intentionally a no-op demonstration and must not be represented as a working account system.
+- Academy overview and learner dashboard
+- Course catalogue with search and level filtering
+- Course overview and module/lesson navigation
+- Lesson reading pages with learning objectives and applied workflow
+- Knowledge-check quizzes with automatic scoring and explanations
+- My Learning and per-course progress
+- Assignments and local submission notes
+- Grades and assessment history
+- Completion certificate view with browser print / Save as PDF
+- Learner profile with local data export/import
+- Instructor studio for local course drafts and announcements
+- Direct links to the existing OES browser laboratory
 
-## Production LMS integration
-Use this interface as the Academy public site and integrate a full LMS backend (recommended: self-hosted Moodle) at a dedicated subdomain such as `academy-lms.openeconometrics.org`, or replace this frontend with a backend-backed application. Moodle should own:
-- Identity, roles and access control
-- Courses, cohorts, enrollment and course completion
-- Assignments, question banks, quizzes and gradebook
-- Payment enrollment integration
-- Certificates and audit records
+## Run it
 
-The OES-1000 static site remains the econometric software distribution and browser estimation environment. Link practical lessons to `../web/index.html`; do not move or rewrite the estimator engine for LMS work.
+Open `index.html` through GitHub Pages at `/academy/`. For local development, serve the repository directory using any static file server, or open `index.html` directly in a modern browser.
 
-## Deployment
-The site is available at `/academy/` after GitHub Pages deploys the repository root.
+## Storage and limitations
+
+The application stores profile details, enrolments, lesson completion, quiz attempts, assignment notes, course drafts and announcements in the browser's `localStorage` under `oes-academy-static-v1`.
+
+This is deliberately a no-backend implementation:
+- No passwords are collected.
+- There is no secure authentication or role-based access control.
+- Data is specific to one browser/device and is not synchronized between learners.
+- Browser storage can be cleared by the user or browser.
+- Assignment notes are not file uploads and are not visible to an instructor.
+- Course drafts and announcements are local to the browser. Learners can export and import a JSON backup to move their own records between browsers manually.
+- Completion certificates are locally generated print views, not signed or independently verifiable credentials.
+- There is no payment processing, email delivery, or remote student administration.
+
+Do not treat the local profile, gradebook or certificate as a secure institutional record. A shared, secure multi-user LMS necessarily requires a backend or hosted identity/data service. This edition intentionally avoids that dependency.
+
+## Preserve OES
+
+The Academy lives in its own `academy/` directory. The existing OES estimator engine and `web/` interface are not modified. Practical lessons link directly to `../web/index.html`.
+
+## Data reset
+
+Use My Profile → Reset local learning data. This removes only the Academy data stored in the current browser.
