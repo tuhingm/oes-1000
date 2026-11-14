@@ -13,7 +13,7 @@ OES Academy is a self-contained, browser-based learning management interface ser
 - Assignments and local submission notes
 - Grades and assessment history
 - Completion certificate view with browser print / Save as PDF
-- Learner profile
+- Learner profile with local data export/import
 - Instructor studio for local course drafts and announcements
 - Direct links to the existing OES browser laboratory
 
@@ -31,7 +31,7 @@ This is deliberately a no-backend implementation:
 - Data is specific to one browser/device and is not synchronized between learners.
 - Browser storage can be cleared by the user or browser.
 - Assignment notes are not file uploads and are not visible to an instructor.
-- Course drafts and announcements are local to the browser.
+- Course drafts and announcements are local to the browser. Learners can export and import a JSON backup to move their own records between browsers manually.
 - Completion certificates are locally generated print views, not signed or independently verifiable credentials.
 - There is no payment processing, email delivery, or remote student administration.
 
