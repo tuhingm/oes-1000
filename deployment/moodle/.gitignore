@@ -1,0 +1,7 @@
+# Never commit live Moodle configuration, secrets, data or backups
+.env
+*.sql
+*.sql.gz
+*.tar.gz
+config.php
+moodledata/
