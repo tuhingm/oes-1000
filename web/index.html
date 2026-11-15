@@ -210,6 +210,14 @@ pre.code{background:#0f1b33;color:#dce6f7;border-radius:10px;padding:14px 16px;f
 <div class="row"><button class="btn" id="ors-load-sample" type="button">Load sample dataset</button><button class="btn2" id="ors-reset" type="button">Reset workspace</button></div>
 <div class="status" id="ors-status" role="status"></div><div class="error" id="ors-error" hidden></div>
 </section>
+<section class="step" id="ors-ai-step"><span class="stepno">AI · Assistant</span><h2>AI cleaning assistant</h2><p class="sub">Describe the cleaning task in natural language. Gemini receives only dataset metadata, never the CSV rows. Review the proposed operations before applying them.</p>
+<div class="ors-card" style="margin-bottom:12px">
+<div class="field"><label for="ors-ai-endpoint">Cloudflare Worker URL</label><input id="ors-ai-endpoint" type="url" placeholder="https://your-worker.your-subdomain.workers.dev"></div>
+<div class="field"><label for="ors-ai-prompt">What would you like to do?</label><textarea id="ors-ai-prompt" rows="3" placeholder="e.g. Remove exact duplicates, trim text whitespace, and use the median for missing numeric values."></textarea></div>
+<div class="row"><button class="btn" id="ors-ai-propose" type="button" disabled>Ask Gemini</button><span class="hint" id="ors-ai-status">Load a dataset and configure your Worker URL.</span></div>
+<div id="ors-ai-plan" class="ors-output" style="margin-top:12px" hidden></div>
+<div class="row" style="margin-top:10px"><button class="btn" id="ors-ai-apply" type="button" disabled>Apply approved plan</button><button class="btn2" id="ors-ai-clear" type="button">Clear plan</button></div>
+</div></section>
 <section class="step"><span class="stepno">02 · Inspect</span><h2>Dataset profile</h2><p class="sub">Review dimensions, data types, missingness, unique values, and sample records before applying transformations.</p>
 <div class="metrics" id="ors-metrics"><div class="metric"><small>Dataset</small><strong>Not loaded</strong></div></div>
 <div class="table-wrap" id="ors-profile-wrap" hidden><table><thead><tr><th>Variable</th><th>Detected type</th><th>Missing</th><th>Unique</th><th>Min / max or sample</th></tr></thead><tbody id="ors-profile"></tbody></table></div>
@@ -703,6 +711,47 @@ function renderClean(){if(!data)return;$("ors-clean-metrics").innerHTML=[["Rows"
 $("ors-download").onclick=()=>{if(data)download(filename.replace(/\.csv$/i,"")+"_cleaned.csv",csvString(headers,data),"text/csv;charset=utf-8");};
 $("ors-download-log").onclick=()=>download("data_cleaning_log.txt",["Source: "+filename,"Exported: "+new Date().toISOString(),"Rows: "+data.length,"Columns: "+headers.length,...log].join("\n"),"text/plain");
 $("ors-reset").onclick=()=>{original=null;data=null;headers=[];log=[];undoStack=[];$("ors-profile-wrap").hidden=true;$("ors-profile").innerHTML="";$("ors-metrics").innerHTML="";$("ors-preview-wrap").innerHTML='<p class="sub" style="padding:12px">Load a CSV to preview the first 20 rows.</p>';$("ors-clean-preview").innerHTML='<p class="sub" style="padding:12px">Cleaned data will appear here after processing.</p>';$("ors-clean-metrics").innerHTML="";$("ors-column-checks").innerHTML='<span class="hint">Load a dataset to select columns.</span>';$("ors-rename-from").innerHTML='<option value="">Select variable</option>';$("ors-log").textContent="No operations applied.";$("ors-apply").disabled=true;$("ors-undo").disabled=true;$("ors-download").disabled=true;$("ors-download-log").disabled=true;$("ors-file").value="";$("ors-file-name").textContent="CSV files only · no upload to a server";$("ors-status").classList.remove("on");$("ors-error").hidden=true;};
+// Gemini assistant: sends metadata only; all transformations remain local.
+const aiEndpoint=$("ors-ai-endpoint"), aiPrompt=$("ors-ai-prompt"), aiStatus=$("ors-ai-status"), aiPlan=$("ors-ai-plan"), aiAsk=$("ors-ai-propose"), aiApply=$("ors-ai-apply");
+aiEndpoint.value=localStorage.getItem("oes1000_gemini_worker")||"";
+aiEndpoint.addEventListener("change",()=>localStorage.setItem("oes1000_gemini_worker",aiEndpoint.value.trim()));
+function updateAIReady(){aiAsk.disabled=!(data&&aiEndpoint.value.trim()&&aiPrompt.value.trim());}
+aiPrompt.addEventListener("input",updateAIReady);aiEndpoint.addEventListener("input",updateAIReady);
+function datasetMetadata(){
+ const columns=headers.map((name,j)=>{const vals=data.map(r=>r[j]),present=vals.filter(v=>v!==""&&v!=null),ns=present.filter(numeric).map(Number);return {name,type:present.length&&ns.length===present.length?"numeric":ns.length?"mixed":"text",missing:vals.length-present.length,unique:new Set(present).size,min:ns.length?Math.min(...ns):null,max:ns.length?Math.max(...ns):null};});
+ return {rows:data.length,columnCount:headers.length,duplicateRows:data.length-new Set(data.map(r=>JSON.stringify(r))).size,columns};
+}
+let approvedAIPlan=null;
+aiAsk.addEventListener("click",async()=>{
+ const endpoint=aiEndpoint.value.trim();
+ if(!data)return;
+ if(!/^https:\/\//i.test(endpoint))return aiStatus.textContent="Enter a valid HTTPS Cloudflare Worker URL.";
+ aiAsk.disabled=true;aiApply.disabled=true;aiStatus.textContent="Gemini is preparing a proposal…";aiPlan.hidden=true;
+ try{
+  const response=await fetch(endpoint,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({message:aiPrompt.value.trim(),dataset:datasetMetadata()})});
+  const payload=await response.json();if(!response.ok)throw new Error(payload.error||("Worker returned HTTP "+response.status));
+  const p=payload.plan;if(!p||!["keep","drop_rows","mean","median","zero","mode","ffill"].includes(p.missing)||typeof p.dropDuplicates!=="boolean"||typeof p.trimWhitespace!=="boolean"||typeof p.dropEmptyRows!=="boolean"||typeof p.dropEmptyColumns!=="boolean")throw new Error("The AI returned an invalid cleaning plan.");
+  approvedAIPlan=p;
+  const labels={keep:"Keep missing values",drop_rows:"Drop rows with any missing value",mean:"Fill numeric missing values with mean",median:"Fill numeric missing values with median",zero:"Fill numeric missing values with zero",mode:"Fill missing values with mode",ffill:"Forward fill"};
+  aiPlan.innerHTML="<b>Proposed cleaning plan</b><ul><li>"+esc(labels[p.missing])+"</li><li>"+(p.dropDuplicates?"Remove exact duplicate rows":"Keep duplicate rows")+"</li><li>"+(p.trimWhitespace?"Trim text whitespace":"Keep whitespace")+"</li><li>"+(p.dropEmptyRows?"Remove entirely empty rows":"Keep empty rows")+"</li><li>"+(p.dropEmptyColumns?"Remove entirely empty columns":"Keep empty columns")+"</li></ul><p>"+esc(p.rationale||"Review the operations before applying.")+"</p>";
+  aiPlan.hidden=false;aiApply.disabled=false;aiStatus.textContent="Proposal ready. Nothing has been changed.";
+ }catch(e){approvedAIPlan=null;aiStatus.textContent="Assistant error: "+e.message;}
+ finally{updateAIReady();}
+});
+aiApply.addEventListener("click",()=>{
+ if(!approvedAIPlan||!data)return;
+ const p=approvedAIPlan;
+ $("ors-missing").value=p.missing;
+ $("ors-deduplicate").checked=p.dropDuplicates;
+ $("ors-trim").checked=p.trimWhitespace;
+ $("ors-empty-rows").checked=p.dropEmptyRows;
+ $("ors-empty-cols").checked=p.dropEmptyColumns;
+ $("ors-column-checks").querySelectorAll("input").forEach(x=>x.checked=true);
+ $("ors-apply").click();
+ aiStatus.textContent="Approved plan applied locally. Review the cleaning log and output.";
+ aiApply.disabled=true;
+});
+$("ors-ai-clear").addEventListener("click",()=>{approvedAIPlan=null;aiPlan.hidden=true;aiPlan.innerHTML="";aiApply.disabled=true;aiStatus.textContent="Plan cleared.";});
 $("ors-year").textContent=new Date().getFullYear();
 })();
 </script></body>
