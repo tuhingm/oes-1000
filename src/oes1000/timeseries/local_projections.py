@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import numpy as np
 from scipy.stats import t as student_t
+from oes1000.registry import register_estimator
 
 
 def _hac_covariance(X: np.ndarray, residuals: np.ndarray, bandwidth: int) -> np.ndarray:
@@ -17,6 +18,7 @@ def _hac_covariance(X: np.ndarray, residuals: np.ndarray, bandwidth: int) -> np.
     return bread @ meat @ bread
 
 
+@register_estimator("local_projections")
 def estimate_local_projections(
     y,
     X,
