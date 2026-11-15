@@ -47,7 +47,8 @@ h2{font:800 22px/1.25 Manrope;letter-spacing:-.4px;margin:0 0 6px}h3{font:800 15
 pre.code{background:#0f1b33;color:#dce6f7;border-radius:10px;padding:14px 16px;font:12px/1.55 ui-monospace,SFMono-Regular,Menlo,monospace;overflow:auto;margin:8px 0}
 .test-ok{color:var(--ok);font-weight:800}.test-bad{color:var(--bad);font-weight:800}.test-run{color:var(--navy);font-weight:700}
 .info{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}.info div{background:#f5f7fc;border:1px solid #e1e7f1;border-radius:10px;padding:14px;font-size:13px;color:#41506a}.info b{display:block;color:var(--ink);font-family:Manrope;margin-bottom:4px}
-.oes-header{background:#fff;border-bottom:1px solid var(--line);color:var(--ink);position:sticky;top:0;z-index:50}.oes-header .nav{min-height:64px;display:flex;align-items:center;justify-content:space-between;gap:20px}.oes-header .brand{font:800 19px Manrope;color:var(--navy);letter-spacing:-.5px;white-space:nowrap}.oes-header .brand span{color:#5b9bc8}.oes-header nav{display:flex;align-items:center;gap:clamp(10px,2vw,24px);flex-wrap:wrap}.oes-header nav a{font-size:11px;font-weight:800;letter-spacing:.04em;color:#34425c}.oes-header nav a:hover{color:var(--navy)}@media(max-width:700px){.oes-header .nav{align-items:flex-start;flex-direction:column;padding:12px 0}.oes-header nav{gap:8px 14px}.oes-header nav a{font-size:10px}}\nfooter{background:#00205b;color:#dce7f6;padding:25px 0;font-size:12px}footer .foot{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}footer a{color:#9fd3f0}
+.oes-header{background:#fff;border-bottom:1px solid var(--line);color:var(--ink);position:sticky;top:0;z-index:50}.oes-header .nav{min-height:64px;display:flex;align-items:center;justify-content:space-between;gap:20px}.oes-header .brand{font:800 19px Manrope;color:var(--navy);letter-spacing:-.5px;white-space:nowrap}.oes-header .brand span{color:#5b9bc8}.oes-header nav{display:flex;align-items:center;gap:clamp(10px,2vw,24px);flex-wrap:wrap}.oes-header nav a{font-size:11px;font-weight:800;letter-spacing:.04em;color:#34425c}.oes-header nav a:hover{color:var(--navy)}@media(max-width:700px){.oes-header .nav{align-items:flex-start;flex-direction:column;padding:12px 0}.oes-header nav{gap:8px 14px}.oes-header nav a{font-size:10px}}
+footer{background:#00205b;color:#dce7f6;padding:25px 0;font-size:12px}footer .foot{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}footer a{color:#9fd3f0}
 @media(max-width:700px){section.step{padding:18px 16px}.grid2{grid-template-columns:1fr}.opform{grid-template-columns:1fr}.hero{padding:40px 0 36px}.charts{grid-template-columns:1fr}}
 .library-stats{font-size:12px;color:var(--muted);margin:10px 0 14px}.library-controls{display:grid;grid-template-columns:minmax(180px,1fr) minmax(170px,220px) minmax(150px,190px);gap:8px;margin-bottom:12px}.library-controls input,.library-controls select{min-height:38px;padding:7px 10px;border:1px solid #ccd6e5;border-radius:7px;background:#fff;color:var(--ink);font-size:12px}.library-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(245px,1fr));gap:7px}.library-item{border:1px solid var(--line);border-radius:8px;padding:9px 11px;background:#fff;min-width:0}.library-item strong{display:block;font-size:12px;line-height:1.4}.library-item small{display:block;color:var(--muted);font-size:10px;margin-top:3px;overflow-wrap:anywhere}.library-status{display:inline-block;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;border-radius:20px;padding:2px 7px;background:#f2f4f8;color:#536078;margin-top:6px}.library-status.validated{background:#e6f5ed;color:#14633e}.library-pagination{display:flex;justify-content:center;align-items:center;gap:14px;margin-top:14px;font-size:12px;color:var(--muted)}@media(max-width:700px){.library-controls{grid-template-columns:1fr}}
 /* ORS research workspace */
@@ -90,7 +91,8 @@ pre.code{background:#0f1b33;color:#dce6f7;border-radius:10px;padding:14px 16px;f
 </head>
 <body id="top">
 <header class="site-header oes-header"><div class="wrap nav"><a class="brand" href="#top" aria-label="OES-1000 home" onclick="showOES()">OES <span>1000</span></a><nav id="nav" aria-label="Main navigation"><a href="#s-library" onclick="showOES()">Library</a><a href="#s-model" onclick="showOES()">Estimator</a><a href="#s-data" onclick="showOES()">Data</a><a href="#s-results" onclick="showOES()">Results</a><a href="#ors-top" class="ors-entry" onclick="showORS();return false">Data Cleaning Studio ↗</a></nav></div></header>
-<div id="oes-app">\n<section class="hero"><div class="wrap"><div class="kicker">Open-source econometric workspace</div><h1>Open Econometric Systems 1000</h1>
+<div id="oes-app">
+<section class="hero"><div class="wrap"><div class="kicker">Open-source econometric workspace</div><h1>Open Econometric Systems 1000</h1>
 <p class="lead">Run the accepted legacy OES estimators and the new Python-native regression and generalized linear models directly in your browser. Explore the 1,000-model catalogue; planned specifications are clearly separated from executable estimators. Upload your own CSV, select variables, and estimate locally without sending your data to a server.</p>
 <div class="meta"><span><strong id="n-models">44</strong> legacy models</span><span><strong>12</strong> new Python-native estimators</span><span><strong>1,000</strong> catalogue entries</span><span>Runs in your browser: <strong>your data stays on your device</strong></span><span><strong>Free</strong> and open source</span></div></div></section>
 <main class="wrap">
@@ -129,7 +131,8 @@ pre.code{background:#0f1b33;color:#dce6f7;border-radius:10px;padding:14px 16px;f
   <div class="field"><label for="native-quantile">Quantile (quantile regression)</label><input id="native-quantile" type="number" min="0.01" max="0.99" step="0.01" value="0.50"></div>
   <div class="field"><label for="native-tuning">Robust tuning constant</label><input id="native-tuning" type="number" min="0.01" step="0.01" value="1.345"></div>
   <div class="field" id="native-penalty-wrap"><label for="native-penalty">L2 penalty strength (λ)</label><input id="native-penalty" type="number" min="0" step="0.1" value="1"></div>
-  <div class="field" style="grid-column:1/-1" id="native-sigma-wrap"><label for="native-sigma">GLS covariance matrix (JSON, n × n)</label><textarea id="native-sigma" rows="3" placeholder="[[1,0],[0,1]]"></textarea></div>\n  <div class="field" id="native-lower-wrap"><label for="native-lower">Lower censoring / truncation threshold</label><input id="native-lower" type="number" value="0" step="any"></div>
+  <div class="field" style="grid-column:1/-1" id="native-sigma-wrap"><label for="native-sigma">GLS covariance matrix (JSON, n × n)</label><textarea id="native-sigma" rows="3" placeholder="[[1,0],[0,1]]"></textarea></div>
+  <div class="field" id="native-lower-wrap"><label for="native-lower">Lower censoring / truncation threshold</label><input id="native-lower" type="number" value="0" step="any"></div>
   <div class="field" id="native-upper-wrap"><label for="native-upper">Tobit upper censoring point</label><input id="native-upper" type="number" placeholder="Leave blank for no upper censoring" step="any"></div>
  </div>
  <label class="hint"><input type="checkbox" id="native-constant" checked> Include intercept</label>
@@ -195,7 +198,8 @@ pre.code{background:#0f1b33;color:#dce6f7;border-radius:10px;padding:14px 16px;f
 </div>
 </section>
 </main>
-</div>\n<div id="ors-app">
+</div>
+<div id="ors-app">
 <section class="ors-hero" id="ors-top"><div class="wrap">
 <a href="#top" class="ors-back" onclick="showOES();return false">← Open Econometric Systems 1000</a>
 <div class="kicker">Open Research Systems · Data preparation</div>
@@ -494,7 +498,11 @@ $("native-model").addEventListener("change", () => {
   $("native-cov").parentElement.hidden = id !== "wls";
   $("native-quantile").parentElement.hidden = id !== "quantile_regression";
   $("native-tuning").parentElement.hidden = !["huber_regression","tukey_bisquare"].includes(id);
-  $("native-sigma-wrap").hidden = id !== "gls";\n  $("native-lower-wrap").hidden = !["tobit","truncated_regression"].includes(id);\n  $("native-upper-wrap").hidden = id !== "tobit";\n  $("native-constant").disabled = ["ordered_logit","ordered_probit"].includes(id);\n  if (["ordered_logit","ordered_probit"].includes(id)) $("native-constant").checked=false;
+  $("native-sigma-wrap").hidden = id !== "gls";
+  $("native-lower-wrap").hidden = !["tobit","truncated_regression"].includes(id);
+  $("native-upper-wrap").hidden = id !== "tobit";
+  $("native-constant").disabled = ["ordered_logit","ordered_probit"].includes(id);
+  if (["ordered_logit","ordered_probit"].includes(id)) $("native-constant").checked=false;
   $("native-tuning").value = id === "tukey_bisquare" ? "4.685" : "1.345";
 });
 $("native-model").dispatchEvent(new Event("change"));
@@ -506,7 +514,8 @@ $("native-run").addEventListener("click", async () => {
   if (!dependent) { $("native-error").hidden=false; $("native-error").textContent="Choose a dependent variable."; return; }
   if (!regressors.length) { $("native-error").hidden=false; $("native-error").textContent="Choose at least one explanatory variable."; return; }
   if (regressors.includes(dependent)) { $("native-error").hidden=false; $("native-error").textContent="The dependent variable cannot also be an explanatory variable."; return; }
-  const spec = {dependent,regressors,add_constant:$("native-constant").checked};\n  if (["ordered_logit","ordered_probit"].includes(model)) spec.add_constant=false;
+  const spec = {dependent,regressors,add_constant:$("native-constant").checked};
+  if (["ordered_logit","ordered_probit"].includes(model)) spec.add_constant=false;
   if (model === "wls") { spec.weights=$("native-weights").value; spec.cov_type=$("native-cov").value; if(!spec.weights){$("native-error").hidden=false;$("native-error").textContent="Choose a positive weights column.";return;} }
   if (model === "quantile_regression") spec.quantile=+$("native-quantile").value;
   if (["huber_regression","tukey_bisquare"].includes(model)) spec.tuning=+$("native-tuning").value;
