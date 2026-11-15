@@ -34,6 +34,7 @@ EXPECTED_NATIVE = {
     "truncated_regression",
     "glm_binomial_logit_penalized",
     "glm_binomial_probit_penalized",
+    "local_projections",
 }
 
 
@@ -57,6 +58,8 @@ def test_browser_worker_loads_all_native_python_modules():
         "src/oes1000/classical/ordinal_censored.py",
         "src/oes1000/classical/truncated.py",
         "src/oes1000/classical/penalized.py",
+        "src/oes1000/timeseries/__init__.py",
+        "src/oes1000/timeseries/local_projections.py",
     ]
     for path in required_paths:
         assert path in worker
