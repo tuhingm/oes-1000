@@ -515,6 +515,7 @@ $("native-run").addEventListener("click", async () => {
   if (!regressors.length) { $("native-error").hidden=false; $("native-error").textContent="Choose at least one explanatory variable."; return; }
   if (regressors.includes(dependent)) { $("native-error").hidden=false; $("native-error").textContent="The dependent variable cannot also be an explanatory variable."; return; }
   const spec = {dependent,regressors,add_constant:$("native-constant").checked};
+  if (model === "local_projections") { spec.horizon=12; spec.lags=4; spec.shock_index=0; spec.cov_type="hac"; spec.shock_scale="unit"; }
   if (["ordered_logit","ordered_probit"].includes(model)) spec.add_constant=false;
   if (model === "wls") { spec.weights=$("native-weights").value; spec.cov_type=$("native-cov").value; if(!spec.weights){$("native-error").hidden=false;$("native-error").textContent="Choose a positive weights column.";return;} }
   if (model === "quantile_regression") spec.quantile=+$("native-quantile").value;
@@ -528,6 +529,12 @@ $("native-run").addEventListener("click", async () => {
   try {
     const response=await new Promise((resolve,reject)=>{pending[job]={resolve,reject};getWorker().postMessage({cmd:"native_run",job,model,csv:DATA.text,spec,version:CAT.version});});
     const out=response.result;
+    if (model === "local_projections") {
+      const rows=(out.results||[]).map(r=>'<tr><td>'+esc(r.horizon)+'</td><td>'+esc(NUM(r.estimate))+'</td><td>'+esc(NUM(r.standard_error))+'</td><td>'+esc(NUM(r.t_statistic))+'</td><td>'+esc(NUM(r.p_value))+'</td><td>'+esc(r.nobs)+'</td><td>'+esc(NUM(r.r_squared))+'</td></tr>').join("");
+      $("native-output").innerHTML='<div style="padding:10px 12px;font-weight:800">Local projections · '+esc(response.seconds.toFixed(2))+' s</div><p style="padding:0 12px;font-size:12px">Shock: '+esc(regressors[0])+' (first selected explanatory variable) · HAC standard errors · 12 horizons · 4 lags</p><div class="table-wrap"><table><thead><tr><th>Horizon</th><th>IRF estimate</th><th>Std. error</th><th>t-statistic</th><th>p-value</th><th>N</th><th>R²</th></tr></thead><tbody>'+rows+'</tbody></table></div><p style="padding:8px 12px;font-size:12px">Complete-case rows dropped: '+esc(out.nobs_dropped||0)+'</p>';
+      $("native-output").hidden=false;
+      return;
+    }
     const names=regressors.map((v)=>v);
     const params=Array.from(out.params||[]);
     const se=Array.from(out.std_errors||[]);
