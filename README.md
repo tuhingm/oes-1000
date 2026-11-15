@@ -101,3 +101,17 @@ The browser runtime is hosted as static files. No server-side estimation endpoin
 ## License
 
 License selection is pending. Do not assume that code or datasets copied from another project are relicensed by this repository.
+
+## Gemini development gateway
+
+The Cloudflare Worker source is in `cloudflare-worker/worker.js`. It exposes:
+
+- `POST /clean`: metadata-only data-cleaning plan generation.
+- `POST /dev`: drafts one Python estimator module and its tests from a supplied model specification. The response is explicitly marked `draft_only`; generated code must be reviewed and tested before integration or catalogue status changes.
+
+Configure these Cloudflare Worker secrets in the Production environment:
+
+- `GEMINI_API_KEY`: Gemini API key.
+- `OES_DEV_TOKEN`: a separate, high-entropy access token required by `POST /dev`, sent as the `X-OES-Dev-Token` request header. Do not put either secret in GitHub or public frontend code.
+
+After deploying the Worker, the development endpoint is `https://YOUR-WORKER.workers.dev/dev`. Send JSON with `model_id`, `model_name`, `family`, `specification`, and optionally `package_path`. Do not send research datasets or confidential records. Gemini drafts code only; it does not commit to GitHub, run tests, or validate estimators. Those steps remain part of the maintainer review workflow.
