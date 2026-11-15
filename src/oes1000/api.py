@@ -35,6 +35,22 @@ def estimate_frame(frame: pd.DataFrame, model_id: str, spec: dict[str, Any]) -> 
     selected = frame[[dependent, *regressors]].apply(pd.to_numeric, errors="coerce").dropna()
     y = selected[dependent].to_numpy(dtype=float)
     X = selected[regressors].to_numpy(dtype=float)
+    if model_id == "local_projections":
+        from oes1000.timeseries.local_projections import estimate_local_projections
+        result = estimate_local_projections(
+            y, X,
+            horizon=int(spec.get("horizon", 12)),
+            lags=int(spec.get("lags", 4)),
+            shock_index=int(spec.get("shock_index", 0)),
+            cov_type=spec.get("cov_type", "hac"),
+            bandwidth=None if spec.get("bandwidth") in (None, "") else int(spec["bandwidth"]),
+            shock_scale=spec.get("shock_scale", "unit"),
+            add_constant=bool(spec.get("add_constant", True)),
+        )
+        result.update({"nobs_input": int(len(frame)),
+                       "nobs_dropped": int(len(frame)-len(selected)),
+                       "dependent": dependent, "regressors": regressors})
+        return _jsonable(result)
     kwargs = {"add_constant": bool(spec.get("add_constant", True))}
     if model_id == "wls":
         weight_col = spec.get("weights")
