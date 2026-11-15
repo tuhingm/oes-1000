@@ -1787,8 +1787,8 @@
       "name": "Jordà local projections",
       "family": "time_series",
       "subfamily": "impulse_response",
-      "status": "planned",
-      "implementation": null,
+      "status": "implemented",
+      "implementation": "oes1000.timeseries.local_projections:estimate_local_projections",
       "options": {},
       "outputs": [
         "params",
@@ -1800,7 +1800,7 @@
         "residuals",
         "model_diagnostics"
       ],
-      "notes": "Distinct estimator specification. Implement the full model-specific likelihood/objective or moment conditions, inference, diagnostics, guide-derived robustness workflow, browser execution, and numerical reference tests."
+      "notes": "Jordà-style horizon-specific OLS projections with HAC (Bartlett/Newey-West) or heteroskedasticity-robust covariance. Browser API accepts dependent, regressors (shock first), horizon, lags, covariance type, bandwidth, and shock scaling. Numerical validation remains pending."
     },
     {
       "id": "lp_iv",
