@@ -16,7 +16,9 @@ const NATIVE_FILES = [
   ["classical/advanced_discrete.py","src/oes1000/classical/advanced_discrete.py"],
   ["classical/ordinal_censored.py","src/oes1000/classical/ordinal_censored.py"],
   ["classical/truncated.py","src/oes1000/classical/truncated.py"],
-  ["classical/penalized.py","src/oes1000/classical/penalized.py"]
+  ["classical/penalized.py","src/oes1000/classical/penalized.py"],
+  ["timeseries/__init__.py","src/oes1000/timeseries/__init__.py"],
+  ["timeseries/local_projections.py","src/oes1000/timeseries/local_projections.py"]
 ];
 let py=null, booting=null; const loaded=new Set();
 const say=text=>postMessage({type:"status",text});
@@ -27,7 +29,7 @@ async function boot(version){
  say("Loading the existing OES estimation engine…"); py.FS.mkdirTree("/oes_engine");
  for(const f of FILES){const url=new URL(f,ROOT);const r=await fetch(url);if(!r.ok)throw new Error("Could not load engine file "+f+" ("+r.status+").");py.FS.writeFile("/oes_engine/"+f,await r.text());}
  py.runPython("import sys; sys.path.insert(0, '/'); import oes_engine");
- say("Loading the OES-1000 native estimator registry…"); py.FS.mkdirTree("/oes1000/classical");
+ say("Loading the OES-1000 native estimator registry…"); py.FS.mkdirTree("/oes1000/classical"); py.FS.mkdirTree("/oes1000/timeseries");
  for(const [target,source] of NATIVE_FILES){
   const url=new URL("../"+source,self.location.href);
   const r=await fetch(url);if(!r.ok)throw new Error("Could not load native estimator module "+source+" ("+r.status+").");
