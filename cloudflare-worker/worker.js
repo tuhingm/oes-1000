@@ -15,7 +15,7 @@ function cors() {
   return {
     "Access-Control-Allow-Origin": ALLOWED_ORIGIN,
     "Access-Control-Allow-Methods": "POST, OPTIONS",
-    "Access-Control-Allow-Headers": "Content-Type",
+    "Access-Control-Allow-Headers": "Content-Type, X-OES-Dev-Token",
     "Vary": "Origin"
   };
 }
@@ -92,6 +92,9 @@ export default {
     }
 
     if (route === "/dev") {
+      if (!env.OES_DEV_TOKEN || request.headers.get("X-OES-Dev-Token") !== env.OES_DEV_TOKEN) {
+        return json({ error: "Development endpoint unauthorized. Configure OES_DEV_TOKEN and send it in X-OES-Dev-Token." }, 401);
+      }
       const modelId = safeText(input.model_id, 64);
       const modelName = safeText(input.model_name, 180);
       const family = safeText(input.family, 80);
