@@ -15,7 +15,7 @@ function cors() {
   return {
     "Access-Control-Allow-Origin": ALLOWED_ORIGIN,
     "Access-Control-Allow-Methods": "POST, OPTIONS",
-    "Access-Control-Allow-Headers": "Content-Type, X-OES-Dev-Token",
+    "Access-Control-Allow-Headers": "Content-Type, X-OES-Dev-Token, X-OES-AI-Token",
     "Vary": "Origin"
   };
 }
@@ -89,6 +89,52 @@ export default {
       input = JSON.parse(body);
     } catch {
       return json({ error: "Invalid JSON." }, 400);
+    }
+
+    if (route === "/chat") {
+      if (!env.OES_AI_TOKEN || request.headers.get("X-OES-AI-Token") !== env.OES_AI_TOKEN) {
+        return json({ error: "Workspace access token is missing or invalid." }, 401);
+      }
+      const mode = safeText(input.mode, 32);
+      const instruction = safeText(input.instruction, 3000);
+      if (!instruction || !Array.isArray(input.messages) || input.messages.length < 1 || input.messages.length > 14) {
+        return json({ error: "Provide an assistant instruction and between 1 and 14 conversation messages." }, 400);
+      }
+      const messages = input.messages.map(item => ({
+        role: item && item.role === "model" ? "model" : "user",
+        text: safeText(item && item.text, 6000)
+      })).filter(item => item.text);
+      if (!messages.length || messages[messages.length - 1].role !== "user") {
+        return json({ error: "The final conversation message must be a non-empty user message." }, 400);
+      }
+      const conversation = messages.map((item, index) =>
+        (item.role === "model" ? "ASSISTANT" : "USER") + " MESSAGE " + (index + 1) + ":\\n" + item.text
+      ).join("\\n\\n");
+      const prompt = [
+        "You are OES AI, the research intelligence layer of Open Econometric Systems 1000 (OES-1000).",
+        "Your AI provider is Google Gemini. You assist with quantitative economics, econometrics, mathematical statistics, empirical research and reproducible scientific computing.",
+        "ACTIVE MODE: " + mode,
+        "MODE INSTRUCTIONS: " + instruction,
+        "SYSTEM RULES:",
+        "1. Be technically rigorous, direct and structured. Define notation and state assumptions when discussing estimators or mathematical results.",
+        "2. Never fabricate papers, authors, DOIs, citations, numerical estimates, test statistics, p-values, or claims of code execution. If uncertain, say so.",
+        "3. Distinguish theoretical explanation, suggested methodology, generated code, and empirically verified results.",
+        "4. OES-1000 is the estimation engine. Gemini must not pretend it has executed OES estimators or inspected a user's local dataset. Numerical estimation must be performed by the OES browser/Pyodide runtime.",
+        "5. When code is requested, provide complete runnable code and identify dependencies and assumptions. Do not claim that generated code has been tested.",
+        "6. Do not ask users to paste API keys or secrets. Do not request raw confidential datasets.",
+        "7. Return a JSON object with exactly one key named answer. The answer value must be a Markdown-formatted string. No other top-level keys.",
+        "CONVERSATION:",
+        conversation
+      ].join("\\n\\n");
+      try {
+        const result = await callGemini(env, prompt, 8192);
+        if (typeof result.answer !== "string" || !result.answer.trim()) {
+          return json({ error: "Gemini returned an invalid assistant response. Please retry." }, 502);
+        }
+        return json({ answer: result.answer.slice(0, 24000), mode });
+      } catch (error) {
+        return json({ error: safeText(error.message, 1200) }, 502);
+      }
     }
 
     if (route === "/dev") {
