@@ -76,8 +76,8 @@ export default {
 
     const url = new URL(request.url);
     const route = url.pathname.replace(/\/+$/, "") || "/";
-    if (route !== "/clean" && route !== "/dev" && route !== "/") {
-      return json({ error: "Unknown endpoint. Use /clean or /dev." }, 404);
+    if (route !== "/clean" && route !== "/dev" && route !== "/chat" && route !== "/") {
+      return json({ error: "Unknown endpoint. Use /clean, /dev, or /chat." }, 404);
     }
 
     const declaredLength = Number(request.headers.get("Content-Length") || 0);
