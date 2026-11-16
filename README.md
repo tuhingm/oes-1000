@@ -98,6 +98,26 @@ pytest
 
 The browser runtime is hosted as static files. No server-side estimation endpoint is part of the design.
 
+## OES AI workspace
+
+The interactive Gemini-powered research assistant is available at `web/ai/` and is linked from the main OES-1000 navigation. It provides six focused modes: Research Assistant, Econometrician, Statistical Methods, Code Laboratory, Results Interpreter, and Academic Writing.
+
+The AI workspace is an assistance layer, not an estimation service. Gemini handles explanation, research design, interpretation guidance, and code drafting. Actual numerical estimation remains in the browser-based OES/Pyodide engine. The chat endpoint accepts conversation text and returns a structured Markdown answer; it does not receive a dataset for server-side estimation.
+
+### Deploying the Gemini chat endpoint
+
+1. Deploy `cloudflare-worker/worker.js` as the existing OES-1000 Cloudflare Worker.
+2. Configure these Worker secrets in the Production environment:
+   - `GEMINI_API_KEY`: your Google Gemini API key.
+   - `OES_AI_TOKEN`: a separate high-entropy access token for the AI workspace.
+   - `OES_DEV_TOKEN`: retain this separately for the restricted estimator-drafting endpoint.
+3. In the OES AI workspace, enter the deployed Worker URL ending in `/chat` and the `OES_AI_TOKEN`.
+4. The Gemini API key is never placed in frontend code or Git. The workspace access token is stored in session storage for the active browser session; use a private access token for controlled access and rotate it periodically.
+
+The AI endpoint is protected by `OES_AI_TOKEN`, validates request size and conversation length, and uses the Worker-held Gemini key. The current Worker uses the supported Gemini `generateContent` REST endpoint. Google currently recommends its Interactions API for new agentic applications; a future migration can be made without changing the OES AI frontend contract.
+
+Research notes in TXT/MD/JSON are attached as bounded text context. CSV attachments are summarized locally into column metadata before context is sent; raw CSV rows are not sent to Gemini. No uploaded dataset is passed to a server-side estimator.
+
 ## License
 
 License selection is pending. Do not assume that code or datasets copied from another project are relicensed by this repository.
