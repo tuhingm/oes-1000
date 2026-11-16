@@ -108,8 +108,8 @@ export default {
         return json({ error: "The final conversation message must be a non-empty user message." }, 400);
       }
       const conversation = messages.map((item, index) =>
-        (item.role === "model" ? "ASSISTANT" : "USER") + " MESSAGE " + (index + 1) + ":\\n" + item.text
-      ).join("\\n\\n");
+        (item.role === "model" ? "ASSISTANT" : "USER") + " MESSAGE " + (index + 1) + ":\n" + item.text
+      ).join("\n\n");
       const prompt = [
         "You are OES AI, the research intelligence layer of Open Econometric Systems 1000 (OES-1000).",
         "Your AI provider is Google Gemini. You assist with quantitative economics, econometrics, mathematical statistics, empirical research and reproducible scientific computing.",
@@ -125,7 +125,7 @@ export default {
         "7. Return a JSON object with exactly one key named answer. The answer value must be a Markdown-formatted string. No other top-level keys.",
         "CONVERSATION:",
         conversation
-      ].join("\\n\\n");
+      ].join("\n\n");
       try {
         const result = await callGemini(env, prompt, 8192);
         if (typeof result.answer !== "string" || !result.answer.trim()) {
