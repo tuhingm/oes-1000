@@ -131,6 +131,7 @@ def test_fe_complete_cases_include_nonmissing_entity_identifier():
     )
     assert result["summary"]["nobs"] == 4
     assert result["specification"]["complete_cases"] == 4
+    assert result["coefficients"][0]["statistic"] is None
 
 
 def test_entity_fe_requires_entity_id():
