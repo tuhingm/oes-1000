@@ -25,7 +25,7 @@ jobs:
         run: python -m pytest
 
   browser-smoke:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     needs: python-tests
     steps:
       - uses: actions/checkout@v4
