@@ -5,20 +5,45 @@ let requestQueue = Promise.resolve();
 const PYODIDE_URL = "https://cdn.jsdelivr.net/pyodide/v0.27.2/full/";
 const PYTHON_MODULES = ["profiling.py", "advisor.py", "estimators.py", "__init__.py"];
 
+function withTimeout(promise, label, milliseconds) {
+  let timeoutId;
+  const timeout = new Promise((_, reject) => {
+    timeoutId = setTimeout(
+      () => reject(new Error(label + " timed out after " + Math.round(milliseconds / 1000) + " seconds")),
+      milliseconds
+    );
+  });
+  return Promise.race([promise, timeout]).finally(() => clearTimeout(timeoutId));
+}
+
 async function initialize() {
   if (!pyodidePromise) {
     const attempt = (async () => {
+      postMessage({ type: "status", text: "Loading Pyodide JavaScript runtime…" });
       importScripts(PYODIDE_URL + "pyodide.js");
-      postMessage({ type: "status", text: "Loading Pyodide WebAssembly runtime…" });
-      const py = await loadPyodide({ indexURL: PYODIDE_URL });
-      postMessage({ type: "status", text: "Loading NumPy, pandas, SciPy and statsmodels…" });
-      await py.loadPackage(["numpy", "pandas", "scipy", "statsmodels"]);
+      const py = await withTimeout(
+        loadPyodide({ indexURL: PYODIDE_URL }),
+        "Pyodide WebAssembly initialization",
+        90_000
+      );
+
+      postMessage({ type: "status", text: "Installing NumPy, pandas, SciPy and statsmodels…" });
+      await withTimeout(
+        py.loadPackage(["numpy", "pandas", "scipy", "statsmodels"]),
+        "Scientific Python package installation",
+        150_000
+      );
 
       py.FS.mkdirTree("/oes_intelligence/engine");
       for (const name of PYTHON_MODULES) {
-        const response = await fetch(new URL("../engine/" + name, self.location.href));
+        postMessage({ type: "status", text: "Loading OES engine module: " + name });
+        const response = await withTimeout(
+          fetch(new URL("../engine/" + name, self.location.href)),
+          "Fetching OES engine module " + name,
+          20_000
+        );
         if (!response.ok) {
-          throw new Error("Could not load engine module " + name);
+          throw new Error("Could not load engine module " + name + " (HTTP " + response.status + ")");
         }
         py.FS.writeFile(
           "/oes_intelligence/engine/" + name,
@@ -26,6 +51,7 @@ async function initialize() {
         );
       }
 
+      postMessage({ type: "status", text: "Importing OES statistical engine…" });
       py.runPython(
         "import sys; sys.path.insert(0, '/oes_intelligence'); import engine"
       );
@@ -34,8 +60,6 @@ async function initialize() {
     })();
 
     pyodidePromise = attempt;
-    // A failed initialization must not permanently poison the worker. A later
-    // request can retry after a transient CDN or package-loading failure.
     attempt.catch(() => {
       if (pyodidePromise === attempt) {
         pyodidePromise = undefined;
