@@ -27,22 +27,26 @@ test(
 
     try {
       await page.goto(baseURL, { waitUntil: "domcontentloaded" });
-      await page.waitForFunction(
-        () => document.querySelector("#runtime-label")?.textContent === "Browser Python runtime ready",
-        null,
-        { timeout: 180_000 }
-      ).catch(async error => {
-        const detail = await page.locator("#runtime-detail").textContent().catch(() => "No runtime detail");
-        throw new Error(`Pyodide did not become ready: ${detail}. ${error.message}`);
-      });
-
-      assert.match(await page.locator("#runtime-detail").textContent(), /Pyodide ready/);
-
+      // Runtime initialization is lazy: selecting a file triggers the first worker request.
       await page.locator("#file-input").setInputFiles({
         name: "oes-browser-smoke.csv",
         mimeType: "text/csv",
         buffer: Buffer.from(makeCSV(), "utf8")
       });
+
+      await page.waitForFunction(
+        () => {
+          const label = document.querySelector("#runtime-label")?.textContent;
+          return label === "Browser Python runtime ready" || label === "Runtime error";
+        },
+        null,
+        { timeout: 180_000 }
+      );
+
+      const runtimeLabel = await page.locator("#runtime-label").textContent();
+      const runtimeDetail = await page.locator("#runtime-detail").textContent();
+      assert.equal(runtimeLabel, "Browser Python runtime ready", "Pyodide initialization failed: " + runtimeDetail);
+      assert.match(runtimeDetail, /Pyodide ready/);
 
       await page.waitForFunction(
         () => document.querySelector("#global-status")?.textContent.includes("Loaded 40 rows and 3 columns"),
