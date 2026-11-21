@@ -32,6 +32,12 @@ def _assert_full_rank(matrix, description: str) -> None:
         )
 
 
+def _finite_float(value):
+    """Return a JSON-safe float; undefined or infinite statistics become null."""
+    number = float(value)
+    return number if np.isfinite(number) else None
+
+
 def _prepare(frame: pd.DataFrame, roles: dict, require_entity: bool = False):
     outcome = roles.get("outcome")
     predictors = roles.get("predictors") or []
@@ -72,12 +78,12 @@ def _coefficient_table(result, names):
     return [
         {
             "term": str(name),
-            "estimate": float(result.params.iloc[i]),
-            "std_error": float(result.bse.iloc[i]),
-            "statistic": float(result.tvalues.iloc[i]),
-            "p_value": float(result.pvalues.iloc[i]),
-            "ci_lower": float(ci.iloc[i, 0]),
-            "ci_upper": float(ci.iloc[i, 1]),
+            "estimate": _finite_float(result.params.iloc[i]),
+            "std_error": _finite_float(result.bse.iloc[i]),
+            "statistic": _finite_float(result.tvalues.iloc[i]),
+            "p_value": _finite_float(result.pvalues.iloc[i]),
+            "ci_lower": _finite_float(ci.iloc[i, 0]),
+            "ci_upper": _finite_float(ci.iloc[i, 1]),
         }
         for i, name in enumerate(names)
     ]
@@ -98,9 +104,9 @@ def _ols(data: pd.DataFrame, outcome: str, predictors: list[str]):
     from statsmodels.stats.stattools import durbin_watson
 
     diagnostics = {
-        "durbin_watson": float(durbin_watson(residuals)),
-        "jarque_bera_stat": float(jb.statistic),
-        "jarque_bera_p": float(jb.pvalue),
+        "durbin_watson": _finite_float(durbin_watson(residuals)),
+        "jarque_bera_stat": _finite_float(jb.statistic),
+        "jarque_bera_p": _finite_float(jb.pvalue),
     }
     return {
         "model_name": "OLS with HC3 robust covariance",
@@ -108,8 +114,8 @@ def _ols(data: pd.DataFrame, outcome: str, predictors: list[str]):
         "coefficients": _coefficient_table(fitted, list(X.columns)),
         "summary": {
             "nobs": int(fitted.nobs),
-            "r_squared": float(fitted.rsquared),
-            "adjusted_r_squared": float(fitted.rsquared_adj),
+            "r_squared": _finite_float(fitted.rsquared),
+            "adjusted_r_squared": _finite_float(fitted.rsquared_adj),
             "f_statistic": float(fitted.fvalue) if np.isfinite(fitted.fvalue) else None,
         },
         "diagnostics": diagnostics,
@@ -164,7 +170,7 @@ def _entity_fe(data: pd.DataFrame, outcome: str, predictors: list[str], entity: 
         "summary": {
             "nobs": int(fitted.nobs),
             "entities": int(groups.nunique()),
-            "within_r_squared": float(fitted.rsquared),
+            "within_r_squared": _finite_float(fitted.rsquared),
         },
         "diagnostics": {
             "entity_clusters": int(groups.nunique()),
@@ -190,7 +196,8 @@ def _logit(data: pd.DataFrame, outcome: str, predictors: list[str]):
     fitted = sm.Logit(y, X).fit(disp=False, maxiter=200, cov_type="HC3")
     table = _coefficient_table(fitted, list(X.columns))
     for row in table:
-        row["odds_ratio"] = float(np.exp(row["estimate"]))
+        with np.errstate(over="ignore", invalid="ignore"):
+            row["odds_ratio"] = _finite_float(np.exp(row["estimate"]))
 
     return {
         "model_name": "Binary logistic regression with HC3 covariance",
@@ -202,8 +209,8 @@ def _logit(data: pd.DataFrame, outcome: str, predictors: list[str]):
         "coefficients": table,
         "summary": {
             "nobs": int(fitted.nobs),
-            "pseudo_r_squared_mcfadden": float(fitted.prsquared),
-            "log_likelihood": float(fitted.llf),
+            "pseudo_r_squared_mcfadden": _finite_float(fitted.prsquared),
+            "log_likelihood": _finite_float(fitted.llf),
             "converged": bool(fitted.mle_retvals.get("converged", False)),
         },
         "diagnostics": {
