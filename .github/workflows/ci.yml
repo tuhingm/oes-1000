@@ -23,3 +23,33 @@ jobs:
         run: python -m pip install --upgrade pip && python -m pip install -e ".[test]"
       - name: Run numerical and decision-rule tests
         run: python -m pytest
+
+  browser-smoke:
+    runs-on: ubuntu-latest
+    needs: python-tests
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - name: Install browser-test dependencies
+        run: npm install --no-audit --no-fund
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Start local static server
+        run: |
+          python -m http.server 8000 --bind 127.0.0.1 > /tmp/oes-http.log 2>&1 &
+          echo $! > /tmp/oes-http.pid
+          for i in {1..30}; do
+            if curl -fsS http://127.0.0.1:8000/ >/dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/oes-http.log
+          exit 1
+      - name: Run Pyodide browser end-to-end test
+        env:
+          OES_BASE_URL: http://127.0.0.1:8000
+        run: npm run test:browser

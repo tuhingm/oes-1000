@@ -1,0 +1,11 @@
+{
+  "name": "oes-intelligence-browser-tests",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test:browser": "node --test tests/browser/*.test.mjs"
+  },
+  "devDependencies": {
+    "playwright": "1.56.1"
+  }
+}

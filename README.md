@@ -46,7 +46,23 @@ python -m pip install -e ".[test]"
 python -m pytest
 ```
 
-The Python test suite checks profiling, recommendation rules, and estimator behavior. Browser-level Pyodide smoke tests are a separate validation gate.
+The Python test suite checks profiling, recommendation rules, and estimator behavior. The Playwright browser smoke test launches Chromium, initializes Pyodide in the real Web Worker, uploads a synthetic CSV, profiles it, estimates OLS-HC3, and verifies both report downloads.
+
+Run the browser test locally after installing Node.js and Chromium:
+
+```bash
+npm install
+npx playwright install chromium
+python -m http.server 8000
+```
+
+In a second terminal:
+
+```bash
+npm run test:browser
+```
+
+The browser test requires network access to the configured Pyodide CDN for runtime and scientific package assets. The test dataset is synthetic and is generated in the test process; it is not uploaded to an external service.
 
 ## Architecture
 
