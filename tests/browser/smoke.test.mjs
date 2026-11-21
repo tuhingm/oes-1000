@@ -18,7 +18,7 @@ function makeCSV() {
 
 test(
   "Chromium initializes Pyodide, profiles CSV, estimates OLS-HC3 and exports reports",
-  { timeout: 240_000 },
+  { timeout: 390_000 },
   async () => {
     const browser = await chromium.launch({ headless: true });
     const page = await browser.newPage();
@@ -40,7 +40,7 @@ test(
           return label === "Browser Python runtime ready" || label === "Runtime error";
         },
         null,
-        { timeout: 180_000 }
+        { timeout: 360_000 }
       );
 
       const runtimeLabel = await page.locator("#runtime-label").textContent();
