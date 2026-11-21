@@ -1,1 +1,94 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="refresh" content="0;url=./web/"><title>OES-1000</title><link rel="canonical" href="./web/"></head><body><p>Opening <a href="./web/">OES-1000 browser application</a>…</p></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101d35">
+  <meta name="description" content="OES Intelligence: intelligent, browser-native statistical and econometric research. Your datasets remain in your browser.">
+  <title>OES Intelligence — Statistical Research Workspace</title>
+  <link rel="stylesheet" href="./assets/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="OES Intelligence home">
+      <span class="brand-mark">O</span>
+      <span><strong>OES</strong> <b>INTELLIGENCE</b><small>STATISTICAL RESEARCH WORKSPACE</small></span>
+    </a>
+    <div class="topbar-right"><span class="local-pill"><i></i> LOCAL COMPUTATION</span><span class="version">FOUNDATION 0.1</span></div>
+  </header>
+
+  <main class="shell">
+    <section class="hero">
+      <div class="eyebrow">OPEN ECONOMETRIC SYSTEMS · NEXT GENERATION</div>
+      <h1>From raw data to<br><span>defensible analysis.</span></h1>
+      <p>Profile your data, receive transparent methodological recommendations, estimate models, and inspect diagnostics — all inside your browser.</p>
+      <div class="hero-meta"><span><b>01</b> Profile</span><span><b>02</b> Choose method</span><span><b>03</b> Estimate &amp; validate</span></div>
+    </section>
+
+    <section class="workspace-grid">
+      <div class="main-column">
+        <section class="panel" id="data-panel">
+          <div class="section-heading"><div><span class="step">01</span><h2>Research data</h2></div><span class="muted">CSV · processed locally</span></div>
+          <label class="dropzone" id="dropzone" for="file-input">
+            <input id="file-input" type="file" accept=".csv,text/csv">
+            <span class="upload-icon">↑</span>
+            <strong id="file-label">Drop a CSV file here or browse</strong>
+            <small id="file-subtitle">Your dataset is read into this browser session. It is not sent to an estimation server.</small>
+          </label>
+          <div class="privacy-note"><span class="shield">◆</span><span><strong>Local-first data boundary</strong> · The file is transferred to a local Web Worker for Pyodide processing. No dataset upload endpoint is configured.</span></div>
+        </section>
+
+        <section class="panel" id="profile-panel">
+          <div class="section-heading"><div><span class="step">02</span><h2>Data profile</h2></div><span class="muted" id="profile-status">Waiting for data</span></div>
+          <div class="role-grid">
+            <label>Outcome variable<select id="outcome-select" disabled><option value="">Select outcome</option></select></label>
+            <label>Panel entity <span class="optional">optional</span><select id="entity-select" disabled><option value="">Not a panel / none</option></select></label>
+            <label>Time variable <span class="optional">optional</span><select id="time-select" disabled><option value="">None</option></select></label>
+          </div>
+          <div class="profile-actions"><button id="profile-button" class="button button-primary" disabled>Analyze dataset <span>→</span></button><span class="hint">Choose an outcome to obtain targeted recommendations.</span></div>
+          <div id="profile-results" class="empty-state">Dataset summaries and variable diagnostics will appear here.</div>
+        </section>
+
+        <section class="panel" id="model-panel">
+          <div class="section-heading"><div><span class="step">03</span><h2>Method selection</h2></div><span class="muted">Researcher-approved</span></div>
+          <div id="recommendations" class="empty-state">Run the data profile to receive recommendations with explicit reasoning.</div>
+          <div class="estimator-controls">
+            <label>Estimator<select id="model-select" disabled><option value="">No recommendation yet</option></select></label>
+            <label>Regressors <span class="optional">select multiple</span><select id="predictors-select" multiple size="4" disabled></select></label>
+          </div>
+          <div class="profile-actions"><button id="estimate-button" class="button button-primary" disabled>Run estimation <span>→</span></button><span class="hint">Recommendations are decision support, not automatic model approval.</span></div>
+        </section>
+
+        <section class="panel results-panel" id="results-panel">
+          <div class="section-heading"><div><span class="step">04</span><h2>Estimation results</h2></div><span class="muted" id="result-status">No estimation run</span></div>
+          <div id="results" class="empty-state">Your coefficient table, fit statistics, and diagnostics will appear here.</div>
+          <div class="result-actions"><button id="download-json" class="button button-secondary" disabled>Download analysis JSON</button><button id="download-html" class="button button-secondary" disabled>Download report</button></div>
+        </section>
+      </div>
+
+      <aside class="side-column">
+        <section class="panel side-panel">
+          <div class="side-title">INTELLIGENCE LAYER</div>
+          <div class="intelligence-orb"><span>O</span><i></i></div>
+          <h3>Evidence before estimation.</h3>
+          <p>OES Intelligence examines the data structure and outcome type, then explains why candidate methods may be appropriate.</p>
+          <ul class="feature-list"><li><span>✓</span> Variable and missingness profiling</li><li><span>✓</span> Outcome-aware recommendations</li><li><span>✓</span> Transparent method rationale</li><li><span>→</span> Expanded diagnostic decision trees</li><li><span>→</span> Reproducibility and research workspace</li></ul>
+        </section>
+        <section class="panel status-panel">
+          <div class="side-title">RUNTIME STATUS</div>
+          <div class="runtime-row"><span class="status-dot" id="runtime-dot"></span><span id="runtime-label">Initializing browser runtime…</span></div>
+          <div class="runtime-detail" id="runtime-detail">Pyodide will initialize when the application starts.</div>
+          <div class="runtime-divider"></div>
+          <div class="side-title">SUPPORTED IN THIS BUILD</div>
+          <div class="tag-list"><span>OLS · HC3</span><span>ENTITY FE</span><span>LOGIT</span><span>CSV PROFILE</span></div>
+          <p class="fine-print">Only listed execution paths are currently enabled. Additional estimators will be released after numerical validation.</p>
+        </section>
+      </aside>
+    </section>
+    <div class="global-status" id="global-status" role="status" aria-live="polite">Ready. Select a CSV dataset to begin.</div>
+  </main>
+
+  <footer><span>OES INTELLIGENCE</span><span>Browser-native statistical computing · Researcher remains in control</span></footer>
+  <script type="module" src="./app/main.js"></script>
+</body>
+</html>
