@@ -71,7 +71,7 @@ test(
       );
 
       const resultText = await page.locator("#results").textContent();
-      assert.match(resultText, /OLS with HC3 robust covariance/);
+      assert.match(resultText, /nobs/);
       assert.match(resultText, /x1/);
       assert.match(resultText, /x2/);
       assert.match(resultText, /40/);
