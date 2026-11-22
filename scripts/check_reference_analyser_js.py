@@ -5,7 +5,7 @@ import tempfile
 
 html_path = Path(__file__).resolve().parents[1] / "reference-analyser" / "index.html"
 html = html_path.read_text(encoding="utf-8")
-scripts = re.findall(r"<script(?:\\s[^>]*)?>([\\s\\S]*?)</script>", html, flags=re.IGNORECASE)
+scripts = re.findall(r"<script(?:\s[^>]*)?>([\s\S]*?)</script>", html, flags=re.IGNORECASE)
 if not scripts:
     raise SystemExit("No inline JavaScript block found in Reference Analyser.")
 source = scripts[-1]
