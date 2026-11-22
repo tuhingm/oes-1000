@@ -74,3 +74,16 @@ The application does not contain a dataset upload endpoint. The selected CSV is 
 ## Roadmap
 
 See [Product roadmap](docs/PRODUCT_ROADMAP.md) and [Architecture](docs/ARCHITECTURE.md). The next stages are deeper diagnostics and estimator coverage, reproducibility packaging, research workspaces, then secure SaaS identity, billing, and institutional features. Authentication and billing are intentionally not represented as implemented in this initial rebuild.
+
+## OES Reference Analyser
+
+The repository also includes **OES Reference Analyser** at [reference-analyser/](./reference-analyser/). This standalone browser tool supports:
+
+- Local extraction from TXT, BibTeX, RIS, CSV, PDF, and DOCX files (PDF/DOCX parsers load from public CDNs).
+- Reference parsing, DOI extraction, missing-field flags, and possible duplicate detection.
+- Optional DOI/title metadata verification against Crossref.
+- Heuristic author–year citation matching and CSV/JSON report export.
+
+Document text is processed in the browser. When Crossref verification is run, DOI identifiers or reference text queries are sent to Crossref; the manuscript itself is not uploaded. The tool reports diagnostic evidence and does not equate an unavailable metadata match with a fabricated reference.
+
+Open it from the OES Intelligence navigation or visit the reference-analyser/ directory on the deployed site.
