@@ -19,7 +19,7 @@
 <div class="layout"><div class="main">
 <section class="panel"><div class="head"><h2>01 · Import manuscript or references</h2><span class="kicker">INPUT</span></div><div class="upload"><strong>Choose a document or reference file</strong><input id="file" type="file" accept=".txt,.bib,.ris,.csv,.pdf,.docx"><small>Supported: TXT, BibTeX, RIS, CSV, PDF and DOCX · PDF/DOCX extraction uses browser libraries</small></div><div class="grid2" style="margin-top:13px"><label class="field">Bibliography / reference list<textarea id="refs" placeholder="Paste one reference per paragraph or upload a document.&#10;&#10;Example:&#10;Author, A. (2022). Article title. Journal Name, 12(3), 100–120. https://doi.org/10.xxxx/xxxxx"></textarea></label><label class="field">In-text citations or manuscript text<textarea id="body" placeholder="Optional: paste manuscript text or its in-text citations.&#10;&#10;Examples: (Smith, 2020); (Jones &amp; Lee, 2021); Smith (2022)"></textarea></label></div><div class="actions"><button class="btn primary" id="analyse">Analyse references</button><button class="btn" id="clear">Clear inputs</button></div><div class="privacy"><b>Privacy boundary:</b> document text is processed in this browser. When DOI verification is explicitly run, only DOI identifiers or reference-title search queries are sent to Crossref to retrieve public bibliographic metadata; the full manuscript is not uploaded.</div></section>
 <section class="panel"><div class="head"><h2>02 · Reference diagnostics</h2><span class="muted" id="count">Awaiting input</span></div><div id="summary" class="empty">Import or paste a reference list, then select Analyse references.</div><div class="tablewrap" id="table"></div><div class="actions"><button class="btn primary" id="verify" disabled>Verify DOI / metadata with Crossref</button><button class="btn" id="csv" disabled>Export CSV</button><button class="btn" id="json" disabled>Export JSON report</button></div></section>
-<section class="panel"><div class="head"><h2>03 · Scholarly literature search</h2><span class="kicker">CROSSREF SEARCH</span></div><label class="field">Search by topic, article title, author or DOI<input id="literature-query" type="search" placeholder="e.g. exchange rate pass-through in Bangladesh"></label><div class="actions"><button class="btn primary" id="literature-search">Search scholarly records</button><select id="search-sort" style="max-width:190px"><option value="relevance">Relevance</option><option value="published">Publication date</option></select></div><p class="privacy">Searches Crossref's public scholarly metadata. Search results are not a complete index of all publications; coverage depends on Crossref deposits.</p><div id="literature-results" class="empty">Enter a topic, title, author or DOI to search scholarly records.</div></section>
+<section class="panel"><div class="head"><h2>03 · Scholarly literature search</h2><span class="kicker">MULTI-SOURCE SEARCH</span></div><label class="field">Search by topic, article title, author or DOI<input id="literature-query" type="search" placeholder="e.g. exchange rate pass-through in Bangladesh"></label><div class="grid2" style="margin-top:12px"><label class="field">Search provider<select id="literature-provider"><option value="all">All free sources (Crossref + OpenAlex + Semantic Scholar + Europe PMC)</option><option value="crossref">Crossref</option><option value="openalex">OpenAlex</option><option value="semantic">Semantic Scholar</option><option value="europepmc">Europe PMC</option></select></label><label class="field">Sort results<select id="search-sort"><option value="relevance">Provider relevance</option><option value="published">Publication date</option></select></label></div><div class="actions"><button class="btn primary" id="literature-search">Search scholarly records</button></div><p class="privacy">Uses public endpoints. OpenAlex and Semantic Scholar may throttle anonymous requests; Europe PMC is strongest for biomedical and life-science literature.</p><div id="literature-results" class="empty">Search across four scholarly metadata sources or select one provider.</div></section>
 <section class="panel"><div class="head"><h2>04 · In-text citation matching</h2><span class="muted">AUTHOR–YEAR HEURISTIC</span></div><div id="matches" class="empty">Paste manuscript text in the input panel to compare author–year citations with the bibliography.</div></section>
 </div>
 <aside class="side">
@@ -50,29 +50,53 @@ $('body').addEventListener('input',renderMatches);
 async function verifyOne(r){const url=r.doi?'https://api.crossref.org/works/'+encodeURIComponent(r.doi):'https://api.crossref.org/works?query.bibliographic='+encodeURIComponent(r.raw)+'&rows=1';try{const res=await fetch(url,{headers:{'Accept':'application/json'}});if(!res.ok)throw Error('HTTP '+res.status);const data=await res.json();const item=r.doi?data.message:data.message?.items?.[0];if(!item){r.doiStatus='No Crossref match';r.metadataStatus='No match';return}r.crossref={title:item.title?.[0]||'',author:(item.author||[]).map(a=>[a.family,a.given].filter(Boolean).join(', ')).join('; '),year:item.published?.['date-parts']?.[0]?.[0]||item.created?.['date-parts']?.[0]?.[0]||'',container:item['container-title']?.[0]||'',doi:item.DOI||''};const titleScore=similarity(r.title,r.crossref.title);const yearMatch=!r.year||!r.crossref.year||String(r.year).slice(0,4)===String(r.crossref.year);r.doiStatus=r.doi?(r.doi.toLowerCase()===r.crossref.doi.toLowerCase()?'DOI resolves':'DOI mismatch'):'Title search match';r.metadataStatus=titleScore>.72&&yearMatch?'Metadata broadly consistent':'Review metadata';r.titleMatch=titleScore;r.yearMatch=yearMatch}catch(e){r.doiStatus='Lookup unavailable';r.metadataStatus=e.message}}
 $('verify').addEventListener('click',async()=>{if(!records.length)return;$('verify').disabled=true;for(let i=0;i<records.length;i++){status('Crossref lookup '+(i+1)+' / '+records.length+'…');await verifyOne(records[i]);render()}$('verify').disabled=false;status('Crossref checks completed. Review every match and mismatch manually.')});
 $('csv').addEventListener('click',()=>{const cols=['id','author','year','title','doi','doiStatus','metadataStatus','duplicateOf'];const q=v=>'"'+String(v??'').replace(/"/g,'""')+'"';download(cols.join(',')+'\n'+records.map(r=>cols.map(k=>q(r[k])).join(',')).join('\n'),'oes-reference-analysis.csv','text/csv')});
-$('json').addEventListener('click',()=>download(JSON.stringify({product:'OES Reference Analyser',generatedAt:new Date().toISOString(),sourceFile:sourceName,referenceCount:records.length,references:records,citationText:$('body').value},null,2),'oes-reference-analysis.json','application/json'));
-function download(data,name,type){const a=document.createElement('a'),u=URL.createObjectURL(new Blob([data],{type}));a.href=u;a.download=name;a.click();URL.revokeObjectURL(u)}
-
-const literatureQuery=$('literature-query');
+$('json').addEvenconst literatureQuery=$('literature-query'),providerSelect=$('literature-provider');
+function normaliseRecord(source,x){
+ if(source==='crossref')return{source,title:x.title?.[0]||'Untitled record',authors:(x.author||[]).map(a=>[a.family,a.given].filter(Boolean).join(', ')).join('; '),year:x.published?.['date-parts']?.[0]?.[0]||x.created?.['date-parts']?.[0]?.[0]||'Year unavailable',venue:x['container-title']?.[0]||x.publisher||'',doi:x.DOI||'',url:x.URL||'',citations:x['is-referenced-by-count']};
+ if(source==='openalex')return{source,title:x.title||'Untitled record',authors:(x.authorships||[]).map(a=>a.author?.display_name).filter(Boolean).join('; '),year:x.publication_year||'Year unavailable',venue:x.primary_location?.source?.display_name||'',doi:(x.doi||'').replace(/^https?:\/\/doi.org\//i,''),url:x.id||x.doi||'',citations:x.cited_by_count};
+ if(source==='semantic')return{source,title:x.title||'Untitled record',authors:(x.authors||[]).map(a=>a.name).filter(Boolean).join('; '),year:x.year||'Year unavailable',venue:x.venue||'',doi:x.externalIds?.DOI||'',url:x.url||'',citations:x.citationCount};
+ return{source,title:x.title||'Untitled record',authors:x.authorString||'',year:x.firstPublicationDate?.slice(0,4)||x.pubYear||'Year unavailable',venue:x.journalTitle||x.bookTitle||'',doi:x.doi||'',url:x.id?('https://europepmc.org/article/MED/'+x.id):'',citations:x.citedByCount};
+}
+async function fetchProvider(source,q,doi){
+ const headers={Accept:'application/json'};let url;
+ if(source==='crossref'){
+  const fields='DOI,title,author,published,created,container-title,volume,issue,page,publisher,type,URL,is-referenced-by-count';
+  url=doi?'https://api.crossref.org/works/'+encodeURIComponent(doi)+'?select='+fields:'https://api.crossref.org/works?query='+encodeURIComponent(q)+'&rows=8&select='+fields;
+  const r=await fetch(url,{headers});if(!r.ok)throw Error('Crossref HTTP '+r.status);const p=await r.json();return(doi?(p.message?[p.message]:[]):p.message?.items||[]).map(x=>normaliseRecord(source,x));
+ }
+ if(source==='openalex'){
+  const fields='id,doi,title,publication_year,authorships,primary_location,cited_by_count';
+  url=doi?'https://api.openalex.org/works/https://doi.org/'+encodeURIComponent(doi)+'?select='+fields:'https://api.openalex.org/works?search='+encodeURIComponent(q)+'&per-page=8&select='+fields;
+  const r=await fetch(url,{headers});if(!r.ok)throw Error('OpenAlex HTTP '+r.status);const p=await r.json();return(doi?(p.id?[p]:[]):p.results||[]).map(x=>normaliseRecord(source,x));
+ }
+ if(source==='semantic'){
+  url='https://api.semanticscholar.org/graph/v1/paper/search?query='+encodeURIComponent(q)+'&limit=8&fields=title,year,authors,venue,externalIds,url,citationCount';
+  const r=await fetch(url,{headers});if(!r.ok)throw Error('Semantic Scholar HTTP '+r.status);const p=await r.json();return(p.data||[]).map(x=>normaliseRecord(source,x));
+ }
+ url='https://www.ebi.ac.uk/europepmc/webservices/rest/search?query='+encodeURIComponent('TITLE_ABS('+q+')')+'&format=json&pageSize=8&resultType=core';
+ const r=await fetch(url,{headers});if(!r.ok)throw Error('Europe PMC HTTP '+r.status);const p=await r.json();return(p.resultList?.result||[]).map(x=>normaliseRecord(source,x));
+}
 async function searchLiterature(){
  const q=literatureQuery.value.trim();if(!q){status('Enter a topic, title, author or DOI to search.');literatureQuery.focus();return}
- const box=$('literature-results');box.className='empty';box.textContent='Searching Crossref scholarly metadata…';$('literature-search').disabled=true;
+ const box=$('literature-results');box.className='empty';box.textContent='Searching selected scholarly metadata sources…';$('literature-search').disabled=true;
+ const doi=(q.match(/10\.\d{4,9}\/[\-._;()/:A-Z0-9]+/i)||[])[0]?.replace(/[.,;:)]+$/,'');
+ const selected=providerSelect.value==='all'?['crossref','openalex','semantic','europepmc']:[providerSelect.value];
  try{
-  const doi=(q.match(/10\.\d{4,9}\/[\-._;()/:A-Z0-9]+/i)||[])[0]?.replace(/[.,;:)]+$/,'');
-  const fields='DOI,title,author,published,created,container-title,volume,issue,page,publisher,type,URL';
-  const url=doi?'https://api.crossref.org/works/'+encodeURIComponent(doi)+'?select='+fields:'https://api.crossref.org/works?query='+encodeURIComponent(q)+'&rows=10&select='+fields;
-  const response=await fetch(url,{headers:{Accept:'application/json'}});
-  if(!response.ok)throw new Error('Crossref returned HTTP '+response.status);
-  const payload=await response.json();
-  const items=doi?(payload.message?[payload.message]:[]):(payload.message?.items||[]);
-  if(!items.length){box.className='empty';box.textContent='No Crossref records found for this query. Try a shorter title, different keywords or an author surname.';status('Search completed: no matching Crossref records.');return}
-  if($('search-sort').value==='published')items.sort((a,b)=>{const ya=a.published?.['date-parts']?.[0]?.[0]||0,yb=b.published?.['date-parts']?.[0]?.[0]||0;return yb-ya});
-  box.className='';box.innerHTML='<div class="muted" style="margin:8px 0 12px">'+items.length+' result(s) returned by Crossref · verify each record against the publisher version</div>'+items.map((it,i)=>{
-   const title=it.title?.[0]||'Untitled record',authors=(it.author||[]).map(a=>[a.family,a.given].filter(Boolean).join(', ')).join('; ')||'Author metadata unavailable',year=it.published?.['date-parts']?.[0]?.[0]||it.created?.['date-parts']?.[0]?.[0]||'Year unavailable',journal=it['container-title']?.[0]||it.publisher||it.type||'Publication venue unavailable',link=it.URL||('https://doi.org/'+it.DOI),score=Number.isFinite(it.score)?it.score.toFixed(1):'—';
-   return '<article class="recommendation"><div class="rec-head"><strong>'+esc(title)+'</strong><span class="rec-label">'+esc(String(year))+'</span></div><p>'+esc(authors)+'</p><p>'+esc(journal)+(it.volume?', vol. '+esc(it.volume):'')+(it.issue?', no. '+esc(it.issue):'')+(it.page?', pp. '+esc(it.page):'')+'</p><div class="rec-head"><span class="muted">DOI: '+esc(it.DOI||'Not deposited')+' · Crossref metadata'+'</span><a class="btn" style="text-decoration:none" href="'+esc(link)+'" target="_blank" rel="noopener">Open record ↗</a></div></article>'
-  }).join('');
-  status('Crossref returned '+items.length+' scholarly record(s).');
- }catch(error){box.className='empty';box.textContent='Search failed: '+error.message+'. Check your internet connection and try again.';status('Crossref search failed.')}
+  const settled=await Promise.allSettled(selected.map(s=>fetchProvider(s,q,doi)));let results=[],errors=[];
+  settled.forEach((v,i)=>{if(v.status==='fulfilled')results.push(...v.value);else errors.push(selected[i]+': '+v.reason.message)});
+  if($('search-sort').value==='published')results.sort((a,b)=>(Number(b.year)||0)-(Number(a.year)||0));
+  if(!results.length){box.className='empty';box.textContent='No records returned. '+(errors.join(' · ')||'Try different keywords.');status('No scholarly records returned.');return}
+  box.className='';box.innerHTML='<div class="muted" style="margin:8px 0 12px">'+results.length+' record(s) · '+selected.length+' source(s) queried</div>'+results.map(it=>{
+   const link=it.url||(it.doi?'https://doi.org/'+it.doi:'#');
+   return '<article style="border-bottom:1px solid #26394f;padding:12px 0"><div style="display:flex;justify-content:space-between;gap:12px"><strong>'+esc(it.title)+'</strong><span class="pill">'+esc(it.source)+'</span></div><p>'+esc(it.authors||'Author metadata unavailable')+'</p><p>'+esc(String(it.year))+(it.venue?' · '+esc(it.venue):'')+(it.citations!=null?' · citations: '+esc(String(it.citations)):'')+'</p><div style="display:flex;justify-content:space-between;gap:10px;align-items:center"><span class="muted">DOI: '+esc(it.doi||'Not supplied')+'</span>'+(link!=='#'?'<a class="btn" style="text-decoration:none" href="'+esc(link)+'" target="_blank" rel="noopener">Open record ↗</a>':'')+'</div></article>'
+  }).join('')+(errors.length?'<div class="callout"><strong>Some sources did not respond:</strong> '+esc(errors.join(' · '))+'</div>':'');
+  status('Search complete: '+results.length+' records returned from '+selected.length+' source(s).');
+ }catch(error){box.className='empty';box.textContent='Search failed: '+error.message;status('Scholarly search failed.')}
+ finally{$('literature-search').disabled=false}
+}
+$('literature-search').addEventListener('click',searchLiterature);
+literatureQuery.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();searchLiterature()}});
+nternet connection and try again.';status('Crossref search failed.')}
  finally{$('literature-search').disabled=false}
 }
 $('literature-search').addEventListener('click',searchLiterature);
